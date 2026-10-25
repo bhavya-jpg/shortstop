@@ -1,0 +1,30 @@
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+proxy-token
+
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Runtime state (H-MEM memory, review packages) and traces.
+# Traces are redacted, but live runs can contain service metadata: keep them local.
+var/
+logs/*
+!logs/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Live check evidence: redacted, but review before committing
+evidence/
+
+# Local submission drafts (form text, private to-dos): not part of the public repo
+docs/submission/
