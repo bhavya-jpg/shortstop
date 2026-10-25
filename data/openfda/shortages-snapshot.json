@@ -1,0 +1,436 @@
+{
+  "notice": "Real public records from the openFDA drug shortages endpoint, stored unmodified. Not synthetic.",
+  "source": "https://api.fda.gov/drug/shortages.json",
+  "license": "https://open.fda.gov/license/",
+  "fetched_at": "2026-10-24T19:40:05.534Z",
+  "openfda_meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-10-23",
+    "results": {
+      "skip": 0,
+      "limit": 10,
+      "total": 1
+    }
+  },
+  "queries": [
+    {
+      "url": "https://api.fda.gov/drug/shortages.json?search=package_ndc%3A%220409-6102-26%22&limit=10",
+      "status": 200,
+      "results": 1
+    },
+    {
+      "url": "https://api.fda.gov/drug/shortages.json?search=package_ndc%3A%2255150-324-25%22&limit=10",
+      "status": 200,
+      "results": 1
+    },
+    {
+      "url": "https://api.fda.gov/drug/shortages.json?search=package_ndc%3A%220409-6625-35%22&limit=10",
+      "status": 200,
+      "results": 1
+    },
+    {
+      "url": "https://api.fda.gov/drug/shortages.json?search=package_ndc%3A%2263323-089-50%22&limit=10",
+      "status": 200,
+      "results": 1
+    },
+    {
+      "url": "https://api.fda.gov/drug/shortages.json?search=package_ndc%3A%2263323-671-00%22&limit=10",
+      "status": 200,
+      "results": 1
+    },
+    {
+      "url": "https://api.fda.gov/drug/shortages.json?search=package_ndc%3A%220409-1454-20%22&limit=10",
+      "status": 200,
+      "results": 1
+    }
+  ],
+  "results": [
+    {
+      "update_type": "Revised",
+      "initial_posting_date": "04/07/2020",
+      "package_ndc": "0409-6102-26",
+      "generic_name": "Furosemide Injection",
+      "contact_info": "844-646-4398",
+      "availability": "Unavailable",
+      "related_info": "Next Delivery and Estimated Recovery: December 2027; Shortage per Manufacturer: Manufacturing Delay",
+      "openfda": {
+        "application_number": [
+          "NDA018667"
+        ],
+        "brand_name": [
+          "FUROSEMIDE"
+        ],
+        "generic_name": [
+          "FUROSEMIDE"
+        ],
+        "manufacturer_name": [
+          "Hospira, Inc."
+        ],
+        "product_ndc": [
+          "0409-6102"
+        ],
+        "product_type": [
+          "HUMAN PRESCRIPTION DRUG"
+        ],
+        "route": [
+          "INTRAMUSCULAR",
+          "INTRAVENOUS"
+        ],
+        "substance_name": [
+          "FUROSEMIDE"
+        ],
+        "rxcui": [
+          "1719286",
+          "1719290",
+          "1719291"
+        ],
+        "spl_id": [
+          "e598e8a6-c854-48f5-a412-fb6a6783774a",
+          "981d5143-60cd-4987-9b47-dec24c10de42"
+        ],
+        "spl_set_id": [
+          "aaced7a8-c3d7-4d66-8c07-aa407b8b3f35",
+          "39fd32f2-6bb7-4a65-d298-e48d26bc80c7"
+        ],
+        "package_ndc": [
+          "0409-6102-35",
+          "0409-6102-25",
+          "0409-6102-36",
+          "0409-6102-26",
+          "0409-6102-37",
+          "0409-6102-27",
+          "0409-6102-19",
+          "0409-6102-02",
+          "0409-6102-18",
+          "0409-6102-04",
+          "0409-6102-20",
+          "0409-6102-10"
+        ],
+        "nui": [
+          "N0000175366",
+          "N0000175590"
+        ],
+        "pharm_class_pe": [
+          "Increased Diuresis at Loop of Henle [PE]"
+        ],
+        "pharm_class_epc": [
+          "Loop Diuretic [EPC]"
+        ],
+        "unii": [
+          "7LXU5N7ZO5"
+        ]
+      },
+      "update_date": "10/08/2026",
+      "therapeutic_category": [
+        "Cardiovascular"
+      ],
+      "dosage_form": "Injection",
+      "presentation": "Furosemide, Injection, 40 mg/4 mL (10 mg/1 mL) (NDC 0409-6102-26)",
+      "company_name": "Hospira, Inc., a Pfizer Company",
+      "shortage_reason": "Other",
+      "status": "Current"
+    },
+    {
+      "update_type": "Reverified",
+      "initial_posting_date": "04/07/2020",
+      "package_ndc": "55150-324-25",
+      "generic_name": "Furosemide Injection",
+      "contact_info": "888-238-7880",
+      "availability": "Available",
+      "related_info": "Check wholesalers for inventory",
+      "openfda": {
+        "application_number": [
+          "ANDA212174"
+        ],
+        "brand_name": [
+          "FUROSEMIDE"
+        ],
+        "generic_name": [
+          "FUROSEMIDE"
+        ],
+        "manufacturer_name": [
+          "Eugia US LLC"
+        ],
+        "product_ndc": [
+          "55150-324",
+          "55150-322",
+          "55150-323"
+        ],
+        "product_type": [
+          "HUMAN PRESCRIPTION DRUG"
+        ],
+        "route": [
+          "INTRAMUSCULAR",
+          "INTRAVENOUS"
+        ],
+        "substance_name": [
+          "FUROSEMIDE"
+        ],
+        "rxcui": [
+          "1719286",
+          "1719290",
+          "1719291"
+        ],
+        "spl_id": [
+          "9bb2ffa4-0891-4197-a970-90b178bbfad9"
+        ],
+        "spl_set_id": [
+          "421aa6d5-623b-4dc2-abd5-bb9e7765bf37"
+        ],
+        "package_ndc": [
+          "55150-322-01",
+          "55150-322-25",
+          "55150-323-01",
+          "55150-323-25",
+          "55150-324-01",
+          "55150-324-25"
+        ],
+        "nui": [
+          "N0000175366",
+          "N0000175590"
+        ],
+        "pharm_class_pe": [
+          "Increased Diuresis at Loop of Henle [PE]"
+        ],
+        "pharm_class_epc": [
+          "Loop Diuretic [EPC]"
+        ],
+        "unii": [
+          "7LXU5N7ZO5"
+        ]
+      },
+      "update_date": "10/19/2026",
+      "therapeutic_category": [
+        "Cardiovascular"
+      ],
+      "dosage_form": "Injection",
+      "presentation": "Furosemide, Injection, 100 mg/10 mL (NDC 55150-324-25)",
+      "company_name": "Eugia US LLC",
+      "status": "Current"
+    },
+    {
+      "update_type": "Revised",
+      "initial_posting_date": "03/01/2017",
+      "package_ndc": "0409-6625-35",
+      "generic_name": "Sodium Bicarbonate Injection",
+      "contact_info": "844-646-4398",
+      "availability": "Unavailable",
+      "related_info": "Next Delivery and Estimated Recovery: June 2027; Shortage per Manufacturer: Manufacturing Delay",
+      "openfda": {
+        "application_number": [
+          "ANDA202432"
+        ],
+        "brand_name": [
+          "SODIUM BICARBONATE"
+        ],
+        "generic_name": [
+          "SODIUM BICARBONATE"
+        ],
+        "manufacturer_name": [
+          "Hospira, Inc."
+        ],
+        "product_ndc": [
+          "0409-6625"
+        ],
+        "product_type": [
+          "HUMAN PRESCRIPTION DRUG"
+        ],
+        "route": [
+          "INTRAVENOUS"
+        ],
+        "substance_name": [
+          "SODIUM BICARBONATE"
+        ],
+        "rxcui": [
+          "1868486"
+        ],
+        "spl_id": [
+          "dcc55d90-d55e-4e1a-9e48-5703cbc74a52",
+          "c39c0ef6-4140-4c6c-91c4-e43d67872b05"
+        ],
+        "spl_set_id": [
+          "8664c7ce-707b-4c6c-9ce4-7160b5f877f8",
+          "084f5572-8c1f-4802-b179-ca0cc838fc68"
+        ],
+        "package_ndc": [
+          "0409-6625-30",
+          "0409-6625-35",
+          "0409-6625-22",
+          "0409-6625-14"
+        ],
+        "unii": [
+          "8MDF5V39QO"
+        ]
+      },
+      "update_date": "10/21/2026",
+      "therapeutic_category": [
+        "Endocrinology/Metabolism",
+        "Gastroenterology",
+        "Pediatric"
+      ],
+      "dosage_form": "Injection",
+      "presentation": "Sodium Bicarbonate, Injection, 50 mEq/50 mL (8.4%, 1 mEq/mL) (NDC 0409-6625-35)",
+      "company_name": "Hospira, Inc., a Pfizer Company",
+      "shortage_reason": "Other",
+      "status": "Current"
+    },
+    {
+      "update_type": "Reverified",
+      "initial_posting_date": "07/24/2017",
+      "package_ndc": "63323-089-50",
+      "generic_name": "Sodium Bicarbonate Injection",
+      "contact_info": "888-386-1300",
+      "availability": "Available",
+      "related_info": "Check wholesalers for inventory",
+      "openfda": {
+        "application_number": [
+          "ANDA206688"
+        ],
+        "brand_name": [
+          "SODIUM BICARBONATE"
+        ],
+        "generic_name": [
+          "SODIUM BICARBONATE"
+        ],
+        "manufacturer_name": [
+          "Fresenius Kabi USA, LLC"
+        ],
+        "product_ndc": [
+          "63323-089",
+          "63323-083"
+        ],
+        "product_type": [
+          "HUMAN PRESCRIPTION DRUG"
+        ],
+        "route": [
+          "INTRAVENOUS"
+        ],
+        "substance_name": [
+          "SODIUM BICARBONATE"
+        ],
+        "rxcui": [
+          "1868469",
+          "1868486"
+        ],
+        "spl_id": [
+          "9def795c-abcf-483c-8b1d-e4374666efb2"
+        ],
+        "spl_set_id": [
+          "0ab55004-bb63-436d-ad77-cd3796905370"
+        ],
+        "package_ndc": [
+          "63323-083-03",
+          "63323-083-05",
+          "63323-089-25",
+          "63323-089-50"
+        ],
+        "unii": [
+          "8MDF5V39QO"
+        ]
+      },
+      "update_date": "10/15/2026",
+      "therapeutic_category": [
+        "Endocrinology/Metabolism",
+        "Gastroenterology",
+        "Pediatric"
+      ],
+      "dosage_form": "Injection",
+      "presentation": "Sodium Bicarbonate, Injection, 84 mg/1 mL (NDC 63323-089-50)",
+      "company_name": "Fresenius Kabi USA, LLC",
+      "status": "Current"
+    },
+    {
+      "update_type": "Reverified",
+      "initial_posting_date": "04/10/2020",
+      "package_ndc": "63323-671-00",
+      "generic_name": "Dexmedetomidine Hydrochloride Injection",
+      "contact_info": "888-386-1300",
+      "availability": "Unavailable",
+      "related_info": "Expected recovery: TBD",
+      "update_date": "10/15/2026",
+      "therapeutic_category": [
+        "Anesthesia"
+      ],
+      "dosage_form": "Injection",
+      "presentation": "Dexmedetomidine Hydrochloride, Injection, 4 ug/1 mL (NDC 63323-671-00)",
+      "company_name": "Fresenius Kabi USA, LLC",
+      "shortage_reason": "Delay in shipping of the drug",
+      "status": "Current"
+    },
+    {
+      "update_type": "Reverified",
+      "initial_posting_date": "04/10/2020",
+      "package_ndc": "0409-1454-20",
+      "generic_name": "Dexmedetomidine Hydrochloride Injection",
+      "contact_info": "844-646-4398",
+      "availability": "Available",
+      "openfda": {
+        "application_number": [
+          "NDA021038"
+        ],
+        "brand_name": [
+          "PRECEDEX"
+        ],
+        "generic_name": [
+          "DEXMEDETOMIDINE HYDROCHLORIDE"
+        ],
+        "manufacturer_name": [
+          "Hospira, Inc."
+        ],
+        "product_ndc": [
+          "0409-1454",
+          "0409-3301",
+          "0409-1174",
+          "0409-2815"
+        ],
+        "product_type": [
+          "HUMAN PRESCRIPTION DRUG"
+        ],
+        "route": [
+          "INTRAVENOUS"
+        ],
+        "substance_name": [
+          "DEXMEDETOMIDINE HYDROCHLORIDE"
+        ],
+        "rxcui": [
+          "1718900",
+          "1718902",
+          "1718906",
+          "1718907",
+          "1718909",
+          "1718910",
+          "2396891",
+          "2396892"
+        ],
+        "spl_id": [
+          "e1705533-5a85-441f-a95b-3cb88c47e482"
+        ],
+        "spl_set_id": [
+          "4419162d-81d4-49bd-96de-1729440bdb74"
+        ],
+        "package_ndc": [
+          "0409-1454-01",
+          "0409-1454-20",
+          "0409-3301-01",
+          "0409-3301-10",
+          "0409-1174-01",
+          "0409-1174-10",
+          "0409-2815-01"
+        ],
+        "unii": [
+          "1018WH7F9I"
+        ]
+      },
+      "update_date": "10/21/2026",
+      "therapeutic_category": [
+        "Anesthesia"
+      ],
+      "dosage_form": "Injection",
+      "presentation": "Precedex, Injection, 200 mcg/50 mL (4 mcg/mL) (NDC 0409-1454-20)",
+      "company_name": "Pfizer Inc.",
+      "status": "Current"
+    }
+  ]
+}

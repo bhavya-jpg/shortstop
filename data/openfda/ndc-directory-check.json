@@ -1,0 +1,97 @@
+{
+  "notice": "FDA NDC Directory lookups for each synthetic formulary NDC.",
+  "fetched_at": "2026-10-24T19:40:05.534Z",
+  "checks": [
+    {
+      "item_id": "FUR-INJ-40",
+      "ndc": "0409-6102-26",
+      "ndc11": "00409-6102-26",
+      "found_in_ndc_directory": true,
+      "generic_name": "furosemide",
+      "dosage_form": "INJECTION, SOLUTION",
+      "active_ingredients": [
+        {
+          "name": "FUROSEMIDE",
+          "strength": "10 mg/mL"
+        }
+      ],
+      "package_description": "25 VIAL, SINGLE-DOSE in 1 TRAY (0409-6102-26)  / 4 mL in 1 VIAL, SINGLE-DOSE (0409-6102-36)",
+      "query_url": "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A%220409-6102-26%22&limit=1"
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "ndc": "55150-324-25",
+      "ndc11": "55150-0324-25",
+      "found_in_ndc_directory": true,
+      "generic_name": "Furosemide",
+      "dosage_form": "INJECTION, SOLUTION",
+      "active_ingredients": [
+        {
+          "name": "FUROSEMIDE",
+          "strength": "100 mg/10mL"
+        }
+      ],
+      "package_description": "25 VIAL in 1 CARTON (55150-324-25)  / 10 mL in 1 VIAL (55150-324-01)",
+      "query_url": "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A%2255150-324-25%22&limit=1"
+    },
+    {
+      "item_id": "BICARB-50",
+      "ndc": "0409-6625-35",
+      "ndc11": "00409-6625-35",
+      "found_in_ndc_directory": true,
+      "generic_name": "SODIUM BICARBONATE",
+      "dosage_form": "INJECTION, SOLUTION",
+      "active_ingredients": [
+        {
+          "name": "SODIUM BICARBONATE",
+          "strength": "84 mg/mL"
+        }
+      ],
+      "package_description": "25 VIAL, SINGLE-DOSE in 1 TRAY (0409-6625-35)  / 50 mL in 1 VIAL, SINGLE-DOSE (0409-6625-30)",
+      "query_url": "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A%220409-6625-35%22&limit=1"
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "ndc": "63323-089-50",
+      "ndc11": "63323-0089-50",
+      "found_in_ndc_directory": true,
+      "generic_name": "Sodium Bicarbonate",
+      "dosage_form": "INJECTION, SOLUTION",
+      "active_ingredients": [
+        {
+          "name": "SODIUM BICARBONATE",
+          "strength": "84 mg/mL"
+        }
+      ],
+      "package_description": "25 VIAL, SINGLE-DOSE in 1 TRAY (63323-089-50)  / 50 mL in 1 VIAL, SINGLE-DOSE (63323-089-25)",
+      "query_url": "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A%2263323-089-50%22&limit=1"
+    },
+    {
+      "item_id": "DEXMED-4",
+      "ndc": "63323-671-00",
+      "ndc11": "63323-0671-00",
+      "found_in_ndc_directory": false,
+      "generic_name": null,
+      "dosage_form": null,
+      "active_ingredients": null,
+      "package_description": null,
+      "query_url": "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A%2263323-671-00%22&limit=1"
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "ndc": "0409-1454-20",
+      "ndc11": "00409-1454-20",
+      "found_in_ndc_directory": true,
+      "generic_name": "DEXMEDETOMIDINE HYDROCHLORIDE",
+      "dosage_form": "INJECTION, SOLUTION",
+      "active_ingredients": [
+        {
+          "name": "DEXMEDETOMIDINE HYDROCHLORIDE",
+          "strength": "4 ug/mL"
+        }
+      ],
+      "package_description": "20 BOTTLE in 1 TRAY (0409-1454-20)  / 50 mL in 1 BOTTLE (0409-1454-01)",
+      "query_url": "https://api.fda.gov/drug/ndc.json?search=packaging.package_ndc%3A%220409-1454-20%22&limit=1"
+    }
+  ]
+}

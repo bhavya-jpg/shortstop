@@ -1,0 +1,76 @@
+{
+  "synthetic": true,
+  "notice": "SYNTHETIC DATA. Invented for the ShortStop demonstration. Not a real hospital, not real stock or usage, not real policy, not clinical guidance. NDCs are real FDA package codes used only as join keys.",
+  "generated_by": "scripts/generate-synthetic.ts",
+  "as_of": "2026-10-24",
+  "records": [
+    {
+      "key": "P-001",
+      "item_id": "FUR-INJ-40",
+      "action": "SWITCH_PRESENTATION",
+      "policy_id": "POL-FUR-001",
+      "outcome": "approved",
+      "decided_at": "2025-03-12",
+      "decided_by": "Synthetic pharmacist (clinical manager)",
+      "summary": "Switched to 100 mg/10 mL vials for 3 weeks during a 2025 shortage.",
+      "synthetic": true
+    },
+    {
+      "key": "P-002",
+      "item_id": "FUR-INJ-40",
+      "action": "SWITCH_PRESENTATION",
+      "policy_id": "POL-FUR-001",
+      "outcome": "approved",
+      "decided_at": "2025-11-03",
+      "decided_by": "Synthetic pharmacist (medication safety)",
+      "summary": "Switch approved again with an added independent double check after a near-miss labelling event.",
+      "supersedes_key": "P-001",
+      "supersede_reason": "medication-safety review added a double-check requirement",
+      "synthetic": true
+    },
+    {
+      "key": "P-003",
+      "item_id": "FUR-INJ-40",
+      "action": "RESTRICT_PER_POLICY",
+      "policy_id": "POL-FUR-002",
+      "outcome": "approved",
+      "decided_at": "2025-03-14",
+      "decided_by": "Synthetic pharmacist (clinical manager)",
+      "summary": "Restricted 4 mL vials to inpatient units and the ED for 3 weeks.",
+      "synthetic": true
+    },
+    {
+      "key": "P-004",
+      "item_id": "BICARB-50",
+      "action": "ALTERNATE_SOURCING",
+      "policy_id": "POL-BIC-001",
+      "outcome": "approved",
+      "decided_at": "2024-08-20",
+      "decided_by": "Synthetic buyer with pharmacist sign-off",
+      "summary": "Allocation from the secondary wholesaler arrived in 4 days.",
+      "synthetic": true
+    },
+    {
+      "key": "P-005",
+      "item_id": "DEXMED-4",
+      "action": "ALTERNATE_SOURCING",
+      "policy_id": "POL-DEX-001",
+      "outcome": "rejected",
+      "decided_at": "2026-02-10",
+      "decided_by": "Synthetic pharmacist (ICU)",
+      "summary": "Secondary wholesaler lead time was 12 days, too slow to help.",
+      "synthetic": true
+    },
+    {
+      "key": "P-006",
+      "item_id": "DEXMED-4",
+      "action": "ALTERNATE_SOURCING",
+      "policy_id": "POL-DEX-001",
+      "outcome": "approved",
+      "decided_at": "2026-06-18",
+      "decided_by": "Synthetic pharmacist (OR)",
+      "summary": "Secondary wholesaler delivered in 2 days.",
+      "synthetic": true
+    }
+  ]
+}

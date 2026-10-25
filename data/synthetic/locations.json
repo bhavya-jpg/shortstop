@@ -1,0 +1,33 @@
+{
+  "synthetic": true,
+  "notice": "SYNTHETIC DATA. Invented for the ShortStop demonstration. Not a real hospital, not real stock or usage, not real policy, not clinical guidance. NDCs are real FDA package codes used only as join keys.",
+  "generated_by": "scripts/generate-synthetic.ts",
+  "as_of": "2026-10-24",
+  "records": [
+    {
+      "location_id": "PHARM",
+      "name": "Central pharmacy",
+      "synthetic": true
+    },
+    {
+      "location_id": "ED",
+      "name": "Emergency department",
+      "synthetic": true
+    },
+    {
+      "location_id": "ICU",
+      "name": "Intensive care unit",
+      "synthetic": true
+    },
+    {
+      "location_id": "MEDSURG",
+      "name": "Medical-surgical ward",
+      "synthetic": true
+    },
+    {
+      "location_id": "OR",
+      "name": "Operating rooms",
+      "synthetic": true
+    }
+  ]
+}

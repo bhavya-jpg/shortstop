@@ -1,0 +1,1282 @@
+{
+  "synthetic": true,
+  "notice": "SYNTHETIC DATA. Invented for the ShortStop demonstration. Not a real hospital, not real stock or usage, not real policy, not clinical guidance. NDCs are real FDA package codes used only as join keys.",
+  "generated_by": "scripts/generate-synthetic.ts",
+  "as_of": "2026-10-24",
+  "records": [
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-23",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-22",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-21",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-20",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-19",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-18",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-17",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-16",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-15",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-14",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-13",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-12",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-11",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "date": "2026-10-10",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-23",
+      "units_used": 7.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-22",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-21",
+      "units_used": 4.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-20",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-19",
+      "units_used": 7.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-18",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-17",
+      "units_used": 4.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-16",
+      "units_used": 7.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-15",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-14",
+      "units_used": 4.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-13",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-12",
+      "units_used": 7.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-11",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "date": "2026-10-10",
+      "units_used": 4.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-23",
+      "units_used": 10,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-22",
+      "units_used": 8,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-21",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-20",
+      "units_used": 8,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-19",
+      "units_used": 10,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-18",
+      "units_used": 8,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-17",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-16",
+      "units_used": 10,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-15",
+      "units_used": 8,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-14",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-13",
+      "units_used": 8,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-12",
+      "units_used": 10,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-11",
+      "units_used": 8,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "date": "2026-10-10",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-23",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-22",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-21",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-20",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-19",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-18",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-17",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-16",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-15",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-14",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-13",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-12",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-11",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "date": "2026-10-10",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-23",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-22",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-21",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-20",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-19",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-18",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-17",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-16",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-15",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-14",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-13",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-12",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-11",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "date": "2026-10-10",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-23",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-22",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-21",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-20",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-19",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-18",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-17",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-16",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-15",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-14",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-13",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-12",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-11",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "date": "2026-10-10",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-23",
+      "units_used": 2.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-22",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-21",
+      "units_used": 1.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-20",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-19",
+      "units_used": 2.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-18",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-17",
+      "units_used": 1.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-16",
+      "units_used": 2.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-15",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-14",
+      "units_used": 1.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-13",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-12",
+      "units_used": 2.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-11",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "date": "2026-10-10",
+      "units_used": 1.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-23",
+      "units_used": 7.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-22",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-21",
+      "units_used": 4.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-20",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-19",
+      "units_used": 7.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-18",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-17",
+      "units_used": 4.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-16",
+      "units_used": 7.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-15",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-14",
+      "units_used": 4.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-13",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-12",
+      "units_used": 7.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-11",
+      "units_used": 6,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "date": "2026-10-10",
+      "units_used": 4.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-23",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-22",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-21",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-20",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-19",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-18",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-17",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-16",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-15",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-14",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-13",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-12",
+      "units_used": 5,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-11",
+      "units_used": 4,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "date": "2026-10-10",
+      "units_used": 3,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-23",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-22",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-21",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-20",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-19",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-18",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-17",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-16",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-15",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-14",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-13",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-12",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-11",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "date": "2026-10-10",
+      "units_used": 0,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-23",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-22",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-21",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-20",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-19",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-18",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-17",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-16",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-15",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-14",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-13",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-12",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-11",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "date": "2026-10-10",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-23",
+      "units_used": 2.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-22",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-21",
+      "units_used": 1.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-20",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-19",
+      "units_used": 2.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-18",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-17",
+      "units_used": 1.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-16",
+      "units_used": 2.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-15",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-14",
+      "units_used": 1.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-13",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-12",
+      "units_used": 2.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-11",
+      "units_used": 2,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "date": "2026-10-10",
+      "units_used": 1.5,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-23",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-22",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-21",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-20",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-19",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-18",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-17",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-16",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-15",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-14",
+      "units_used": 0.75,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-13",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-12",
+      "units_used": 1.25,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-11",
+      "units_used": 1,
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "date": "2026-10-10",
+      "units_used": 0.75,
+      "synthetic": true
+    }
+  ]
+}

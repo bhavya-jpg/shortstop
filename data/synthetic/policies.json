@@ -1,0 +1,89 @@
+{
+  "synthetic": true,
+  "notice": "SYNTHETIC DATA. Invented for the ShortStop demonstration. Not a real hospital, not real stock or usage, not real policy, not clinical guidance. NDCs are real FDA package codes used only as join keys.",
+  "generated_by": "scripts/generate-synthetic.ts",
+  "as_of": "2026-10-24",
+  "records": [
+    {
+      "status": "active",
+      "policy_id": "POL-FUR-001",
+      "action": "SWITCH_PRESENTATION",
+      "applies_to_item_id": "FUR-INJ-40",
+      "target_item_id": "FUR-INJ-100",
+      "trigger_max_days_on_hand": 7,
+      "requirements": "Pharmacy prepares doses from the 100 mg/10 mL vial. Smart-pump library entry for the 10 mL vial must be active. Independent double check before release.",
+      "approved_by": "Synthetic P&T Committee",
+      "effective_date": "2025-01-15",
+      "synthetic": true
+    },
+    {
+      "status": "active",
+      "policy_id": "POL-FUR-002",
+      "action": "RESTRICT_PER_POLICY",
+      "applies_to_item_id": "FUR-INJ-40",
+      "trigger_max_days_on_hand": 5,
+      "requirements": "Reserve remaining 4 mL vials for inpatient units and the ED. Outpatient infusion orders need pharmacist approval while the restriction is active.",
+      "approved_by": "Synthetic P&T Committee",
+      "effective_date": "2025-01-15",
+      "synthetic": true
+    },
+    {
+      "status": "active",
+      "policy_id": "POL-FUR-003",
+      "action": "ALTERNATE_SOURCING",
+      "applies_to_item_id": "FUR-INJ-40",
+      "trigger_max_days_on_hand": 10,
+      "requirements": "Request allocation from the contracted secondary wholesaler (synthetic 'Wholesaler B'). Purchasing places the order; ShortStop does not.",
+      "approved_by": "Synthetic Supply Chain Committee",
+      "effective_date": "2025-06-01",
+      "synthetic": true
+    },
+    {
+      "status": "retired",
+      "policy_id": "POL-FUR-OLD",
+      "action": "APPROVED_INTERCHANGE",
+      "applies_to_item_id": "FUR-INJ-40",
+      "target_item_id": "FUR-INJ-100",
+      "trigger_max_days_on_hand": 7,
+      "requirements": "Superseded 2024 interchange policy.",
+      "approved_by": "Synthetic P&T Committee",
+      "effective_date": "2024-01-01",
+      "expires_date": "2024-12-31",
+      "synthetic": true
+    },
+    {
+      "status": "active",
+      "policy_id": "POL-BIC-001",
+      "action": "ALTERNATE_SOURCING",
+      "applies_to_item_id": "BICARB-50",
+      "trigger_max_days_on_hand": 10,
+      "requirements": "Request allocation from the contracted secondary wholesaler.",
+      "approved_by": "Synthetic Supply Chain Committee",
+      "effective_date": "2025-06-01",
+      "synthetic": true
+    },
+    {
+      "status": "active",
+      "policy_id": "POL-DEX-001",
+      "action": "ALTERNATE_SOURCING",
+      "applies_to_item_id": "DEXMED-4",
+      "trigger_max_days_on_hand": 7,
+      "requirements": "Request allocation from the contracted secondary wholesaler.",
+      "approved_by": "Synthetic Supply Chain Committee",
+      "effective_date": "2025-06-01",
+      "synthetic": true
+    },
+    {
+      "status": "active",
+      "policy_id": "POL-DEX-002",
+      "action": "SWITCH_PRESENTATION",
+      "applies_to_item_id": "DEXMED-4",
+      "target_item_id": "DEXMED-PX-50",
+      "trigger_max_days_on_hand": 7,
+      "requirements": "Use premixed 200 mcg/50 mL bottles; smart-pump library entry required.",
+      "approved_by": "Synthetic P&T Committee",
+      "effective_date": "2025-01-15",
+      "synthetic": true
+    }
+  ]
+}

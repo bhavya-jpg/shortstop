@@ -1,0 +1,120 @@
+{
+  "synthetic": true,
+  "notice": "SYNTHETIC DATA. Invented for the ShortStop demonstration. Not a real hospital, not real stock or usage, not real policy, not clinical guidance. NDCs are real FDA package codes used only as join keys.",
+  "generated_by": "scripts/generate-synthetic.ts",
+  "as_of": "2026-10-24",
+  "records": [
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "PHARM",
+      "on_hand_units": 30,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ED",
+      "on_hand_units": 6,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "ICU",
+      "on_hand_units": 12,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-40",
+      "location_id": "MEDSURG",
+      "on_hand_units": 8,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "PHARM",
+      "on_hand_units": 120,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "location_id": "ICU",
+      "on_hand_units": 20,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "PHARM",
+      "on_hand_units": 400,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ED",
+      "on_hand_units": 60,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "location_id": "ICU",
+      "on_hand_units": 80,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "location_id": "PHARM",
+      "on_hand_units": 50,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "PHARM",
+      "on_hand_units": 10,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "ICU",
+      "on_hand_units": 6,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "location_id": "OR",
+      "on_hand_units": 4,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "location_id": "PHARM",
+      "on_hand_units": 40,
+      "unit": "vial",
+      "as_of": "2026-10-24",
+      "synthetic": true
+    }
+  ]
+}

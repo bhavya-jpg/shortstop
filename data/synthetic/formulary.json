@@ -1,0 +1,74 @@
+{
+  "synthetic": true,
+  "notice": "SYNTHETIC DATA. Invented for the ShortStop demonstration. Not a real hospital, not real stock or usage, not real policy, not clinical guidance. NDCs are real FDA package codes used only as join keys.",
+  "generated_by": "scripts/generate-synthetic.ts",
+  "as_of": "2026-10-24",
+  "records": [
+    {
+      "item_id": "FUR-INJ-40",
+      "ndc": "0409-6102-26",
+      "generic_name": "furosemide",
+      "description": "Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira)",
+      "dosage_form": "Injection, solution",
+      "strength": "10 mg/mL",
+      "package_description": "25 x 4 mL single-dose vials",
+      "status": "active",
+      "synthetic": true
+    },
+    {
+      "item_id": "FUR-INJ-100",
+      "ndc": "55150-324-25",
+      "generic_name": "furosemide",
+      "description": "Furosemide injection 10 mg/mL, 10 mL vial (Eugia)",
+      "dosage_form": "Injection, solution",
+      "strength": "100 mg/10 mL",
+      "package_description": "25 x 10 mL vials",
+      "status": "active",
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50",
+      "ndc": "0409-6625-35",
+      "generic_name": "sodium bicarbonate",
+      "description": "Sodium bicarbonate 8.4% injection, 50 mL single-dose vial (Hospira)",
+      "dosage_form": "Injection, solution",
+      "strength": "84 mg/mL",
+      "package_description": "25 x 50 mL single-dose vials",
+      "status": "active",
+      "synthetic": true
+    },
+    {
+      "item_id": "BICARB-50-FK",
+      "ndc": "63323-089-50",
+      "generic_name": "sodium bicarbonate",
+      "description": "Sodium bicarbonate 8.4% injection, 50 mL single-dose vial (Fresenius Kabi)",
+      "dosage_form": "Injection, solution",
+      "strength": "84 mg/mL",
+      "package_description": "25 x 50 mL single-dose vials",
+      "status": "active",
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-4",
+      "ndc": "63323-671-00",
+      "generic_name": "dexmedetomidine",
+      "description": "Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi)",
+      "dosage_form": "Injection",
+      "strength": "4 mcg/mL",
+      "package_description": "as recorded by the hospital",
+      "status": "active",
+      "synthetic": true
+    },
+    {
+      "item_id": "DEXMED-PX-50",
+      "ndc": "0409-1454-20",
+      "generic_name": "dexmedetomidine",
+      "description": "Precedex (dexmedetomidine) 200 mcg/50 mL bottle (Pfizer)",
+      "dosage_form": "Injection, solution",
+      "strength": "4 mcg/mL",
+      "package_description": "20 x 50 mL bottles",
+      "status": "active",
+      "synthetic": true
+    }
+  ]
+}
