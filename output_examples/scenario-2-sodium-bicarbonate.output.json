@@ -1,0 +1,461 @@
+{
+  "run_id": "example-scenario-2-sodium-bicarbonate",
+  "mode": "sample",
+  "notice": "SAMPLE MODE: bundled openFDA snapshot and SYNTHETIC hospital data; deterministic rule-based agents. No Zetaris query and no Nightshift model call was made in this run.",
+  "scenario_id": "scenario-2-sodium-bicarbonate",
+  "input": {
+    "as_of": "2026-10-24",
+    "trigger": {
+      "package_ndc": "0409-6625-35"
+    },
+    "scenario_id": "scenario-2-sodium-bicarbonate"
+  },
+  "as_of": "2026-10-24",
+  "started_at": "2026-10-24T19:50:30.654Z",
+  "agents": [
+    {
+      "name": "DeterministicPolicyPlanner",
+      "kind": "deterministic",
+      "role": "Proposes candidate actions from policy records, exposure and precedents"
+    },
+    {
+      "name": "PolicyValidator",
+      "kind": "deterministic",
+      "role": "Rejects actions not backed by in-force policy, unknown evidence IDs and unsupported figures"
+    },
+    {
+      "name": "PrecedentCritic",
+      "kind": "deterministic",
+      "role": "Challenges validated candidates; can request revision or escalate"
+    },
+    {
+      "name": "PrecedentMemory (H-MEM)",
+      "kind": "engine",
+      "role": "Recalls, supersedes and scores precedents with provenance"
+    }
+  ],
+  "data_source": "sample-files",
+  "trace_file": "output_examples/scenario-2-sodium-bicarbonate.trace.jsonl",
+  "status": "success",
+  "decisions": [
+    {
+      "decision_id": "DEC-example-scenario-2-sodium-bicarbonate-BICARB-50",
+      "item": {
+        "item_id": "BICARB-50",
+        "ndc": "0409-6625-35",
+        "generic_name": "sodium bicarbonate",
+        "description": "Sodium bicarbonate 8.4% injection, 50 mL single-dose vial (Hospira)",
+        "dosage_form": "Injection, solution",
+        "strength": "84 mg/mL",
+        "package_description": "25 x 50 mL single-dose vials",
+        "status": "active",
+        "synthetic": true
+      },
+      "shortage": {
+        "record_key": "00409-6625-35@2026-10-21",
+        "package_ndc_raw": "0409-6625-35",
+        "package_ndc": "00409-6625-35",
+        "product_ndc": "00409-6625",
+        "generic_name": "Sodium Bicarbonate Injection",
+        "presentation": "Sodium Bicarbonate, Injection, 50 mEq/50 mL (8.4%, 1 mEq/mL) (NDC 0409-6625-35)",
+        "company_name": "Hospira, Inc., a Pfizer Company",
+        "dosage_form": "Injection",
+        "status": "Current",
+        "availability_raw": "Unavailable",
+        "availability": "UNAVAILABLE",
+        "shortage_reason": "Other",
+        "update_date": "2026-10-21",
+        "update_date_raw": "10/21/2026",
+        "initial_posting_date": "2017-03-01",
+        "rxcui": [
+          "1868486"
+        ],
+        "has_openfda_block": true,
+        "data_issues": [],
+        "provenance": {
+          "dataset": "openFDA drug shortages (snapshot)",
+          "synthetic": false,
+          "retrieved_via": "sample-file",
+          "detail": "data/openfda/shortages-snapshot.json fetched 2026-10-24T19:40:05.534Z"
+        }
+      },
+      "impact": "affected",
+      "status": "MONITOR_PENDING_ACKNOWLEDGEMENT",
+      "requires_human_review": true,
+      "exposure": {
+        "item_id": "BICARB-50",
+        "as_of": "2026-10-24",
+        "window": {
+          "start": "2026-10-10",
+          "end": "2026-10-23",
+          "days": 14
+        },
+        "total_on_hand": 540,
+        "total_avg_daily_usage": 12,
+        "days_on_hand": 45,
+        "min_location_days_on_hand": 10,
+        "complete": true,
+        "status": "ADEQUATE",
+        "locations": [
+          {
+            "location_id": "ED",
+            "on_hand_units": 60,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 84,
+            "avg_daily_usage": 6,
+            "days_on_hand": 10,
+            "status": "OK",
+            "notes": []
+          },
+          {
+            "location_id": "ICU",
+            "on_hand_units": 80,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 56,
+            "avg_daily_usage": 4,
+            "days_on_hand": 20,
+            "status": "OK",
+            "notes": []
+          },
+          {
+            "location_id": "PHARM",
+            "on_hand_units": 400,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 28,
+            "avg_daily_usage": 2,
+            "days_on_hand": 200,
+            "status": "OK",
+            "notes": []
+          }
+        ],
+        "issues": [],
+        "calculation": "540 units on hand / 12 units per day = 45 days (usage window 2026-10-10..2026-10-23, 3 of 3 locations with complete data)"
+      },
+      "target_exposures": [],
+      "candidates": [],
+      "candidate_checks": [],
+      "rejected_candidates": [],
+      "critic_verdicts": [],
+      "revisions": 0,
+      "escalation_reasons": [],
+      "policies": [
+        {
+          "status": "active",
+          "policy_id": "POL-BIC-001",
+          "action": "ALTERNATE_SOURCING",
+          "applies_to_item_id": "BICARB-50",
+          "trigger_max_days_on_hand": 10,
+          "requirements": "Request allocation from the contracted secondary wholesaler.",
+          "approved_by": "Synthetic Supply Chain Committee",
+          "effective_date": "2025-06-01",
+          "synthetic": true
+        }
+      ],
+      "precedents": [
+        {
+          "memory_id": "mem-4",
+          "content": "Shortage precedent for Sodium bicarbonate 8.4% injection, 50 mL single-dose vial (Hospira) BICARB-50 (NDC 0409-6625-35): ALTERNATE_SOURCING was approved under policy POL-BIC-001. Allocation from the secondary wholesaler arrived in 4 days.",
+          "item_id": "BICARB-50",
+          "action": "ALTERNATE_SOURCING",
+          "outcome": "approved",
+          "synthetic": true,
+          "confidence": 0.8,
+          "source_ref": "seed:data/synthetic/precedents.json#P-004",
+          "provenance_label": "SYNTHETIC approved by Synthetic buyer with pharmacist sign-off on 2024-08-20",
+          "tags": [
+            "precedent",
+            "item:BICARB-50",
+            "action:ALTERNATE_SOURCING",
+            "outcome:approved",
+            "decided:2024-08-20",
+            "synthetic",
+            "policy:POL-BIC-001"
+          ],
+          "policy_id": "POL-BIC-001",
+          "decided_at": "2024-08-20",
+          "relevance": 0.4136
+        }
+      ],
+      "superseded_precedents": [],
+      "precedent_conflicts": [],
+      "evidence": [
+        {
+          "evidence_id": "EV-SHORTAGE-00409-6625-35-2026-10-21",
+          "kind": "shortage",
+          "summary": "openFDA shortage record: Sodium Bicarbonate, Injection, 50 mEq/50 mL (8.4%, 1 mEq/mL) (NDC 0409-6625-35) (Hospira, Inc., a Pfizer Company), availability \"Unavailable\", updated 2026-10-21, reason: Other",
+          "synthetic": false,
+          "provenance": {
+            "dataset": "openFDA drug shortages (snapshot)",
+            "synthetic": false,
+            "retrieved_via": "sample-file",
+            "detail": "data/openfda/shortages-snapshot.json fetched 2026-10-24T19:40:05.534Z"
+          },
+          "data": {
+            "record_key": "00409-6625-35@2026-10-21",
+            "package_ndc_raw": "0409-6625-35",
+            "package_ndc": "00409-6625-35",
+            "product_ndc": "00409-6625",
+            "generic_name": "Sodium Bicarbonate Injection",
+            "presentation": "Sodium Bicarbonate, Injection, 50 mEq/50 mL (8.4%, 1 mEq/mL) (NDC 0409-6625-35)",
+            "company_name": "Hospira, Inc., a Pfizer Company",
+            "dosage_form": "Injection",
+            "status": "Current",
+            "availability_raw": "Unavailable",
+            "availability": "UNAVAILABLE",
+            "shortage_reason": "Other",
+            "update_date": "2026-10-21",
+            "update_date_raw": "10/21/2026",
+            "initial_posting_date": "2017-03-01",
+            "rxcui": [
+              "1868486"
+            ],
+            "has_openfda_block": true,
+            "data_issues": []
+          }
+        },
+        {
+          "evidence_id": "EV-FORMULARY-BICARB-50",
+          "kind": "formulary",
+          "summary": "SYNTHETIC formulary item BICARB-50: Sodium bicarbonate 8.4% injection, 50 mL single-dose vial (Hospira) (NDC 0409-6625-35)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "item_id": "BICARB-50",
+            "ndc": "0409-6625-35",
+            "generic_name": "sodium bicarbonate",
+            "description": "Sodium bicarbonate 8.4% injection, 50 mL single-dose vial (Hospira)",
+            "dosage_form": "Injection, solution",
+            "strength": "84 mg/mL",
+            "package_description": "25 x 50 mL single-dose vials",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-INV-BICARB-50-ED",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory BICARB-50 @ ED: 60 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "ED",
+            "on_hand_units": 60,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-BICARB-50-ED",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage BICARB-50 @ ED: 84 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "ED",
+            "units": 84,
+            "days_covered": 14,
+            "avg_daily_usage": 6
+          }
+        },
+        {
+          "evidence_id": "EV-INV-BICARB-50-ICU",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory BICARB-50 @ ICU: 80 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "ICU",
+            "on_hand_units": 80,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-BICARB-50-ICU",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage BICARB-50 @ ICU: 56 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "ICU",
+            "units": 56,
+            "days_covered": 14,
+            "avg_daily_usage": 4
+          }
+        },
+        {
+          "evidence_id": "EV-INV-BICARB-50-PHARM",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory BICARB-50 @ PHARM: 400 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "on_hand_units": 400,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-BICARB-50-PHARM",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage BICARB-50 @ PHARM: 28 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "units": 28,
+            "days_covered": 14,
+            "avg_daily_usage": 2
+          }
+        },
+        {
+          "evidence_id": "EV-EXPOSURE-BICARB-50",
+          "kind": "exposure",
+          "summary": "exposure BICARB-50: ADEQUATE; 540 units on hand / 12 units per day = 45 days (usage window 2026-10-10..2026-10-23, 3 of 3 locations with complete data)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "computed from inventory and usage",
+            "synthetic": true,
+            "retrieved_via": "computed"
+          },
+          "data": {
+            "item_id": "BICARB-50",
+            "as_of": "2026-10-24",
+            "window": {
+              "start": "2026-10-10",
+              "end": "2026-10-23",
+              "days": 14
+            },
+            "total_on_hand": 540,
+            "total_avg_daily_usage": 12,
+            "days_on_hand": 45,
+            "min_location_days_on_hand": 10,
+            "complete": true,
+            "status": "ADEQUATE",
+            "locations": [
+              {
+                "location_id": "ED",
+                "on_hand_units": 60,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 84,
+                "avg_daily_usage": 6,
+                "days_on_hand": 10,
+                "status": "OK",
+                "notes": []
+              },
+              {
+                "location_id": "ICU",
+                "on_hand_units": 80,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 56,
+                "avg_daily_usage": 4,
+                "days_on_hand": 20,
+                "status": "OK",
+                "notes": []
+              },
+              {
+                "location_id": "PHARM",
+                "on_hand_units": 400,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 28,
+                "avg_daily_usage": 2,
+                "days_on_hand": 200,
+                "status": "OK",
+                "notes": []
+              }
+            ],
+            "issues": [],
+            "calculation": "540 units on hand / 12 units per day = 45 days (usage window 2026-10-10..2026-10-23, 3 of 3 locations with complete data)"
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-BIC-001",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-BIC-001: ALTERNATE_SOURCING for BICARB-50 when days-on-hand <= 10; active; Request allocation from the contracted secondary wholesaler.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "status": "active",
+            "policy_id": "POL-BIC-001",
+            "action": "ALTERNATE_SOURCING",
+            "applies_to_item_id": "BICARB-50",
+            "trigger_max_days_on_hand": 10,
+            "requirements": "Request allocation from the contracted secondary wholesaler.",
+            "approved_by": "Synthetic Supply Chain Committee",
+            "effective_date": "2025-06-01",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-PRECEDENT-mem-4",
+          "kind": "precedent",
+          "summary": "SYNTHETIC precedent mem-4 (approved ALTERNATE_SOURCING, confidence 0.80): Shortage precedent for Sodium bicarbonate 8.4% injection, 50 mL single-dose vial (Hospira) BICARB-50 (NDC 0409-6625-35): ALTERNATE_SOURCING was approved under policy POL-BIC-001. Allocation from the secondary wholesaler arrived in 4 days.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "h-mem precedents",
+            "synthetic": true,
+            "retrieved_via": "h-mem",
+            "detail": "seed:data/synthetic/precedents.json#P-004"
+          },
+          "data": {
+            "memory_id": "mem-4",
+            "content": "Shortage precedent for Sodium bicarbonate 8.4% injection, 50 mL single-dose vial (Hospira) BICARB-50 (NDC 0409-6625-35): ALTERNATE_SOURCING was approved under policy POL-BIC-001. Allocation from the secondary wholesaler arrived in 4 days.",
+            "synthetic": true,
+            "outcome": "approved",
+            "action": "ALTERNATE_SOURCING",
+            "confidence": 0.8,
+            "source_ref": "seed:data/synthetic/precedents.json#P-004"
+          }
+        }
+      ],
+      "model_calls": [],
+      "limitations": [
+        "Hospital formulary, inventory, usage, policies and precedents are SYNTHETIC.",
+        "Days-on-hand assumes recent average usage continues; it is not a demand forecast.",
+        "No candidate actions were planned because exposure is ADEQUATE (45 days on hand). Monitoring is recommended; a pharmacist should acknowledge."
+      ]
+    }
+  ],
+  "related_matches": [],
+  "data_issues": [
+    "63323-0671-00@2026-10-15: openfda block missing: no RxCUI or NDC Directory cross-reference on this record"
+  ],
+  "finished_at": "2026-10-24T19:50:30.655Z",
+  "execution_time_seconds": 0.001
+}

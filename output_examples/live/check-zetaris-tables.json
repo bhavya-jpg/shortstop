@@ -1,0 +1,103 @@
+{
+  "target": "zetaris-tables",
+  "started_at": "2026-10-25T10:49:28.889Z",
+  "steps": [
+    {
+      "name": "shortages: SELECT count(*) FROM shortstop.shortages_v",
+      "status": "PASS",
+      "detail": "1142 rows",
+      "evidence": {
+        "table": "shortstop.shortages_v",
+        "count": "1142"
+      }
+    },
+    {
+      "name": "formulary: SELECT count(*) FROM hospital_pg.formulary",
+      "status": "PASS",
+      "detail": "6 rows",
+      "evidence": {
+        "table": "hospital_pg.formulary",
+        "count": "6"
+      }
+    },
+    {
+      "name": "inventory: SELECT count(*) FROM hospital_pg.inventory",
+      "status": "PASS",
+      "detail": "14 rows",
+      "evidence": {
+        "table": "hospital_pg.inventory",
+        "count": "14"
+      }
+    },
+    {
+      "name": "usage: SELECT count(*) FROM hospital_pg.usage",
+      "status": "PASS",
+      "detail": "182 rows",
+      "evidence": {
+        "table": "hospital_pg.usage",
+        "count": "182"
+      }
+    },
+    {
+      "name": "policies: SELECT count(*) FROM hospital_pg.policies",
+      "status": "PASS",
+      "detail": "7 rows",
+      "evidence": {
+        "table": "hospital_pg.policies",
+        "count": "7"
+      }
+    },
+    {
+      "name": "cross-source join: formulary × openFDA shortages",
+      "status": "PASS",
+      "detail": "6 joined rows: [{\"item_id\":\"FUR-INJ-40\",\"ndc\":\"0409-6102-26\",\"package_ndc\":\"0409-6102-26\",\"availability\":\"Unavailable\",\"update_date\":\"10/08/2026\"},{\"item_id\":\"FUR-INJ-100\",\"ndc\":\"55150-324-25\",\"package_ndc\":\"55150-324-25\",\"availability\":\"Available\",\"update_date\":\"10/19/2026\"},{\"item_id\":\"BICARB-50\",\"ndc\":\"0409-6625-35\",\"package_ndc\":\"0409-6625-35\",\"availability\":\"Unavailable\",\"update_date\":\"10/21/2026\"},{\"item_id\":\"BICARB-50-FK\",\"ndc\":\"63323-089-50\",\"package_ndc\":\"63323-089-50\",\"availability\":\"Available\",\"upda",
+      "evidence": {
+        "rows": [
+          {
+            "item_id": "FUR-INJ-40",
+            "ndc": "0409-6102-26",
+            "package_ndc": "0409-6102-26",
+            "availability": "Unavailable",
+            "update_date": "10/08/2026"
+          },
+          {
+            "item_id": "FUR-INJ-100",
+            "ndc": "55150-324-25",
+            "package_ndc": "55150-324-25",
+            "availability": "Available",
+            "update_date": "10/19/2026"
+          },
+          {
+            "item_id": "BICARB-50",
+            "ndc": "0409-6625-35",
+            "package_ndc": "0409-6625-35",
+            "availability": "Unavailable",
+            "update_date": "10/21/2026"
+          },
+          {
+            "item_id": "BICARB-50-FK",
+            "ndc": "63323-089-50",
+            "package_ndc": "63323-089-50",
+            "availability": "Available",
+            "update_date": "10/15/2026"
+          },
+          {
+            "item_id": "DEXMED-4",
+            "ndc": "63323-671-00",
+            "package_ndc": "63323-671-00",
+            "availability": "Unavailable",
+            "update_date": "10/15/2026"
+          },
+          {
+            "item_id": "DEXMED-PX-50",
+            "ndc": "0409-1454-20",
+            "package_ndc": "0409-1454-20",
+            "availability": "Available",
+            "update_date": "10/21/2026"
+          }
+        ]
+      }
+    }
+  ],
+  "ok": true
+}

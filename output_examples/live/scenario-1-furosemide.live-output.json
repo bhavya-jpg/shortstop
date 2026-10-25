@@ -1,0 +1,1852 @@
+{
+  "run_id": "run-20261025T102939-611b6f",
+  "mode": "live",
+  "notice": "LIVE MODE: data retrieved through Zetaris; planner and critic called through Meterless Nightshift. Hospital data, policies and precedents are SYNTHETIC. Demonstration only: not clinical decision support.",
+  "scenario_id": "scenario-1-furosemide",
+  "input": {
+    "as_of": "2026-10-24",
+    "trigger": {
+      "package_ndc": "0409-6102-26"
+    },
+    "scenario_id": "scenario-1-furosemide"
+  },
+  "as_of": "2026-10-24",
+  "started_at": "2026-10-25T10:29:39.505Z",
+  "agents": [
+    {
+      "name": "NightshiftPlanner",
+      "kind": "llm",
+      "role": "Proposes candidate actions from policy records, exposure and precedents"
+    },
+    {
+      "name": "PolicyValidator",
+      "kind": "deterministic",
+      "role": "Rejects actions not backed by in-force policy, unknown evidence IDs and unsupported figures"
+    },
+    {
+      "name": "PrecedentCritic+NightshiftCritic",
+      "kind": "llm",
+      "role": "Challenges validated candidates; can request revision or escalate"
+    },
+    {
+      "name": "PrecedentMemory (H-MEM)",
+      "kind": "engine",
+      "role": "Recalls, supersedes and scores precedents with provenance"
+    }
+  ],
+  "data_source": "zetaris",
+  "trace_file": "output_examples/live/scenario-1-furosemide.live-trace.jsonl",
+  "status": "success",
+  "decisions": [
+    {
+      "decision_id": "DEC-run-20261025T102939-611b6f-FUR-INJ-40",
+      "item": {
+        "item_id": "FUR-INJ-40",
+        "ndc": "0409-6102-26",
+        "generic_name": "furosemide",
+        "description": "Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira)",
+        "dosage_form": "Injection, solution",
+        "strength": "10 mg/mL",
+        "package_description": "25 x 4 mL single-dose vials",
+        "status": "active",
+        "synthetic": true
+      },
+      "shortage": {
+        "record_key": "00409-6102-26@2026-10-08",
+        "package_ndc_raw": "0409-6102-26",
+        "package_ndc": "00409-6102-26",
+        "product_ndc": "00409-6102",
+        "generic_name": "Furosemide Injection",
+        "presentation": "Furosemide, Injection, 40 mg/4 mL (10 mg/1 mL) (NDC 0409-6102-26)",
+        "company_name": "Hospira, Inc., a Pfizer Company",
+        "dosage_form": "Injection",
+        "status": "Current",
+        "availability_raw": "Unavailable",
+        "availability": "UNAVAILABLE",
+        "shortage_reason": "Other",
+        "update_date": "2026-10-08",
+        "update_date_raw": "10/08/2026",
+        "initial_posting_date": "2020-04-07",
+        "rxcui": [
+          "1719286",
+          "1719290",
+          "1719291"
+        ],
+        "has_openfda_block": true,
+        "data_issues": [],
+        "provenance": {
+          "dataset": "openFDA drug shortages",
+          "synthetic": false,
+          "retrieved_via": "zetaris",
+          "detail": "Zetaris table shortstop.shortages_v"
+        }
+      },
+      "impact": "affected",
+      "status": "PENDING_APPROVAL",
+      "requires_human_review": true,
+      "exposure": {
+        "item_id": "FUR-INJ-40",
+        "as_of": "2026-10-24",
+        "window": {
+          "start": "2026-10-10",
+          "end": "2026-10-23",
+          "days": 14
+        },
+        "total_on_hand": 56,
+        "total_avg_daily_usage": 22,
+        "days_on_hand": 2.55,
+        "min_location_days_on_hand": 1,
+        "complete": true,
+        "status": "CRITICAL",
+        "locations": [
+          {
+            "location_id": "ED",
+            "on_hand_units": 6,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 84,
+            "avg_daily_usage": 6,
+            "days_on_hand": 1,
+            "status": "OK",
+            "notes": []
+          },
+          {
+            "location_id": "ICU",
+            "on_hand_units": 12,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 112,
+            "avg_daily_usage": 8,
+            "days_on_hand": 1.5,
+            "status": "OK",
+            "notes": []
+          },
+          {
+            "location_id": "MEDSURG",
+            "on_hand_units": 8,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 56,
+            "avg_daily_usage": 4,
+            "days_on_hand": 2,
+            "status": "OK",
+            "notes": []
+          },
+          {
+            "location_id": "PHARM",
+            "on_hand_units": 30,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 56,
+            "avg_daily_usage": 4,
+            "days_on_hand": 7.5,
+            "status": "OK",
+            "notes": []
+          }
+        ],
+        "issues": [],
+        "calculation": "56 units on hand / 22 units per day = 2.55 days (usage window 2026-10-10..2026-10-23, 4 of 4 locations with complete data)"
+      },
+      "target_exposures": [
+        {
+          "item_id": "FUR-INJ-100",
+          "as_of": "2026-10-24",
+          "window": {
+            "start": "2026-10-10",
+            "end": "2026-10-23",
+            "days": 14
+          },
+          "total_on_hand": 140,
+          "total_avg_daily_usage": 2,
+          "days_on_hand": 70,
+          "min_location_days_on_hand": 20,
+          "complete": true,
+          "status": "ADEQUATE",
+          "locations": [
+            {
+              "location_id": "ICU",
+              "on_hand_units": 20,
+              "inventory_as_of": "2026-10-24",
+              "usage_days_covered": 14,
+              "usage_units_in_window": 14,
+              "avg_daily_usage": 1,
+              "days_on_hand": 20,
+              "status": "OK",
+              "notes": []
+            },
+            {
+              "location_id": "PHARM",
+              "on_hand_units": 120,
+              "inventory_as_of": "2026-10-24",
+              "usage_days_covered": 14,
+              "usage_units_in_window": 14,
+              "avg_daily_usage": 1,
+              "days_on_hand": 120,
+              "status": "OK",
+              "notes": []
+            }
+          ],
+          "issues": [],
+          "calculation": "140 units on hand / 2 units per day = 70 days (usage window 2026-10-10..2026-10-23, 2 of 2 locations with complete data)"
+        }
+      ],
+      "candidates": [
+        {
+          "action": "SWITCH_PRESENTATION",
+          "item_id": "FUR-INJ-40",
+          "rationale": "Days on hand (2.55) is less than the trigger maximum of 7 days for switching presentation to FUR-INJ-100.",
+          "evidence_ids": [
+            "EV-POLICY-POL-FUR-001",
+            "EV-EXPOSURE-FUR-INJ-40",
+            "EV-EXPOSURE-FUR-INJ-100",
+            "EV-PRECEDENT-mem-2"
+          ],
+          "policy_id": "POL-FUR-001",
+          "target_item_id": "FUR-INJ-100"
+        },
+        {
+          "action": "RESTRICT_PER_POLICY",
+          "item_id": "FUR-INJ-40",
+          "rationale": "Days on hand (2.55) is less than the trigger maximum of 5 days for restricting FUR-INJ-40 usage.",
+          "evidence_ids": [
+            "EV-POLICY-POL-FUR-002",
+            "EV-EXPOSURE-FUR-INJ-40",
+            "EV-PRECEDENT-mem-3"
+          ],
+          "policy_id": "POL-FUR-002"
+        },
+        {
+          "action": "ALTERNATE_SOURCING",
+          "item_id": "FUR-INJ-40",
+          "rationale": "Days on hand (2.55) is less than the trigger maximum of 10 days for initiating alternate sourcing for FUR-INJ-40.",
+          "evidence_ids": [
+            "EV-POLICY-POL-FUR-003",
+            "EV-EXPOSURE-FUR-INJ-40"
+          ],
+          "policy_id": "POL-FUR-003"
+        }
+      ],
+      "candidate_checks": [
+        {
+          "candidate": {
+            "action": "SWITCH_PRESENTATION",
+            "item_id": "FUR-INJ-40",
+            "rationale": "Days on hand (2.55) is less than the trigger maximum of 7 days for switching presentation to FUR-INJ-100.",
+            "evidence_ids": [
+              "EV-POLICY-POL-FUR-001",
+              "EV-EXPOSURE-FUR-INJ-40",
+              "EV-EXPOSURE-FUR-INJ-100",
+              "EV-PRECEDENT-mem-2"
+            ],
+            "policy_id": "POL-FUR-001",
+            "target_item_id": "FUR-INJ-100"
+          },
+          "valid": true,
+          "issues": [],
+          "checks": [
+            "item matches the affected formulary item",
+            "all 4 cited evidence IDs exist",
+            "trigger met: 2.55 days <= 7",
+            "target FUR-INJ-100 has 140 units on hand",
+            "policy POL-FUR-001 is active, applies to this item and permits SWITCH_PRESENTATION"
+          ]
+        },
+        {
+          "candidate": {
+            "action": "RESTRICT_PER_POLICY",
+            "item_id": "FUR-INJ-40",
+            "rationale": "Days on hand (2.55) is less than the trigger maximum of 5 days for restricting FUR-INJ-40 usage.",
+            "evidence_ids": [
+              "EV-POLICY-POL-FUR-002",
+              "EV-EXPOSURE-FUR-INJ-40",
+              "EV-PRECEDENT-mem-3"
+            ],
+            "policy_id": "POL-FUR-002"
+          },
+          "valid": true,
+          "issues": [],
+          "checks": [
+            "item matches the affected formulary item",
+            "all 3 cited evidence IDs exist",
+            "trigger met: 2.55 days <= 5",
+            "policy POL-FUR-002 is active, applies to this item and permits RESTRICT_PER_POLICY"
+          ]
+        },
+        {
+          "candidate": {
+            "action": "ALTERNATE_SOURCING",
+            "item_id": "FUR-INJ-40",
+            "rationale": "Days on hand (2.55) is less than the trigger maximum of 10 days for initiating alternate sourcing for FUR-INJ-40.",
+            "evidence_ids": [
+              "EV-POLICY-POL-FUR-003",
+              "EV-EXPOSURE-FUR-INJ-40"
+            ],
+            "policy_id": "POL-FUR-003"
+          },
+          "valid": true,
+          "issues": [],
+          "checks": [
+            "item matches the affected formulary item",
+            "all 2 cited evidence IDs exist",
+            "trigger met: 2.55 days <= 10",
+            "policy POL-FUR-003 is active, applies to this item and permits ALTERNATE_SOURCING"
+          ]
+        }
+      ],
+      "rejected_candidates": [],
+      "critic_verdicts": [
+        {
+          "verdict": "accept",
+          "issues": [],
+          "agent": "PrecedentCritic+NightshiftCritic",
+          "revision": 0
+        }
+      ],
+      "revisions": 0,
+      "escalation_reasons": [],
+      "policies": [
+        {
+          "policy_id": "POL-FUR-001",
+          "action": "SWITCH_PRESENTATION",
+          "applies_to_item_id": "FUR-INJ-40",
+          "trigger_max_days_on_hand": 7,
+          "requirements": "Pharmacy prepares doses from the 100 mg/10 mL vial. Smart-pump library entry for the 10 mL vial must be active. Independent double check before release.",
+          "approved_by": "Synthetic P&T Committee",
+          "effective_date": "2025-01-15",
+          "status": "active",
+          "synthetic": true,
+          "target_item_id": "FUR-INJ-100"
+        },
+        {
+          "policy_id": "POL-FUR-002",
+          "action": "RESTRICT_PER_POLICY",
+          "applies_to_item_id": "FUR-INJ-40",
+          "trigger_max_days_on_hand": 5,
+          "requirements": "Reserve remaining 4 mL vials for inpatient units and the ED. Outpatient infusion orders need pharmacist approval while the restriction is active.",
+          "approved_by": "Synthetic P&T Committee",
+          "effective_date": "2025-01-15",
+          "status": "active",
+          "synthetic": true
+        },
+        {
+          "policy_id": "POL-FUR-003",
+          "action": "ALTERNATE_SOURCING",
+          "applies_to_item_id": "FUR-INJ-40",
+          "trigger_max_days_on_hand": 10,
+          "requirements": "Request allocation from the contracted secondary wholesaler (synthetic 'Wholesaler B'). Purchasing places the order; ShortStop does not.",
+          "approved_by": "Synthetic Supply Chain Committee",
+          "effective_date": "2025-06-01",
+          "status": "active",
+          "synthetic": true
+        },
+        {
+          "policy_id": "POL-FUR-OLD",
+          "action": "APPROVED_INTERCHANGE",
+          "applies_to_item_id": "FUR-INJ-40",
+          "trigger_max_days_on_hand": 7,
+          "requirements": "Superseded 2024 interchange policy.",
+          "approved_by": "Synthetic P&T Committee",
+          "effective_date": "2024-01-01",
+          "status": "retired",
+          "synthetic": true,
+          "target_item_id": "FUR-INJ-100",
+          "expires_date": "2024-12-31"
+        }
+      ],
+      "precedents": [
+        {
+          "memory_id": "mem-3",
+          "content": "Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): RESTRICT_PER_POLICY was approved under policy POL-FUR-002. Restricted 4 mL vials to inpatient units and the ED for 3 weeks.",
+          "item_id": "FUR-INJ-40",
+          "action": "RESTRICT_PER_POLICY",
+          "outcome": "approved",
+          "synthetic": true,
+          "confidence": 0.8,
+          "source_ref": "seed:data/synthetic/precedents.json#P-003",
+          "provenance_label": "SYNTHETIC approved by Synthetic pharmacist (clinical manager) on 2025-03-14",
+          "tags": [
+            "precedent",
+            "item:FUR-INJ-40",
+            "action:RESTRICT_PER_POLICY",
+            "outcome:approved",
+            "decided:2025-03-14",
+            "synthetic",
+            "policy:POL-FUR-002"
+          ],
+          "policy_id": "POL-FUR-002",
+          "decided_at": "2025-03-14",
+          "relevance": 0.449
+        },
+        {
+          "memory_id": "mem-2",
+          "content": "Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): SWITCH_PRESENTATION was approved under policy POL-FUR-001. Switch approved again with an added independent double check after a near-miss labelling event.",
+          "item_id": "FUR-INJ-40",
+          "action": "SWITCH_PRESENTATION",
+          "outcome": "approved",
+          "synthetic": true,
+          "confidence": 0.8,
+          "source_ref": "seed:data/synthetic/precedents.json#P-002",
+          "provenance_label": "SYNTHETIC approved by Synthetic pharmacist (medication safety) on 2025-11-03",
+          "tags": [
+            "precedent",
+            "item:FUR-INJ-40",
+            "action:SWITCH_PRESENTATION",
+            "outcome:approved",
+            "decided:2025-11-03",
+            "synthetic",
+            "policy:POL-FUR-001"
+          ],
+          "policy_id": "POL-FUR-001",
+          "decided_at": "2025-11-03",
+          "supersedes": "mem-1",
+          "relevance": 0.4062
+        }
+      ],
+      "superseded_precedents": [
+        {
+          "memory_id": "mem-1",
+          "content": "Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): SWITCH_PRESENTATION was approved under policy POL-FUR-001. Switched to 100 mg/10 mL vials for 3 weeks during a 2025 shortage.",
+          "item_id": "FUR-INJ-40",
+          "action": "SWITCH_PRESENTATION",
+          "outcome": "approved",
+          "synthetic": true,
+          "confidence": 0.8,
+          "source_ref": "seed:data/synthetic/precedents.json#P-001",
+          "provenance_label": "SYNTHETIC approved by Synthetic pharmacist (clinical manager) on 2025-03-12",
+          "tags": [
+            "precedent",
+            "item:FUR-INJ-40",
+            "action:SWITCH_PRESENTATION",
+            "outcome:approved",
+            "decided:2025-03-12",
+            "synthetic",
+            "policy:POL-FUR-001"
+          ],
+          "policy_id": "POL-FUR-001",
+          "decided_at": "2025-03-12",
+          "superseded_by": "mem-2"
+        }
+      ],
+      "precedent_conflicts": [],
+      "evidence": [
+        {
+          "evidence_id": "EV-SHORTAGE-00409-6102-26-2026-10-08",
+          "kind": "shortage",
+          "summary": "openFDA shortage record: Furosemide, Injection, 40 mg/4 mL (10 mg/1 mL) (NDC 0409-6102-26) (Hospira, Inc., a Pfizer Company), availability \"Unavailable\", updated 2026-10-08, reason: Other",
+          "synthetic": false,
+          "provenance": {
+            "dataset": "openFDA drug shortages",
+            "synthetic": false,
+            "retrieved_via": "zetaris",
+            "detail": "Zetaris table shortstop.shortages_v"
+          },
+          "data": {
+            "record_key": "00409-6102-26@2026-10-08",
+            "package_ndc_raw": "0409-6102-26",
+            "package_ndc": "00409-6102-26",
+            "product_ndc": "00409-6102",
+            "generic_name": "Furosemide Injection",
+            "presentation": "Furosemide, Injection, 40 mg/4 mL (10 mg/1 mL) (NDC 0409-6102-26)",
+            "company_name": "Hospira, Inc., a Pfizer Company",
+            "dosage_form": "Injection",
+            "status": "Current",
+            "availability_raw": "Unavailable",
+            "availability": "UNAVAILABLE",
+            "shortage_reason": "Other",
+            "update_date": "2026-10-08",
+            "update_date_raw": "10/08/2026",
+            "initial_posting_date": "2020-04-07",
+            "rxcui": [
+              "1719286",
+              "1719290",
+              "1719291"
+            ],
+            "has_openfda_block": true,
+            "data_issues": []
+          }
+        },
+        {
+          "evidence_id": "EV-FORMULARY-FUR-INJ-40",
+          "kind": "formulary",
+          "summary": "SYNTHETIC formulary item FUR-INJ-40: Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) (NDC 0409-6102-26)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "item_id": "FUR-INJ-40",
+            "ndc": "0409-6102-26",
+            "generic_name": "furosemide",
+            "description": "Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira)",
+            "dosage_form": "Injection, solution",
+            "strength": "10 mg/mL",
+            "package_description": "25 x 4 mL single-dose vials",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-INV-FUR-INJ-40-ED",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory FUR-INJ-40 @ ED: 6 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "ED",
+            "on_hand_units": 6,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-FUR-INJ-40-ED",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage FUR-INJ-40 @ ED: 84 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "ED",
+            "units": 84,
+            "days_covered": 14,
+            "avg_daily_usage": 6
+          }
+        },
+        {
+          "evidence_id": "EV-INV-FUR-INJ-40-ICU",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory FUR-INJ-40 @ ICU: 12 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "ICU",
+            "on_hand_units": 12,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-FUR-INJ-40-ICU",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage FUR-INJ-40 @ ICU: 112 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "ICU",
+            "units": 112,
+            "days_covered": 14,
+            "avg_daily_usage": 8
+          }
+        },
+        {
+          "evidence_id": "EV-INV-FUR-INJ-40-MEDSURG",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory FUR-INJ-40 @ MEDSURG: 8 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "MEDSURG",
+            "on_hand_units": 8,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-FUR-INJ-40-MEDSURG",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage FUR-INJ-40 @ MEDSURG: 56 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "MEDSURG",
+            "units": 56,
+            "days_covered": 14,
+            "avg_daily_usage": 4
+          }
+        },
+        {
+          "evidence_id": "EV-INV-FUR-INJ-40-PHARM",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory FUR-INJ-40 @ PHARM: 30 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "on_hand_units": 30,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-FUR-INJ-40-PHARM",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage FUR-INJ-40 @ PHARM: 56 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "units": 56,
+            "days_covered": 14,
+            "avg_daily_usage": 4
+          }
+        },
+        {
+          "evidence_id": "EV-EXPOSURE-FUR-INJ-40",
+          "kind": "exposure",
+          "summary": "exposure FUR-INJ-40: CRITICAL; 56 units on hand / 22 units per day = 2.55 days (usage window 2026-10-10..2026-10-23, 4 of 4 locations with complete data)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "computed from inventory and usage",
+            "synthetic": true,
+            "retrieved_via": "computed"
+          },
+          "data": {
+            "item_id": "FUR-INJ-40",
+            "as_of": "2026-10-24",
+            "window": {
+              "start": "2026-10-10",
+              "end": "2026-10-23",
+              "days": 14
+            },
+            "total_on_hand": 56,
+            "total_avg_daily_usage": 22,
+            "days_on_hand": 2.55,
+            "min_location_days_on_hand": 1,
+            "complete": true,
+            "status": "CRITICAL",
+            "locations": [
+              {
+                "location_id": "ED",
+                "on_hand_units": 6,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 84,
+                "avg_daily_usage": 6,
+                "days_on_hand": 1,
+                "status": "OK",
+                "notes": []
+              },
+              {
+                "location_id": "ICU",
+                "on_hand_units": 12,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 112,
+                "avg_daily_usage": 8,
+                "days_on_hand": 1.5,
+                "status": "OK",
+                "notes": []
+              },
+              {
+                "location_id": "MEDSURG",
+                "on_hand_units": 8,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 56,
+                "avg_daily_usage": 4,
+                "days_on_hand": 2,
+                "status": "OK",
+                "notes": []
+              },
+              {
+                "location_id": "PHARM",
+                "on_hand_units": 30,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 56,
+                "avg_daily_usage": 4,
+                "days_on_hand": 7.5,
+                "status": "OK",
+                "notes": []
+              }
+            ],
+            "issues": [],
+            "calculation": "56 units on hand / 22 units per day = 2.55 days (usage window 2026-10-10..2026-10-23, 4 of 4 locations with complete data)"
+          }
+        },
+        {
+          "evidence_id": "EV-FORMULARY-FUR-INJ-100",
+          "kind": "formulary",
+          "summary": "SYNTHETIC formulary item FUR-INJ-100: Furosemide injection 10 mg/mL, 10 mL vial (Eugia) (NDC 55150-324-25)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "item_id": "FUR-INJ-100",
+            "ndc": "55150-324-25",
+            "generic_name": "furosemide",
+            "description": "Furosemide injection 10 mg/mL, 10 mL vial (Eugia)",
+            "dosage_form": "Injection, solution",
+            "strength": "100 mg/10 mL",
+            "package_description": "25 x 10 mL vials",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-INV-FUR-INJ-100-ICU",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory FUR-INJ-100 @ ICU: 20 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "ICU",
+            "on_hand_units": 20,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-FUR-INJ-100-ICU",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage FUR-INJ-100 @ ICU: 14 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "ICU",
+            "units": 14,
+            "days_covered": 14,
+            "avg_daily_usage": 1
+          }
+        },
+        {
+          "evidence_id": "EV-INV-FUR-INJ-100-PHARM",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory FUR-INJ-100 @ PHARM: 120 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "on_hand_units": 120,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-FUR-INJ-100-PHARM",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage FUR-INJ-100 @ PHARM: 14 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "units": 14,
+            "days_covered": 14,
+            "avg_daily_usage": 1
+          }
+        },
+        {
+          "evidence_id": "EV-EXPOSURE-FUR-INJ-100",
+          "kind": "exposure",
+          "summary": "exposure FUR-INJ-100: ADEQUATE; 140 units on hand / 2 units per day = 70 days (usage window 2026-10-10..2026-10-23, 2 of 2 locations with complete data)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "computed from inventory and usage",
+            "synthetic": true,
+            "retrieved_via": "computed"
+          },
+          "data": {
+            "item_id": "FUR-INJ-100",
+            "as_of": "2026-10-24",
+            "window": {
+              "start": "2026-10-10",
+              "end": "2026-10-23",
+              "days": 14
+            },
+            "total_on_hand": 140,
+            "total_avg_daily_usage": 2,
+            "days_on_hand": 70,
+            "min_location_days_on_hand": 20,
+            "complete": true,
+            "status": "ADEQUATE",
+            "locations": [
+              {
+                "location_id": "ICU",
+                "on_hand_units": 20,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 14,
+                "avg_daily_usage": 1,
+                "days_on_hand": 20,
+                "status": "OK",
+                "notes": []
+              },
+              {
+                "location_id": "PHARM",
+                "on_hand_units": 120,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 14,
+                "avg_daily_usage": 1,
+                "days_on_hand": 120,
+                "status": "OK",
+                "notes": []
+              }
+            ],
+            "issues": [],
+            "calculation": "140 units on hand / 2 units per day = 70 days (usage window 2026-10-10..2026-10-23, 2 of 2 locations with complete data)"
+          }
+        },
+        {
+          "evidence_id": "EV-SHORTAGE-55150-0324-25-2026-10-19",
+          "kind": "shortage",
+          "summary": "openFDA shortage record for alternative FUR-INJ-100: availability \"Available\"",
+          "synthetic": false,
+          "provenance": {
+            "dataset": "openFDA drug shortages",
+            "synthetic": false,
+            "retrieved_via": "zetaris",
+            "detail": "Zetaris table shortstop.shortages_v"
+          },
+          "data": {
+            "record_key": "55150-0324-25@2026-10-19",
+            "package_ndc_raw": "55150-324-25",
+            "package_ndc": "55150-0324-25",
+            "product_ndc": "55150-0324",
+            "generic_name": "Furosemide Injection",
+            "presentation": "Furosemide, Injection, 100 mg/10 mL (NDC 55150-324-25)",
+            "company_name": "Eugia US LLC",
+            "dosage_form": "Injection",
+            "status": "Current",
+            "availability_raw": "Available",
+            "availability": "AVAILABLE",
+            "shortage_reason": null,
+            "update_date": "2026-10-19",
+            "update_date_raw": "10/19/2026",
+            "initial_posting_date": "2020-04-07",
+            "rxcui": [
+              "1719286",
+              "1719290",
+              "1719291"
+            ],
+            "has_openfda_block": true,
+            "data_issues": []
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-FUR-001",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-FUR-001: SWITCH_PRESENTATION for FUR-INJ-40 -> FUR-INJ-100 when days-on-hand <= 7; active; Pharmacy prepares doses from the 100 mg/10 mL vial. Smart-pump library entry for the 10 mL vial must be active. Independent double check before release.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "policy_id": "POL-FUR-001",
+            "action": "SWITCH_PRESENTATION",
+            "applies_to_item_id": "FUR-INJ-40",
+            "trigger_max_days_on_hand": 7,
+            "requirements": "Pharmacy prepares doses from the 100 mg/10 mL vial. Smart-pump library entry for the 10 mL vial must be active. Independent double check before release.",
+            "approved_by": "Synthetic P&T Committee",
+            "effective_date": "2025-01-15",
+            "status": "active",
+            "synthetic": true,
+            "target_item_id": "FUR-INJ-100"
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-FUR-002",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-FUR-002: RESTRICT_PER_POLICY for FUR-INJ-40 when days-on-hand <= 5; active; Reserve remaining 4 mL vials for inpatient units and the ED. Outpatient infusion orders need pharmacist approval while the restriction is active.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "policy_id": "POL-FUR-002",
+            "action": "RESTRICT_PER_POLICY",
+            "applies_to_item_id": "FUR-INJ-40",
+            "trigger_max_days_on_hand": 5,
+            "requirements": "Reserve remaining 4 mL vials for inpatient units and the ED. Outpatient infusion orders need pharmacist approval while the restriction is active.",
+            "approved_by": "Synthetic P&T Committee",
+            "effective_date": "2025-01-15",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-FUR-003",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-FUR-003: ALTERNATE_SOURCING for FUR-INJ-40 when days-on-hand <= 10; active; Request allocation from the contracted secondary wholesaler (synthetic 'Wholesaler B'). Purchasing places the order; ShortStop does not.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "policy_id": "POL-FUR-003",
+            "action": "ALTERNATE_SOURCING",
+            "applies_to_item_id": "FUR-INJ-40",
+            "trigger_max_days_on_hand": 10,
+            "requirements": "Request allocation from the contracted secondary wholesaler (synthetic 'Wholesaler B'). Purchasing places the order; ShortStop does not.",
+            "approved_by": "Synthetic Supply Chain Committee",
+            "effective_date": "2025-06-01",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-FUR-OLD",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-FUR-OLD: APPROVED_INTERCHANGE for FUR-INJ-40 -> FUR-INJ-100 when days-on-hand <= 7; retired; Superseded 2024 interchange policy.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "policy_id": "POL-FUR-OLD",
+            "action": "APPROVED_INTERCHANGE",
+            "applies_to_item_id": "FUR-INJ-40",
+            "trigger_max_days_on_hand": 7,
+            "requirements": "Superseded 2024 interchange policy.",
+            "approved_by": "Synthetic P&T Committee",
+            "effective_date": "2024-01-01",
+            "status": "retired",
+            "synthetic": true,
+            "target_item_id": "FUR-INJ-100",
+            "expires_date": "2024-12-31"
+          }
+        },
+        {
+          "evidence_id": "EV-PRECEDENT-mem-3",
+          "kind": "precedent",
+          "summary": "SYNTHETIC precedent mem-3 (approved RESTRICT_PER_POLICY, confidence 0.80): Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): RESTRICT_PER_POLICY was approved under policy POL-FUR-002. Restricted 4 mL vials to inpatient units and the ED for 3 weeks.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "h-mem precedents",
+            "synthetic": true,
+            "retrieved_via": "h-mem",
+            "detail": "seed:data/synthetic/precedents.json#P-003"
+          },
+          "data": {
+            "memory_id": "mem-3",
+            "content": "Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): RESTRICT_PER_POLICY was approved under policy POL-FUR-002. Restricted 4 mL vials to inpatient units and the ED for 3 weeks.",
+            "synthetic": true,
+            "outcome": "approved",
+            "action": "RESTRICT_PER_POLICY",
+            "confidence": 0.8,
+            "source_ref": "seed:data/synthetic/precedents.json#P-003"
+          }
+        },
+        {
+          "evidence_id": "EV-PRECEDENT-mem-2",
+          "kind": "precedent",
+          "summary": "SYNTHETIC precedent mem-2 (approved SWITCH_PRESENTATION, confidence 0.80): Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): SWITCH_PRESENTATION was approved under policy POL-FUR-001. Switch approved again with an added independent double check after a near-miss labelling event.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "h-mem precedents",
+            "synthetic": true,
+            "retrieved_via": "h-mem",
+            "detail": "seed:data/synthetic/precedents.json#P-002"
+          },
+          "data": {
+            "memory_id": "mem-2",
+            "content": "Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): SWITCH_PRESENTATION was approved under policy POL-FUR-001. Switch approved again with an added independent double check after a near-miss labelling event.",
+            "synthetic": true,
+            "outcome": "approved",
+            "action": "SWITCH_PRESENTATION",
+            "confidence": 0.8,
+            "source_ref": "seed:data/synthetic/precedents.json#P-002"
+          }
+        },
+        {
+          "evidence_id": "EV-PRECEDENT-mem-1",
+          "kind": "precedent",
+          "summary": "SYNTHETIC precedent mem-1 (approved SWITCH_PRESENTATION, confidence 0.80, superseded by mem-2): Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): SWITCH_PRESENTATION was approved under policy POL-FUR-001. Switched to 100 mg/10 mL vials for 3 weeks during a 2025 shortage.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "h-mem precedents",
+            "synthetic": true,
+            "retrieved_via": "h-mem",
+            "detail": "seed:data/synthetic/precedents.json#P-001"
+          },
+          "data": {
+            "memory_id": "mem-1",
+            "content": "Shortage precedent for Furosemide injection 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): SWITCH_PRESENTATION was approved under policy POL-FUR-001. Switched to 100 mg/10 mL vials for 3 weeks during a 2025 shortage.",
+            "synthetic": true,
+            "outcome": "approved",
+            "action": "SWITCH_PRESENTATION",
+            "confidence": 0.8,
+            "source_ref": "seed:data/synthetic/precedents.json#P-001",
+            "superseded_by": "mem-2"
+          }
+        }
+      ],
+      "model_calls": [
+        {
+          "requested": "meterless/auto",
+          "reported": "nvidia/nemotron-3.5-bolt-e4b",
+          "meterless": {
+            "schema": "meterless.compute_receipt.v1",
+            "receipt_id": "rcpt_req_rja4gpuv",
+            "decision_id": "req_rja4gpuv",
+            "requested_model": "meterless/auto",
+            "provider_model": "meterless/auto",
+            "routed_model": "nvidia/nemotron-3.5-bolt-e4b",
+            "winning_route": {
+              "model": "nvidia/nemotron-3.5-bolt-e4b",
+              "label": "Nemotron 3.5 Bolt E4B",
+              "provider": "nvidia",
+              "kind": "cloud",
+              "tier": "A"
+            },
+            "requires_review": false,
+            "phases": [
+              {
+                "phase": "final_synthesis",
+                "model": "nvidia/nemotron-3.5-bolt-e4b",
+                "ms": 33319,
+                "tokensIn": 5264,
+                "tokensOut": 1208,
+                "outputTps": 36.25558990365857,
+                "coherence": 1,
+                "tier": "B",
+                "reflex_decided_in_ms": 0
+              }
+            ],
+            "usage": {
+              "input_tokens": 5264,
+              "output_tokens": 1208,
+              "total_tokens": 6472,
+              "output_tps": 36.25558990365857,
+              "latency_ms": 33319
+            },
+            "cost": {
+              "actual_usd": 0,
+              "naive_usd": 0,
+              "baseline": {
+                "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                "label": "Nemotron 3.5 Lightning 30B A3B",
+                "source": "mode-default-frontier"
+              },
+              "verifier_usd": 0,
+              "race_overhead_usd": 0
+            },
+            "savings": {
+              "amount": 0,
+              "currency": "USD",
+              "vs": "Nemotron 3.5 Lightning 30B A3B",
+              "baseline_source": "mode-default-frontier"
+            },
+            "cache": {
+              "status": "miss",
+              "losers_reclaimed": 1,
+              "partials_reclaimed": 0
+            },
+            "privacy": {
+              "path": "cloud-ok",
+              "redaction": {
+                "applied": false,
+                "spans": 0
+              }
+            },
+            "from_cache": false,
+            "losers_reclaimed": 1,
+            "receipt": {
+              "schema": "meterless.compute_receipt.v1",
+              "receipt_id": "rcpt_req_rja4gpuv",
+              "request_id": "req_rja4gpuv",
+              "decision_id": "req_rja4gpuv",
+              "created_at": 1792924236190,
+              "status": "ok",
+              "app": "shortstop",
+              "requested_mode": "meterless/auto",
+              "prompt_preview": "tion 10 mg/mL, 4 mL single-dose vial (Hospira) FUR-INJ-40 (NDC 0409-6102-26): RESTRICT_PER_POLICY was approved under policy POL-FUR-002. Restricted 4 mL vials to inpatient units an",
+              "winning_route": {
+                "model": "nvidia/nemotron-3.5-bolt-e4b",
+                "label": "Nemotron 3.5 Bolt E4B",
+                "provider": "nvidia",
+                "kind": "cloud",
+                "tier": "A"
+              },
+              "phases": [
+                {
+                  "phase": "final_synthesis",
+                  "model": "nvidia/nemotron-3.5-bolt-e4b",
+                  "ms": 33319,
+                  "tokensIn": 5264,
+                  "tokensOut": 1208,
+                  "outputTps": 36.25558990365857,
+                  "coherence": 1,
+                  "tier": "B",
+                  "reflex_decided_in_ms": 0
+                }
+              ],
+              "usage": {
+                "input_tokens": 5264,
+                "output_tokens": 1208,
+                "total_tokens": 6472,
+                "output_tps": 36.25558990365857,
+                "latency_ms": 33319
+              },
+              "cost": {
+                "actual_usd": 0,
+                "naive_usd": 0,
+                "baseline": {
+                  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                  "label": "Nemotron 3.5 Lightning 30B A3B",
+                  "source": "mode-default-frontier"
+                },
+                "verifier_usd": 0,
+                "race_overhead_usd": 0
+              },
+              "savings": {
+                "amount": 0,
+                "currency": "USD",
+                "vs": "Nemotron 3.5 Lightning 30B A3B",
+                "baseline_source": "mode-default-frontier"
+              },
+              "cache": {
+                "status": "miss",
+                "losers_reclaimed": 1,
+                "partials_reclaimed": 0
+              },
+              "privacy": {
+                "path": "cloud-ok",
+                "redaction": {
+                  "applied": false,
+                  "spans": 0
+                }
+              },
+              "cross_check": {
+                "status": "passed",
+                "risk_level": "low",
+                "raw_risk": "low",
+                "verifier": "deterministic/schema+regex",
+                "reflex_ms": 0,
+                "verifier_ms": 0,
+                "verifier_ran": false,
+                "verifier_model": null,
+                "verifier_verdict": null,
+                "verifier_error": null,
+                "verifier_tokens": null,
+                "checks": [
+                  {
+                    "type": "destructive_action",
+                    "status": "passed",
+                    "message": "No destructive ops detected."
+                  },
+                  {
+                    "type": "pii_guard",
+                    "status": "passed",
+                    "message": "No PII/credential detected in response."
+                  },
+                  {
+                    "type": "schema_validity",
+                    "status": "skipped",
+                    "message": "Not a tool call."
+                  }
+                ],
+                "recommended_action": "allow",
+                "blocking": false,
+                "app": "shortstop",
+                "destructive": false,
+                "requires_review": false
+              },
+              "consensus": {
+                "level": "agreed",
+                "tone": "green",
+                "label": "models agreed",
+                "detail": "2 of 2 models agreed \u2014 safe to trust the cheap answer",
+                "raced": 2,
+                "agree": 2,
+                "coherence": 1,
+                "verified": null
+              },
+              "consensus_escalation": null,
+              "fusion": null,
+              "synthesis": {
+                "ran": false,
+                "reason": "empty",
+                "aggregator_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                "ms": 10552
+              },
+              "gen_verifier": {
+                "ran": true,
+                "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                "judge_local": false,
+                "judge_was_racer": false,
+                "ms": 5224,
+                "ranked": [
+                  {
+                    "model": "nvidia/nemotron-3.5-bolt-e4b",
+                    "score": null,
+                    "reason": "",
+                    "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b"
+                  },
+                  {
+                    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                    "score": null,
+                    "reason": "",
+                    "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b"
+                  }
+                ],
+                "best_index": null,
+                "best": null,
+                "best_score": null,
+                "parse_ok": false,
+                "reason": "unparseable",
+                "scale": 100,
+                "batches": 1,
+                "batches_timed_out": 0,
+                "scored_of": 2,
+                "shortlist_of": 2,
+                "abstained": 2,
+                "tokensIn": 2128,
+                "tokensOut": 440
+              },
+              "debate": null,
+              "quality_race": {
+                "active": true,
+                "reason": "difficulty",
+                "vote": null
+              },
+              "reasoning_scaffold": {
+                "active": true,
+                "reason": "difficulty",
+                "intent": "chat",
+                "phase": "final_synthesis",
+                "variant": "full",
+                "difficulty": 0.78,
+                "marker_compliance": true,
+                "scratch_chars": 2065,
+                "stream_filtered": false
+              },
+              "app_policy": {
+                "app": "shortstop",
+                "has_rule": true,
+                "privacy": "cloud-ok",
+                "cross_check": "auto",
+                "race_width": 6,
+                "premium_budget": null,
+                "lanes": null,
+                "requested_mode": "auto",
+                "routed_mode": "auto",
+                "mode_coerced": false
+              },
+              "budget_degrade": null,
+              "refine": null,
+              "test_time_compute": null,
+              "hmem": {
+                "injected": 3,
+                "top_score": 0.837,
+                "ids": [
+                  "mem_mvnoe9kw_ktlf",
+                  "mem_mvnob07h_ceft",
+                  "mem_mvno9lmy_afos"
+                ],
+                "reason": "retrieved 3 memories",
+                "strategy": "comprehensive"
+              },
+              "tool_degraded": null,
+              "mcp": null,
+              "job": null,
+              "method": null,
+              "deliberation": null,
+              "egress": {
+                "destination": "nvidia",
+                "coverage": "pattern_floor",
+                "sent": {
+                  "prompt_chars": 4000,
+                  "context_sources": [
+                    "messages",
+                    "hmem:3 records"
+                  ],
+                  "redacted": []
+                },
+                "withheld": [],
+                "never_eligible": []
+              },
+              "verification": null,
+              "verdict": null,
+              "bar": null,
+              "score": null,
+              "graded_weight": null,
+              "eligible": null,
+              "scorecard": null,
+              "unmet": null,
+              "optimistic": null,
+              "routing": {
+                "policy": "learned-router",
+                "width": 6,
+                "of": 6,
+                "confidence": 0.164,
+                "reason": "uncertain-explore",
+                "predicted": "nvidia/nemotron-3.5-bolt-e4b",
+                "escalated": null,
+                "winner": "nvidia/nemotron-3.5-bolt-e4b",
+                "escalated_on_divergence": false,
+                "hedge": null,
+                "hedges_skipped": 0
+              },
+              "host_pressure": {
+                "thermal": "nominal",
+                "battery": null,
+                "pressure": {
+                  "battery": {
+                    "score": 0,
+                    "soft": 0.3,
+                    "hard": 0.5,
+                    "label": "nominal",
+                    "sensor": "battery%, charging"
+                  },
+                  "thermal": {
+                    "score": 0.15,
+                    "soft": 0.55,
+                    "hard": 0.8,
+                    "label": "nominal",
+                    "sensor": "thermal API"
+                  },
+                  "memory": {
+                    "score": 0,
+                    "soft": 0.7,
+                    "hard": 0.85,
+                    "label": "nominal",
+                    "sensor": "committed/swap"
+                  },
+                  "cpu": {
+                    "score": 0,
+                    "soft": 0.7,
+                    "hard": 0.9,
+                    "label": "nominal",
+                    "sensor": "30s load avg"
+                  },
+                  "gpu": {
+                    "score": 0,
+                    "soft": 0.75,
+                    "hard": 0.92,
+                    "label": "nominal",
+                    "sensor": "GPU + VRAM"
+                  },
+                  "network": {
+                    "score": 0.1,
+                    "soft": 0.5,
+                    "hard": 0.85,
+                    "label": "nominal",
+                    "sensor": "RTT to providers"
+                  },
+                  "quota": {
+                    "score": 0.06472,
+                    "soft": 0.8,
+                    "hard": 0.95,
+                    "label": "nominal",
+                    "sensor": "per-key window"
+                  }
+                }
+              },
+              "error": "",
+              "summary": "ok \u00b7 Nemotron 3.5 Bolt E4B \u00b7 miss \u00b7 $0.0000 saved"
+            },
+            "receipt_envelope": null,
+            "served": "in-tab",
+            "mcp": null,
+            "job": {
+              "id": "job_mvnnzd4501",
+              "kind": "app_stream",
+              "lane": "auto",
+              "turn": 10,
+              "cluster": 4
+            },
+            "egress": {
+              "destination": "nvidia",
+              "coverage": "pattern_floor",
+              "sent": {
+                "prompt_chars": 4000,
+                "context_sources": [
+                  "messages",
+                  "hmem:3 records"
+                ],
+                "redacted": []
+              },
+              "withheld": [],
+              "never_eligible": []
+            },
+            "consensus": {
+              "level": "agreed",
+              "raced": 2,
+              "agreed": null,
+              "coherence": 1,
+              "label": "models agreed",
+              "basis": "lexical"
+            },
+            "lineage": {
+              "families": [
+                "unknown"
+              ],
+              "distinct": 1,
+              "note": "all 2 panelists share the unknown family"
+            },
+            "app": "shortstop",
+            "mode": "auto",
+            "scope": "user"
+          },
+          "routing_headers": {},
+          "response_id": "chatcmpl-biiem6r5mvnorop7",
+          "attempts": 1,
+          "duration_ms": 49136,
+          "http_status": 200,
+          "agent": "NightshiftPlanner",
+          "revision": 0
+        },
+        {
+          "requested": "meterless/auto",
+          "reported": "nvidia/nemotron-3.5-bolt-e4b",
+          "meterless": {
+            "schema": "meterless.compute_receipt.v1",
+            "receipt_id": "rcpt_req_drzxehrz",
+            "decision_id": "req_drzxehrz",
+            "requested_model": "meterless/auto",
+            "provider_model": "meterless/auto",
+            "routed_model": "nvidia/nemotron-3.5-bolt-e4b",
+            "winning_route": {
+              "model": "nvidia/nemotron-3.5-bolt-e4b",
+              "label": "Nemotron 3.5 Bolt E4B",
+              "provider": "nvidia",
+              "kind": "cloud",
+              "tier": "A"
+            },
+            "requires_review": false,
+            "phases": [
+              {
+                "phase": "final_synthesis",
+                "model": "nvidia/nemotron-3.5-bolt-e4b",
+                "ms": 148004,
+                "tokensIn": 3022,
+                "tokensOut": 632,
+                "outputTps": 4.270154860679441,
+                "coherence": null,
+                "tier": "B",
+                "reflex_decided_in_ms": 0
+              }
+            ],
+            "usage": {
+              "input_tokens": 3022,
+              "output_tokens": 632,
+              "total_tokens": 3654,
+              "output_tps": 4.270154860679441,
+              "latency_ms": 148004
+            },
+            "cost": {
+              "actual_usd": 0,
+              "naive_usd": 0,
+              "baseline": {
+                "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                "label": "Nemotron 3.5 Lightning 30B A3B",
+                "source": "mode-default-frontier"
+              },
+              "verifier_usd": 0,
+              "race_overhead_usd": 0
+            },
+            "savings": {
+              "amount": 0,
+              "currency": "USD",
+              "vs": "Nemotron 3.5 Lightning 30B A3B",
+              "baseline_source": "mode-default-frontier"
+            },
+            "cache": {
+              "status": "miss",
+              "losers_reclaimed": 0,
+              "partials_reclaimed": 0
+            },
+            "privacy": {
+              "path": "cloud-ok",
+              "redaction": {
+                "applied": false,
+                "spans": 0
+              }
+            },
+            "from_cache": false,
+            "losers_reclaimed": 0,
+            "receipt": {
+              "schema": "meterless.compute_receipt.v1",
+              "receipt_id": "rcpt_req_drzxehrz",
+              "request_id": "req_drzxehrz",
+              "decision_id": "req_drzxehrz",
+              "created_at": 1792924384250,
+              "status": "ok",
+              "app": "shortstop",
+              "requested_mode": "meterless/auto",
+              "prompt_preview": "single-dose vial (Hospira)\"},\"exposure\":{\"status\":\"CRITICAL\",\"days_on_hand\":2.55,\"complete\":true,\"calculation\":\"56 units on hand / 22 units per day = 2.55 days (usage window 2026-1",
+              "winning_route": {
+                "model": "nvidia/nemotron-3.5-bolt-e4b",
+                "label": "Nemotron 3.5 Bolt E4B",
+                "provider": "nvidia",
+                "kind": "cloud",
+                "tier": "A"
+              },
+              "phases": [
+                {
+                  "phase": "final_synthesis",
+                  "model": "nvidia/nemotron-3.5-bolt-e4b",
+                  "ms": 148004,
+                  "tokensIn": 3022,
+                  "tokensOut": 632,
+                  "outputTps": 4.270154860679441,
+                  "coherence": null,
+                  "tier": "B",
+                  "reflex_decided_in_ms": 0
+                }
+              ],
+              "usage": {
+                "input_tokens": 3022,
+                "output_tokens": 632,
+                "total_tokens": 3654,
+                "output_tps": 4.270154860679441,
+                "latency_ms": 148004
+              },
+              "cost": {
+                "actual_usd": 0,
+                "naive_usd": 0,
+                "baseline": {
+                  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                  "label": "Nemotron 3.5 Lightning 30B A3B",
+                  "source": "mode-default-frontier"
+                },
+                "verifier_usd": 0,
+                "race_overhead_usd": 0
+              },
+              "savings": {
+                "amount": 0,
+                "currency": "USD",
+                "vs": "Nemotron 3.5 Lightning 30B A3B",
+                "baseline_source": "mode-default-frontier"
+              },
+              "cache": {
+                "status": "miss",
+                "losers_reclaimed": 0,
+                "partials_reclaimed": 0
+              },
+              "privacy": {
+                "path": "cloud-ok",
+                "redaction": {
+                  "applied": false,
+                  "spans": 0
+                }
+              },
+              "cross_check": {
+                "status": "passed",
+                "risk_level": "low",
+                "raw_risk": "low",
+                "verifier": "deterministic/schema+regex",
+                "reflex_ms": 0,
+                "verifier_ms": 0,
+                "verifier_ran": false,
+                "verifier_model": null,
+                "verifier_verdict": null,
+                "verifier_error": null,
+                "verifier_tokens": null,
+                "checks": [
+                  {
+                    "type": "destructive_action",
+                    "status": "passed",
+                    "message": "No destructive ops detected."
+                  },
+                  {
+                    "type": "pii_guard",
+                    "status": "passed",
+                    "message": "No PII/credential detected in response."
+                  },
+                  {
+                    "type": "schema_validity",
+                    "status": "skipped",
+                    "message": "Not a tool call."
+                  }
+                ],
+                "recommended_action": "allow",
+                "blocking": false,
+                "app": "shortstop",
+                "destructive": false,
+                "requires_review": false
+              },
+              "consensus": {
+                "level": "solo",
+                "tone": "neutral",
+                "label": "single route",
+                "detail": "one model handled this \u2014 no cross-model agreement to check",
+                "raced": 1,
+                "agree": 1,
+                "coherence": null,
+                "verified": null
+              },
+              "consensus_escalation": null,
+              "fusion": null,
+              "synthesis": null,
+              "gen_verifier": null,
+              "debate": null,
+              "quality_race": {
+                "active": true,
+                "reason": "difficulty",
+                "vote": null
+              },
+              "reasoning_scaffold": {
+                "active": true,
+                "reason": "difficulty",
+                "intent": "chat",
+                "phase": "final_synthesis",
+                "variant": "full",
+                "difficulty": 0.9,
+                "marker_compliance": true,
+                "scratch_chars": 2466,
+                "stream_filtered": false
+              },
+              "app_policy": {
+                "app": "shortstop",
+                "has_rule": true,
+                "privacy": "cloud-ok",
+                "cross_check": "auto",
+                "race_width": 6,
+                "premium_budget": null,
+                "lanes": null,
+                "requested_mode": "auto",
+                "routed_mode": "auto",
+                "mode_coerced": false
+              },
+              "budget_degrade": null,
+              "refine": null,
+              "test_time_compute": null,
+              "hmem": {
+                "injected": 3,
+                "top_score": 0.56,
+                "ids": [
+                  "mem_mvnob07h_ceft",
+                  "mem_mvno9lmy_afos",
+                  "mem_mvnosqlb_5tsx"
+                ],
+                "reason": "retrieved 3 memories",
+                "strategy": "comprehensive"
+              },
+              "tool_degraded": null,
+              "mcp": null,
+              "job": null,
+              "method": null,
+              "deliberation": null,
+              "egress": {
+                "destination": "nvidia",
+                "coverage": "pattern_floor",
+                "sent": {
+                  "prompt_chars": 4000,
+                  "context_sources": [
+                    "messages",
+                    "hmem:3 records"
+                  ],
+                  "redacted": []
+                },
+                "withheld": [],
+                "never_eligible": []
+              },
+              "verification": null,
+              "verdict": null,
+              "bar": null,
+              "score": null,
+              "graded_weight": null,
+              "eligible": null,
+              "scorecard": null,
+              "unmet": null,
+              "optimistic": null,
+              "routing": {
+                "policy": "learned-router",
+                "width": 6,
+                "of": 6,
+                "confidence": 0.171,
+                "reason": "uncertain-explore",
+                "predicted": "nvidia/nemotron-3.5-bolt-e4b",
+                "escalated": null,
+                "winner": "nvidia/nemotron-3.5-bolt-e4b",
+                "escalated_on_divergence": false,
+                "hedge": null,
+                "hedges_skipped": 0
+              },
+              "host_pressure": {
+                "thermal": "nominal",
+                "battery": null,
+                "pressure": {
+                  "battery": {
+                    "score": 0,
+                    "soft": 0.3,
+                    "hard": 0.5,
+                    "label": "nominal",
+                    "sensor": "battery%, charging"
+                  },
+                  "thermal": {
+                    "score": 0.15,
+                    "soft": 0.55,
+                    "hard": 0.8,
+                    "label": "nominal",
+                    "sensor": "thermal API"
+                  },
+                  "memory": {
+                    "score": 0,
+                    "soft": 0.7,
+                    "hard": 0.85,
+                    "label": "nominal",
+                    "sensor": "committed/swap"
+                  },
+                  "cpu": {
+                    "score": 0,
+                    "soft": 0.7,
+                    "hard": 0.9,
+                    "label": "nominal",
+                    "sensor": "30s load avg"
+                  },
+                  "gpu": {
+                    "score": 0,
+                    "soft": 0.75,
+                    "hard": 0.92,
+                    "label": "nominal",
+                    "sensor": "GPU + VRAM"
+                  },
+                  "network": {
+                    "score": 0.1,
+                    "soft": 0.5,
+                    "hard": 0.85,
+                    "label": "nominal",
+                    "sensor": "RTT to providers"
+                  },
+                  "quota": {
+                    "score": 0,
+                    "soft": 0.8,
+                    "hard": 0.95,
+                    "label": "nominal",
+                    "sensor": "per-key window"
+                  }
+                }
+              },
+              "error": "",
+              "summary": "ok \u00b7 Nemotron 3.5 Bolt E4B \u00b7 miss \u00b7 $0.0000 saved"
+            },
+            "receipt_envelope": null,
+            "served": "in-tab",
+            "mcp": null,
+            "job": {
+              "id": "job_mvnnzd4501",
+              "kind": "app_stream",
+              "lane": "auto",
+              "turn": 12,
+              "cluster": 5
+            },
+            "egress": {
+              "destination": "nvidia",
+              "coverage": "pattern_floor",
+              "sent": {
+                "prompt_chars": 4000,
+                "context_sources": [
+                  "messages",
+                  "hmem:3 records"
+                ],
+                "redacted": []
+              },
+              "withheld": [],
+              "never_eligible": []
+            },
+            "consensus": {
+              "level": "solo",
+              "raced": 1,
+              "agreed": null,
+              "coherence": null,
+              "label": "single route",
+              "basis": "lexical"
+            },
+            "lineage": {
+              "families": [
+                "unknown"
+              ],
+              "distinct": 1,
+              "note": "1 distinct lineages across 1 panelists"
+            },
+            "app": "shortstop",
+            "mode": "auto",
+            "scope": "user"
+          },
+          "routing_headers": {},
+          "response_id": "chatcmpl-zkebzo55mvnosqmm",
+          "attempts": 1,
+          "duration_ms": 148050,
+          "http_status": 200,
+          "agent": "PrecedentCritic+NightshiftCritic",
+          "revision": 0
+        }
+      ],
+      "limitations": [
+        "Hospital formulary, inventory, usage, policies and precedents are SYNTHETIC.",
+        "Days-on-hand assumes recent average usage continues; it is not a demand forecast."
+      ]
+    }
+  ],
+  "related_matches": [],
+  "data_issues": [
+    "63323-0671-00@2026-10-15: openfda block missing: no RxCUI or NDC Directory cross-reference on this record"
+  ],
+  "finished_at": "2026-10-25T10:33:04.274Z",
+  "execution_time_seconds": 204.769
+}

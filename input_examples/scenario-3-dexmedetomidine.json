@@ -1,0 +1,6 @@
+{
+  "scenario_id": "scenario-3-dexmedetomidine",
+  "description": "Dexmedetomidine 4 mcg/mL (NDC 63323-671-00) is reported Unavailable. The openFDA record has no openfda block and the NDC is not in the FDA NDC Directory. The synthetic ICU usage feed is missing, and H-MEM holds conflicting precedents for alternate sourcing.",
+  "expected_outcome": "ESCALATED",
+  "input": { "as_of": "2026-10-24", "trigger": { "package_ndc": "63323-671-00" } }
+}

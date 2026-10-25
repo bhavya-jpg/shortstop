@@ -1,0 +1,750 @@
+{
+  "run_id": "example-scenario-3-dexmedetomidine",
+  "mode": "sample",
+  "notice": "SAMPLE MODE: bundled openFDA snapshot and SYNTHETIC hospital data; deterministic rule-based agents. No Zetaris query and no Nightshift model call was made in this run.",
+  "scenario_id": "scenario-3-dexmedetomidine",
+  "input": {
+    "as_of": "2026-10-24",
+    "trigger": {
+      "package_ndc": "63323-671-00"
+    },
+    "scenario_id": "scenario-3-dexmedetomidine"
+  },
+  "as_of": "2026-10-24",
+  "started_at": "2026-10-24T19:50:30.656Z",
+  "agents": [
+    {
+      "name": "DeterministicPolicyPlanner",
+      "kind": "deterministic",
+      "role": "Proposes candidate actions from policy records, exposure and precedents"
+    },
+    {
+      "name": "PolicyValidator",
+      "kind": "deterministic",
+      "role": "Rejects actions not backed by in-force policy, unknown evidence IDs and unsupported figures"
+    },
+    {
+      "name": "PrecedentCritic",
+      "kind": "deterministic",
+      "role": "Challenges validated candidates; can request revision or escalate"
+    },
+    {
+      "name": "PrecedentMemory (H-MEM)",
+      "kind": "engine",
+      "role": "Recalls, supersedes and scores precedents with provenance"
+    }
+  ],
+  "data_source": "sample-files",
+  "trace_file": "output_examples/scenario-3-dexmedetomidine.trace.jsonl",
+  "status": "success",
+  "decisions": [
+    {
+      "decision_id": "DEC-example-scenario-3-dexmedetomidine-DEXMED-4",
+      "item": {
+        "item_id": "DEXMED-4",
+        "ndc": "63323-671-00",
+        "generic_name": "dexmedetomidine",
+        "description": "Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi)",
+        "dosage_form": "Injection",
+        "strength": "4 mcg/mL",
+        "package_description": "as recorded by the hospital",
+        "status": "active",
+        "synthetic": true
+      },
+      "shortage": {
+        "record_key": "63323-0671-00@2026-10-15",
+        "package_ndc_raw": "63323-671-00",
+        "package_ndc": "63323-0671-00",
+        "product_ndc": "63323-0671",
+        "generic_name": "Dexmedetomidine Hydrochloride Injection",
+        "presentation": "Dexmedetomidine Hydrochloride, Injection, 4 ug/1 mL (NDC 63323-671-00)",
+        "company_name": "Fresenius Kabi USA, LLC",
+        "dosage_form": "Injection",
+        "status": "Current",
+        "availability_raw": "Unavailable",
+        "availability": "UNAVAILABLE",
+        "shortage_reason": "Delay in shipping of the drug",
+        "update_date": "2026-10-15",
+        "update_date_raw": "10/15/2026",
+        "initial_posting_date": "2020-04-10",
+        "rxcui": [],
+        "has_openfda_block": false,
+        "data_issues": [
+          "openfda block missing: no RxCUI or NDC Directory cross-reference on this record"
+        ],
+        "provenance": {
+          "dataset": "openFDA drug shortages (snapshot)",
+          "synthetic": false,
+          "retrieved_via": "sample-file",
+          "detail": "data/openfda/shortages-snapshot.json fetched 2026-10-24T19:40:05.534Z"
+        }
+      },
+      "impact": "affected",
+      "status": "ESCALATED",
+      "requires_human_review": true,
+      "exposure": {
+        "item_id": "DEXMED-4",
+        "as_of": "2026-10-24",
+        "window": {
+          "start": "2026-10-10",
+          "end": "2026-10-23",
+          "days": 14
+        },
+        "total_on_hand": 20,
+        "total_avg_daily_usage": 3,
+        "days_on_hand": 4.67,
+        "min_location_days_on_hand": 2,
+        "complete": false,
+        "status": "UNKNOWN",
+        "locations": [
+          {
+            "location_id": "ICU",
+            "on_hand_units": 6,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 0,
+            "usage_units_in_window": 0,
+            "avg_daily_usage": null,
+            "days_on_hand": null,
+            "status": "USAGE_MISSING",
+            "notes": [
+              "no usage rows between 2026-10-10 and 2026-10-23; usage is unknown, not zero"
+            ]
+          },
+          {
+            "location_id": "OR",
+            "on_hand_units": 4,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 28,
+            "avg_daily_usage": 2,
+            "days_on_hand": 2,
+            "status": "OK",
+            "notes": []
+          },
+          {
+            "location_id": "PHARM",
+            "on_hand_units": 10,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 14,
+            "avg_daily_usage": 1,
+            "days_on_hand": 10,
+            "status": "OK",
+            "notes": []
+          }
+        ],
+        "issues": [
+          "ICU: USAGE_MISSING"
+        ],
+        "calculation": "14 units on hand / 3 units per day = 4.67 days (usage window 2026-10-10..2026-10-23, 2 of 3 locations with complete data)"
+      },
+      "target_exposures": [
+        {
+          "item_id": "DEXMED-PX-50",
+          "as_of": "2026-10-24",
+          "window": {
+            "start": "2026-10-10",
+            "end": "2026-10-23",
+            "days": 14
+          },
+          "total_on_hand": 40,
+          "total_avg_daily_usage": 1,
+          "days_on_hand": 40,
+          "min_location_days_on_hand": 40,
+          "complete": true,
+          "status": "ADEQUATE",
+          "locations": [
+            {
+              "location_id": "PHARM",
+              "on_hand_units": 40,
+              "inventory_as_of": "2026-10-24",
+              "usage_days_covered": 14,
+              "usage_units_in_window": 14,
+              "avg_daily_usage": 1,
+              "days_on_hand": 40,
+              "status": "OK",
+              "notes": []
+            }
+          ],
+          "issues": [],
+          "calculation": "40 units on hand / 1 units per day = 40 days (usage window 2026-10-10..2026-10-23, 1 of 1 locations with complete data)"
+        }
+      ],
+      "candidates": [
+        {
+          "action": "ESCALATE",
+          "item_id": "DEXMED-4",
+          "rationale": "Exposure for DEXMED-4 cannot be calculated reliably (UNKNOWN): ICU: USAGE_MISSING. No policy trigger can be evaluated on incomplete data.",
+          "evidence_ids": [
+            "EV-EXPOSURE-DEXMED-4",
+            "EV-SHORTAGE-63323-0671-00-2026-10-15"
+          ]
+        }
+      ],
+      "candidate_checks": [
+        {
+          "candidate": {
+            "action": "ESCALATE",
+            "item_id": "DEXMED-4",
+            "rationale": "Exposure for DEXMED-4 cannot be calculated reliably (UNKNOWN): ICU: USAGE_MISSING. No policy trigger can be evaluated on incomplete data.",
+            "evidence_ids": [
+              "EV-EXPOSURE-DEXMED-4",
+              "EV-SHORTAGE-63323-0671-00-2026-10-15"
+            ]
+          },
+          "valid": true,
+          "issues": [],
+          "checks": [
+            "item matches the affected formulary item",
+            "all 2 cited evidence IDs exist",
+            "ESCALATE needs no policy record"
+          ]
+        }
+      ],
+      "rejected_candidates": [],
+      "critic_verdicts": [
+        {
+          "verdict": "escalate",
+          "issues": [
+            {
+              "code": "PRECEDENT_CONFLICT",
+              "message": "unresolved precedent conflict: same item and action (ALTERNATE_SOURCING) with opposite outcomes: mem-5 rejected, mem-6 approved"
+            }
+          ],
+          "agent": "PrecedentCritic",
+          "revision": 0
+        }
+      ],
+      "revisions": 0,
+      "escalation_reasons": [
+        "Exposure is incomplete (ICU: USAGE_MISSING); no policy trigger can be evaluated.",
+        "Critic: unresolved precedent conflict: same item and action (ALTERNATE_SOURCING) with opposite outcomes: mem-5 rejected, mem-6 approved",
+        "Planner escalated: Exposure for DEXMED-4 cannot be calculated reliably (UNKNOWN): ICU: USAGE_MISSING. No policy trigger can be evaluated on incomplete data."
+      ],
+      "policies": [
+        {
+          "status": "active",
+          "policy_id": "POL-DEX-001",
+          "action": "ALTERNATE_SOURCING",
+          "applies_to_item_id": "DEXMED-4",
+          "trigger_max_days_on_hand": 7,
+          "requirements": "Request allocation from the contracted secondary wholesaler.",
+          "approved_by": "Synthetic Supply Chain Committee",
+          "effective_date": "2025-06-01",
+          "synthetic": true
+        },
+        {
+          "status": "active",
+          "policy_id": "POL-DEX-002",
+          "action": "SWITCH_PRESENTATION",
+          "applies_to_item_id": "DEXMED-4",
+          "target_item_id": "DEXMED-PX-50",
+          "trigger_max_days_on_hand": 7,
+          "requirements": "Use premixed 200 mcg/50 mL bottles; smart-pump library entry required.",
+          "approved_by": "Synthetic P&T Committee",
+          "effective_date": "2025-01-15",
+          "synthetic": true
+        }
+      ],
+      "precedents": [
+        {
+          "memory_id": "mem-6",
+          "content": "Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was approved under policy POL-DEX-001. Secondary wholesaler delivered in 2 days.",
+          "item_id": "DEXMED-4",
+          "action": "ALTERNATE_SOURCING",
+          "outcome": "approved",
+          "synthetic": true,
+          "confidence": 0.8,
+          "source_ref": "seed:data/synthetic/precedents.json#P-006",
+          "provenance_label": "SYNTHETIC approved by Synthetic pharmacist (OR) on 2026-06-18",
+          "tags": [
+            "precedent",
+            "item:DEXMED-4",
+            "action:ALTERNATE_SOURCING",
+            "outcome:approved",
+            "decided:2026-06-18",
+            "synthetic",
+            "policy:POL-DEX-001"
+          ],
+          "policy_id": "POL-DEX-001",
+          "decided_at": "2026-06-18",
+          "relevance": 0.4183
+        },
+        {
+          "memory_id": "mem-5",
+          "content": "Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was rejected under policy POL-DEX-001. Secondary wholesaler lead time was 12 days, too slow to help.",
+          "item_id": "DEXMED-4",
+          "action": "ALTERNATE_SOURCING",
+          "outcome": "rejected",
+          "synthetic": true,
+          "confidence": 0.8,
+          "source_ref": "seed:data/synthetic/precedents.json#P-005",
+          "provenance_label": "SYNTHETIC rejected by Synthetic pharmacist (ICU) on 2026-02-10",
+          "tags": [
+            "precedent",
+            "item:DEXMED-4",
+            "action:ALTERNATE_SOURCING",
+            "outcome:rejected",
+            "decided:2026-02-10",
+            "synthetic",
+            "policy:POL-DEX-001"
+          ],
+          "policy_id": "POL-DEX-001",
+          "decided_at": "2026-02-10",
+          "relevance": 0.4027
+        }
+      ],
+      "superseded_precedents": [],
+      "precedent_conflicts": [
+        {
+          "memory_a": "mem-5",
+          "memory_b": "mem-6",
+          "reason": "same item and action (ALTERNATE_SOURCING) with opposite outcomes: mem-5 rejected, mem-6 approved"
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "EV-SHORTAGE-63323-0671-00-2026-10-15",
+          "kind": "shortage",
+          "summary": "openFDA shortage record: Dexmedetomidine Hydrochloride, Injection, 4 ug/1 mL (NDC 63323-671-00) (Fresenius Kabi USA, LLC), availability \"Unavailable\", updated 2026-10-15, reason: Delay in shipping of the drug",
+          "synthetic": false,
+          "provenance": {
+            "dataset": "openFDA drug shortages (snapshot)",
+            "synthetic": false,
+            "retrieved_via": "sample-file",
+            "detail": "data/openfda/shortages-snapshot.json fetched 2026-10-24T19:40:05.534Z"
+          },
+          "data": {
+            "record_key": "63323-0671-00@2026-10-15",
+            "package_ndc_raw": "63323-671-00",
+            "package_ndc": "63323-0671-00",
+            "product_ndc": "63323-0671",
+            "generic_name": "Dexmedetomidine Hydrochloride Injection",
+            "presentation": "Dexmedetomidine Hydrochloride, Injection, 4 ug/1 mL (NDC 63323-671-00)",
+            "company_name": "Fresenius Kabi USA, LLC",
+            "dosage_form": "Injection",
+            "status": "Current",
+            "availability_raw": "Unavailable",
+            "availability": "UNAVAILABLE",
+            "shortage_reason": "Delay in shipping of the drug",
+            "update_date": "2026-10-15",
+            "update_date_raw": "10/15/2026",
+            "initial_posting_date": "2020-04-10",
+            "rxcui": [],
+            "has_openfda_block": false,
+            "data_issues": [
+              "openfda block missing: no RxCUI or NDC Directory cross-reference on this record"
+            ]
+          }
+        },
+        {
+          "evidence_id": "EV-FORMULARY-DEXMED-4",
+          "kind": "formulary",
+          "summary": "SYNTHETIC formulary item DEXMED-4: Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) (NDC 63323-671-00)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "item_id": "DEXMED-4",
+            "ndc": "63323-671-00",
+            "generic_name": "dexmedetomidine",
+            "description": "Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi)",
+            "dosage_form": "Injection",
+            "strength": "4 mcg/mL",
+            "package_description": "as recorded by the hospital",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-INV-DEXMED-4-ICU",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory DEXMED-4 @ ICU: 6 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "ICU",
+            "on_hand_units": 6,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-INV-DEXMED-4-OR",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory DEXMED-4 @ OR: 4 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "OR",
+            "on_hand_units": 4,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-DEXMED-4-OR",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage DEXMED-4 @ OR: 28 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "OR",
+            "units": 28,
+            "days_covered": 14,
+            "avg_daily_usage": 2
+          }
+        },
+        {
+          "evidence_id": "EV-INV-DEXMED-4-PHARM",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory DEXMED-4 @ PHARM: 10 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "on_hand_units": 10,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-DEXMED-4-PHARM",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage DEXMED-4 @ PHARM: 14 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "units": 14,
+            "days_covered": 14,
+            "avg_daily_usage": 1
+          }
+        },
+        {
+          "evidence_id": "EV-EXPOSURE-DEXMED-4",
+          "kind": "exposure",
+          "summary": "exposure DEXMED-4: UNKNOWN; 14 units on hand / 3 units per day = 4.67 days (usage window 2026-10-10..2026-10-23, 2 of 3 locations with complete data)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "computed from inventory and usage",
+            "synthetic": true,
+            "retrieved_via": "computed"
+          },
+          "data": {
+            "item_id": "DEXMED-4",
+            "as_of": "2026-10-24",
+            "window": {
+              "start": "2026-10-10",
+              "end": "2026-10-23",
+              "days": 14
+            },
+            "total_on_hand": 20,
+            "total_avg_daily_usage": 3,
+            "days_on_hand": 4.67,
+            "min_location_days_on_hand": 2,
+            "complete": false,
+            "status": "UNKNOWN",
+            "locations": [
+              {
+                "location_id": "ICU",
+                "on_hand_units": 6,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 0,
+                "usage_units_in_window": 0,
+                "avg_daily_usage": null,
+                "days_on_hand": null,
+                "status": "USAGE_MISSING",
+                "notes": [
+                  "no usage rows between 2026-10-10 and 2026-10-23; usage is unknown, not zero"
+                ]
+              },
+              {
+                "location_id": "OR",
+                "on_hand_units": 4,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 28,
+                "avg_daily_usage": 2,
+                "days_on_hand": 2,
+                "status": "OK",
+                "notes": []
+              },
+              {
+                "location_id": "PHARM",
+                "on_hand_units": 10,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 14,
+                "avg_daily_usage": 1,
+                "days_on_hand": 10,
+                "status": "OK",
+                "notes": []
+              }
+            ],
+            "issues": [
+              "ICU: USAGE_MISSING"
+            ],
+            "calculation": "14 units on hand / 3 units per day = 4.67 days (usage window 2026-10-10..2026-10-23, 2 of 3 locations with complete data)"
+          }
+        },
+        {
+          "evidence_id": "EV-FORMULARY-DEXMED-PX-50",
+          "kind": "formulary",
+          "summary": "SYNTHETIC formulary item DEXMED-PX-50: Precedex (dexmedetomidine) 200 mcg/50 mL bottle (Pfizer) (NDC 0409-1454-20)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "item_id": "DEXMED-PX-50",
+            "ndc": "0409-1454-20",
+            "generic_name": "dexmedetomidine",
+            "description": "Precedex (dexmedetomidine) 200 mcg/50 mL bottle (Pfizer)",
+            "dosage_form": "Injection, solution",
+            "strength": "4 mcg/mL",
+            "package_description": "20 x 50 mL bottles",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-INV-DEXMED-PX-50-PHARM",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory DEXMED-PX-50 @ PHARM: 40 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "on_hand_units": 40,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-DEXMED-PX-50-PHARM",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage DEXMED-PX-50 @ PHARM: 14 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "units": 14,
+            "days_covered": 14,
+            "avg_daily_usage": 1
+          }
+        },
+        {
+          "evidence_id": "EV-EXPOSURE-DEXMED-PX-50",
+          "kind": "exposure",
+          "summary": "exposure DEXMED-PX-50: ADEQUATE; 40 units on hand / 1 units per day = 40 days (usage window 2026-10-10..2026-10-23, 1 of 1 locations with complete data)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "computed from inventory and usage",
+            "synthetic": true,
+            "retrieved_via": "computed"
+          },
+          "data": {
+            "item_id": "DEXMED-PX-50",
+            "as_of": "2026-10-24",
+            "window": {
+              "start": "2026-10-10",
+              "end": "2026-10-23",
+              "days": 14
+            },
+            "total_on_hand": 40,
+            "total_avg_daily_usage": 1,
+            "days_on_hand": 40,
+            "min_location_days_on_hand": 40,
+            "complete": true,
+            "status": "ADEQUATE",
+            "locations": [
+              {
+                "location_id": "PHARM",
+                "on_hand_units": 40,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 14,
+                "avg_daily_usage": 1,
+                "days_on_hand": 40,
+                "status": "OK",
+                "notes": []
+              }
+            ],
+            "issues": [],
+            "calculation": "40 units on hand / 1 units per day = 40 days (usage window 2026-10-10..2026-10-23, 1 of 1 locations with complete data)"
+          }
+        },
+        {
+          "evidence_id": "EV-SHORTAGE-00409-1454-20-2026-10-21",
+          "kind": "shortage",
+          "summary": "openFDA shortage record for alternative DEXMED-PX-50: availability \"Available\"",
+          "synthetic": false,
+          "provenance": {
+            "dataset": "openFDA drug shortages (snapshot)",
+            "synthetic": false,
+            "retrieved_via": "sample-file",
+            "detail": "data/openfda/shortages-snapshot.json fetched 2026-10-24T19:40:05.534Z"
+          },
+          "data": {
+            "record_key": "00409-1454-20@2026-10-21",
+            "package_ndc_raw": "0409-1454-20",
+            "package_ndc": "00409-1454-20",
+            "product_ndc": "00409-1454",
+            "generic_name": "Dexmedetomidine Hydrochloride Injection",
+            "presentation": "Precedex, Injection, 200 mcg/50 mL (4 mcg/mL) (NDC 0409-1454-20)",
+            "company_name": "Pfizer Inc.",
+            "dosage_form": "Injection",
+            "status": "Current",
+            "availability_raw": "Available",
+            "availability": "AVAILABLE",
+            "shortage_reason": null,
+            "update_date": "2026-10-21",
+            "update_date_raw": "10/21/2026",
+            "initial_posting_date": "2020-04-10",
+            "rxcui": [
+              "1718900",
+              "1718902",
+              "1718906",
+              "1718907",
+              "1718909",
+              "1718910",
+              "2396891",
+              "2396892"
+            ],
+            "has_openfda_block": true,
+            "data_issues": []
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-DEX-001",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-DEX-001: ALTERNATE_SOURCING for DEXMED-4 when days-on-hand <= 7; active; Request allocation from the contracted secondary wholesaler.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "status": "active",
+            "policy_id": "POL-DEX-001",
+            "action": "ALTERNATE_SOURCING",
+            "applies_to_item_id": "DEXMED-4",
+            "trigger_max_days_on_hand": 7,
+            "requirements": "Request allocation from the contracted secondary wholesaler.",
+            "approved_by": "Synthetic Supply Chain Committee",
+            "effective_date": "2025-06-01",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-DEX-002",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-DEX-002: SWITCH_PRESENTATION for DEXMED-4 -> DEXMED-PX-50 when days-on-hand <= 7; active; Use premixed 200 mcg/50 mL bottles; smart-pump library entry required.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "data/synthetic (generated by scripts/generate-synthetic.ts)",
+            "synthetic": true,
+            "retrieved_via": "sample-file"
+          },
+          "data": {
+            "status": "active",
+            "policy_id": "POL-DEX-002",
+            "action": "SWITCH_PRESENTATION",
+            "applies_to_item_id": "DEXMED-4",
+            "target_item_id": "DEXMED-PX-50",
+            "trigger_max_days_on_hand": 7,
+            "requirements": "Use premixed 200 mcg/50 mL bottles; smart-pump library entry required.",
+            "approved_by": "Synthetic P&T Committee",
+            "effective_date": "2025-01-15",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-PRECEDENT-mem-6",
+          "kind": "precedent",
+          "summary": "SYNTHETIC precedent mem-6 (approved ALTERNATE_SOURCING, confidence 0.80): Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was approved under policy POL-DEX-001. Secondary wholesaler delivered in 2 days.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "h-mem precedents",
+            "synthetic": true,
+            "retrieved_via": "h-mem",
+            "detail": "seed:data/synthetic/precedents.json#P-006"
+          },
+          "data": {
+            "memory_id": "mem-6",
+            "content": "Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was approved under policy POL-DEX-001. Secondary wholesaler delivered in 2 days.",
+            "synthetic": true,
+            "outcome": "approved",
+            "action": "ALTERNATE_SOURCING",
+            "confidence": 0.8,
+            "source_ref": "seed:data/synthetic/precedents.json#P-006"
+          }
+        },
+        {
+          "evidence_id": "EV-PRECEDENT-mem-5",
+          "kind": "precedent",
+          "summary": "SYNTHETIC precedent mem-5 (rejected ALTERNATE_SOURCING, confidence 0.80): Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was rejected under policy POL-DEX-001. Secondary wholesaler lead time was 12 days, too slow to help.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "h-mem precedents",
+            "synthetic": true,
+            "retrieved_via": "h-mem",
+            "detail": "seed:data/synthetic/precedents.json#P-005"
+          },
+          "data": {
+            "memory_id": "mem-5",
+            "content": "Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was rejected under policy POL-DEX-001. Secondary wholesaler lead time was 12 days, too slow to help.",
+            "synthetic": true,
+            "outcome": "rejected",
+            "action": "ALTERNATE_SOURCING",
+            "confidence": 0.8,
+            "source_ref": "seed:data/synthetic/precedents.json#P-005"
+          }
+        }
+      ],
+      "model_calls": [],
+      "limitations": [
+        "Hospital formulary, inventory, usage, policies and precedents are SYNTHETIC.",
+        "Days-on-hand assumes recent average usage continues; it is not a demand forecast.",
+        "The openFDA record has no openfda cross-reference block (no RxCUI); identity rests on the package NDC alone."
+      ]
+    }
+  ],
+  "related_matches": [],
+  "data_issues": [
+    "63323-0671-00@2026-10-15: openfda block missing: no RxCUI or NDC Directory cross-reference on this record"
+  ],
+  "finished_at": "2026-10-24T19:50:30.657Z",
+  "execution_time_seconds": 0.001
+}

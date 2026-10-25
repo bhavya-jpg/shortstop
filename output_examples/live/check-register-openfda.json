@@ -1,0 +1,32 @@
+{
+  "target": "register-openfda",
+  "started_at": "2026-10-25T10:10:35.622Z",
+  "steps": [
+    {
+      "name": "openfda-database",
+      "status": "PASS",
+      "detail": "HTTP 200; 0 rows; []"
+    },
+    {
+      "name": "shortstop-container",
+      "status": "PASS",
+      "detail": "HTTP 200; 0 rows; []"
+    },
+    {
+      "name": "openfda-page-1",
+      "status": "PASS",
+      "detail": "HTTP 200; 0 rows; []"
+    },
+    {
+      "name": "openfda-page-2",
+      "status": "PASS",
+      "detail": "HTTP 200; 0 rows; []"
+    },
+    {
+      "name": "shortages-view",
+      "status": "PASS",
+      "detail": "HTTP 200; 0 rows; []"
+    }
+  ],
+  "ok": true
+}

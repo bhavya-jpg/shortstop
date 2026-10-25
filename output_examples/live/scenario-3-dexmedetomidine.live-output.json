@@ -1,0 +1,1569 @@
+{
+  "run_id": "run-20261025T104157-bf6715",
+  "mode": "live",
+  "notice": "LIVE MODE: data retrieved through Zetaris; planner and critic called through Meterless Nightshift. Hospital data, policies and precedents are SYNTHETIC. Demonstration only: not clinical decision support.",
+  "scenario_id": "scenario-3-dexmedetomidine",
+  "input": {
+    "as_of": "2026-10-24",
+    "trigger": {
+      "package_ndc": "63323-671-00"
+    },
+    "scenario_id": "scenario-3-dexmedetomidine"
+  },
+  "as_of": "2026-10-24",
+  "started_at": "2026-10-25T10:41:57.821Z",
+  "agents": [
+    {
+      "name": "NightshiftPlanner",
+      "kind": "llm",
+      "role": "Proposes candidate actions from policy records, exposure and precedents"
+    },
+    {
+      "name": "PolicyValidator",
+      "kind": "deterministic",
+      "role": "Rejects actions not backed by in-force policy, unknown evidence IDs and unsupported figures"
+    },
+    {
+      "name": "PrecedentCritic+NightshiftCritic",
+      "kind": "llm",
+      "role": "Challenges validated candidates; can request revision or escalate"
+    },
+    {
+      "name": "PrecedentMemory (H-MEM)",
+      "kind": "engine",
+      "role": "Recalls, supersedes and scores precedents with provenance"
+    }
+  ],
+  "data_source": "zetaris",
+  "trace_file": "output_examples/live/scenario-3-dexmedetomidine.live-trace.jsonl",
+  "status": "success",
+  "decisions": [
+    {
+      "decision_id": "DEC-run-20261025T104157-bf6715-DEXMED-4",
+      "item": {
+        "item_id": "DEXMED-4",
+        "ndc": "63323-671-00",
+        "generic_name": "dexmedetomidine",
+        "description": "Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi)",
+        "dosage_form": "Injection",
+        "strength": "4 mcg/mL",
+        "package_description": "as recorded by the hospital",
+        "status": "active",
+        "synthetic": true
+      },
+      "shortage": {
+        "record_key": "63323-0671-00@2026-10-15",
+        "package_ndc_raw": "63323-671-00",
+        "package_ndc": "63323-0671-00",
+        "product_ndc": "63323-0671",
+        "generic_name": "Dexmedetomidine Hydrochloride Injection",
+        "presentation": "Dexmedetomidine Hydrochloride, Injection, 4 ug/1 mL (NDC 63323-671-00)",
+        "company_name": "Fresenius Kabi USA, LLC",
+        "dosage_form": "Injection",
+        "status": "Current",
+        "availability_raw": "Unavailable",
+        "availability": "UNAVAILABLE",
+        "shortage_reason": "Delay in shipping of the drug",
+        "update_date": "2026-10-15",
+        "update_date_raw": "10/15/2026",
+        "initial_posting_date": "2020-04-10",
+        "rxcui": [],
+        "has_openfda_block": false,
+        "data_issues": [
+          "openfda block missing: no RxCUI or NDC Directory cross-reference on this record"
+        ],
+        "provenance": {
+          "dataset": "openFDA drug shortages",
+          "synthetic": false,
+          "retrieved_via": "zetaris",
+          "detail": "Zetaris table shortstop.shortages_v"
+        }
+      },
+      "impact": "affected",
+      "status": "ESCALATED",
+      "requires_human_review": true,
+      "exposure": {
+        "item_id": "DEXMED-4",
+        "as_of": "2026-10-24",
+        "window": {
+          "start": "2026-10-10",
+          "end": "2026-10-23",
+          "days": 14
+        },
+        "total_on_hand": 20,
+        "total_avg_daily_usage": 3,
+        "days_on_hand": 4.67,
+        "min_location_days_on_hand": 2,
+        "complete": false,
+        "status": "UNKNOWN",
+        "locations": [
+          {
+            "location_id": "ICU",
+            "on_hand_units": 6,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 0,
+            "usage_units_in_window": 0,
+            "avg_daily_usage": null,
+            "days_on_hand": null,
+            "status": "USAGE_MISSING",
+            "notes": [
+              "no usage rows between 2026-10-10 and 2026-10-23; usage is unknown, not zero"
+            ]
+          },
+          {
+            "location_id": "OR",
+            "on_hand_units": 4,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 28,
+            "avg_daily_usage": 2,
+            "days_on_hand": 2,
+            "status": "OK",
+            "notes": []
+          },
+          {
+            "location_id": "PHARM",
+            "on_hand_units": 10,
+            "inventory_as_of": "2026-10-24",
+            "usage_days_covered": 14,
+            "usage_units_in_window": 14,
+            "avg_daily_usage": 1,
+            "days_on_hand": 10,
+            "status": "OK",
+            "notes": []
+          }
+        ],
+        "issues": [
+          "ICU: USAGE_MISSING"
+        ],
+        "calculation": "14 units on hand / 3 units per day = 4.67 days (usage window 2026-10-10..2026-10-23, 2 of 3 locations with complete data)"
+      },
+      "target_exposures": [
+        {
+          "item_id": "DEXMED-PX-50",
+          "as_of": "2026-10-24",
+          "window": {
+            "start": "2026-10-10",
+            "end": "2026-10-23",
+            "days": 14
+          },
+          "total_on_hand": 40,
+          "total_avg_daily_usage": 1,
+          "days_on_hand": 40,
+          "min_location_days_on_hand": 40,
+          "complete": true,
+          "status": "ADEQUATE",
+          "locations": [
+            {
+              "location_id": "PHARM",
+              "on_hand_units": 40,
+              "inventory_as_of": "2026-10-24",
+              "usage_days_covered": 14,
+              "usage_units_in_window": 14,
+              "avg_daily_usage": 1,
+              "days_on_hand": 40,
+              "status": "OK",
+              "notes": []
+            }
+          ],
+          "issues": [],
+          "calculation": "40 units on hand / 1 units per day = 40 days (usage window 2026-10-10..2026-10-23, 1 of 1 locations with complete data)"
+        }
+      ],
+      "candidates": [
+        {
+          "action": "ESCALATE",
+          "item_id": "DEXMED-4",
+          "rationale": "Exposure data is incomplete, preventing a definitive action based on policy criteria.",
+          "evidence_ids": [
+            "EV-EXPOSURE-DEXMED-4"
+          ]
+        }
+      ],
+      "candidate_checks": [
+        {
+          "candidate": {
+            "action": "ESCALATE",
+            "item_id": "DEXMED-4",
+            "rationale": "Exposure data is incomplete, preventing a definitive action based on policy criteria.",
+            "evidence_ids": [
+              "EV-EXPOSURE-DEXMED-4"
+            ]
+          },
+          "valid": true,
+          "issues": [],
+          "checks": [
+            "item matches the affected formulary item",
+            "all 1 cited evidence IDs exist",
+            "ESCALATE needs no policy record"
+          ]
+        }
+      ],
+      "rejected_candidates": [],
+      "critic_verdicts": [
+        {
+          "verdict": "escalate",
+          "issues": [
+            {
+              "code": "PRECEDENT_CONFLICT",
+              "message": "[PrecedentCritic] unresolved precedent conflict: same item and action (ALTERNATE_SOURCING) with opposite outcomes: mem-5 rejected, mem-6 approved"
+            },
+            {
+              "code": "PRECEDENT_CONFLICT",
+              "message": "[NightshiftCritic] Precedents EV-PRECEDENT-mem-5 and EV-PRECEDENT-mem-6 show conflicting outcomes for the same item and action."
+            }
+          ],
+          "agent": "PrecedentCritic+NightshiftCritic",
+          "revision": 0
+        }
+      ],
+      "revisions": 0,
+      "escalation_reasons": [
+        "Exposure is incomplete (ICU: USAGE_MISSING); no policy trigger can be evaluated.",
+        "Critic: [PrecedentCritic] unresolved precedent conflict: same item and action (ALTERNATE_SOURCING) with opposite outcomes: mem-5 rejected, mem-6 approved",
+        "Critic: [NightshiftCritic] Precedents EV-PRECEDENT-mem-5 and EV-PRECEDENT-mem-6 show conflicting outcomes for the same item and action.",
+        "Planner escalated: Exposure data is incomplete, preventing a definitive action based on policy criteria."
+      ],
+      "policies": [
+        {
+          "policy_id": "POL-DEX-001",
+          "action": "ALTERNATE_SOURCING",
+          "applies_to_item_id": "DEXMED-4",
+          "trigger_max_days_on_hand": 7,
+          "requirements": "Request allocation from the contracted secondary wholesaler.",
+          "approved_by": "Synthetic Supply Chain Committee",
+          "effective_date": "2025-06-01",
+          "status": "active",
+          "synthetic": true
+        },
+        {
+          "policy_id": "POL-DEX-002",
+          "action": "SWITCH_PRESENTATION",
+          "applies_to_item_id": "DEXMED-4",
+          "trigger_max_days_on_hand": 7,
+          "requirements": "Use premixed 200 mcg/50 mL bottles; smart-pump library entry required.",
+          "approved_by": "Synthetic P&T Committee",
+          "effective_date": "2025-01-15",
+          "status": "active",
+          "synthetic": true,
+          "target_item_id": "DEXMED-PX-50"
+        }
+      ],
+      "precedents": [
+        {
+          "memory_id": "mem-6",
+          "content": "Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was approved under policy POL-DEX-001. Secondary wholesaler delivered in 2 days.",
+          "item_id": "DEXMED-4",
+          "action": "ALTERNATE_SOURCING",
+          "outcome": "approved",
+          "synthetic": true,
+          "confidence": 0.8,
+          "source_ref": "seed:data/synthetic/precedents.json#P-006",
+          "provenance_label": "SYNTHETIC approved by Synthetic pharmacist (OR) on 2026-06-18",
+          "tags": [
+            "precedent",
+            "item:DEXMED-4",
+            "action:ALTERNATE_SOURCING",
+            "outcome:approved",
+            "decided:2026-06-18",
+            "synthetic",
+            "policy:POL-DEX-001"
+          ],
+          "policy_id": "POL-DEX-001",
+          "decided_at": "2026-06-18",
+          "relevance": 0.4182
+        },
+        {
+          "memory_id": "mem-5",
+          "content": "Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was rejected under policy POL-DEX-001. Secondary wholesaler lead time was 12 days, too slow to help.",
+          "item_id": "DEXMED-4",
+          "action": "ALTERNATE_SOURCING",
+          "outcome": "rejected",
+          "synthetic": true,
+          "confidence": 0.8,
+          "source_ref": "seed:data/synthetic/precedents.json#P-005",
+          "provenance_label": "SYNTHETIC rejected by Synthetic pharmacist (ICU) on 2026-02-10",
+          "tags": [
+            "precedent",
+            "item:DEXMED-4",
+            "action:ALTERNATE_SOURCING",
+            "outcome:rejected",
+            "decided:2026-02-10",
+            "synthetic",
+            "policy:POL-DEX-001"
+          ],
+          "policy_id": "POL-DEX-001",
+          "decided_at": "2026-02-10",
+          "relevance": 0.4026
+        }
+      ],
+      "superseded_precedents": [],
+      "precedent_conflicts": [
+        {
+          "memory_a": "mem-5",
+          "memory_b": "mem-6",
+          "reason": "same item and action (ALTERNATE_SOURCING) with opposite outcomes: mem-5 rejected, mem-6 approved"
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "EV-SHORTAGE-63323-0671-00-2026-10-15",
+          "kind": "shortage",
+          "summary": "openFDA shortage record: Dexmedetomidine Hydrochloride, Injection, 4 ug/1 mL (NDC 63323-671-00) (Fresenius Kabi USA, LLC), availability \"Unavailable\", updated 2026-10-15, reason: Delay in shipping of the drug",
+          "synthetic": false,
+          "provenance": {
+            "dataset": "openFDA drug shortages",
+            "synthetic": false,
+            "retrieved_via": "zetaris",
+            "detail": "Zetaris table shortstop.shortages_v"
+          },
+          "data": {
+            "record_key": "63323-0671-00@2026-10-15",
+            "package_ndc_raw": "63323-671-00",
+            "package_ndc": "63323-0671-00",
+            "product_ndc": "63323-0671",
+            "generic_name": "Dexmedetomidine Hydrochloride Injection",
+            "presentation": "Dexmedetomidine Hydrochloride, Injection, 4 ug/1 mL (NDC 63323-671-00)",
+            "company_name": "Fresenius Kabi USA, LLC",
+            "dosage_form": "Injection",
+            "status": "Current",
+            "availability_raw": "Unavailable",
+            "availability": "UNAVAILABLE",
+            "shortage_reason": "Delay in shipping of the drug",
+            "update_date": "2026-10-15",
+            "update_date_raw": "10/15/2026",
+            "initial_posting_date": "2020-04-10",
+            "rxcui": [],
+            "has_openfda_block": false,
+            "data_issues": [
+              "openfda block missing: no RxCUI or NDC Directory cross-reference on this record"
+            ]
+          }
+        },
+        {
+          "evidence_id": "EV-FORMULARY-DEXMED-4",
+          "kind": "formulary",
+          "summary": "SYNTHETIC formulary item DEXMED-4: Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) (NDC 63323-671-00)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "item_id": "DEXMED-4",
+            "ndc": "63323-671-00",
+            "generic_name": "dexmedetomidine",
+            "description": "Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi)",
+            "dosage_form": "Injection",
+            "strength": "4 mcg/mL",
+            "package_description": "as recorded by the hospital",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-INV-DEXMED-4-ICU",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory DEXMED-4 @ ICU: 6 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "ICU",
+            "on_hand_units": 6,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-INV-DEXMED-4-OR",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory DEXMED-4 @ OR: 4 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "OR",
+            "on_hand_units": 4,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-DEXMED-4-OR",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage DEXMED-4 @ OR: 28 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "OR",
+            "units": 28,
+            "days_covered": 14,
+            "avg_daily_usage": 2
+          }
+        },
+        {
+          "evidence_id": "EV-INV-DEXMED-4-PHARM",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory DEXMED-4 @ PHARM: 10 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "on_hand_units": 10,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-DEXMED-4-PHARM",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage DEXMED-4 @ PHARM: 14 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "units": 14,
+            "days_covered": 14,
+            "avg_daily_usage": 1
+          }
+        },
+        {
+          "evidence_id": "EV-EXPOSURE-DEXMED-4",
+          "kind": "exposure",
+          "summary": "exposure DEXMED-4: UNKNOWN; 14 units on hand / 3 units per day = 4.67 days (usage window 2026-10-10..2026-10-23, 2 of 3 locations with complete data)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "computed from inventory and usage",
+            "synthetic": true,
+            "retrieved_via": "computed"
+          },
+          "data": {
+            "item_id": "DEXMED-4",
+            "as_of": "2026-10-24",
+            "window": {
+              "start": "2026-10-10",
+              "end": "2026-10-23",
+              "days": 14
+            },
+            "total_on_hand": 20,
+            "total_avg_daily_usage": 3,
+            "days_on_hand": 4.67,
+            "min_location_days_on_hand": 2,
+            "complete": false,
+            "status": "UNKNOWN",
+            "locations": [
+              {
+                "location_id": "ICU",
+                "on_hand_units": 6,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 0,
+                "usage_units_in_window": 0,
+                "avg_daily_usage": null,
+                "days_on_hand": null,
+                "status": "USAGE_MISSING",
+                "notes": [
+                  "no usage rows between 2026-10-10 and 2026-10-23; usage is unknown, not zero"
+                ]
+              },
+              {
+                "location_id": "OR",
+                "on_hand_units": 4,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 28,
+                "avg_daily_usage": 2,
+                "days_on_hand": 2,
+                "status": "OK",
+                "notes": []
+              },
+              {
+                "location_id": "PHARM",
+                "on_hand_units": 10,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 14,
+                "avg_daily_usage": 1,
+                "days_on_hand": 10,
+                "status": "OK",
+                "notes": []
+              }
+            ],
+            "issues": [
+              "ICU: USAGE_MISSING"
+            ],
+            "calculation": "14 units on hand / 3 units per day = 4.67 days (usage window 2026-10-10..2026-10-23, 2 of 3 locations with complete data)"
+          }
+        },
+        {
+          "evidence_id": "EV-FORMULARY-DEXMED-PX-50",
+          "kind": "formulary",
+          "summary": "SYNTHETIC formulary item DEXMED-PX-50: Precedex (dexmedetomidine) 200 mcg/50 mL bottle (Pfizer) (NDC 0409-1454-20)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "item_id": "DEXMED-PX-50",
+            "ndc": "0409-1454-20",
+            "generic_name": "dexmedetomidine",
+            "description": "Precedex (dexmedetomidine) 200 mcg/50 mL bottle (Pfizer)",
+            "dosage_form": "Injection, solution",
+            "strength": "4 mcg/mL",
+            "package_description": "20 x 50 mL bottles",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-INV-DEXMED-PX-50-PHARM",
+          "kind": "inventory",
+          "summary": "SYNTHETIC inventory DEXMED-PX-50 @ PHARM: 40 units as of 2026-10-24",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "on_hand_units": 40,
+            "as_of": "2026-10-24"
+          }
+        },
+        {
+          "evidence_id": "EV-USAGE-DEXMED-PX-50-PHARM",
+          "kind": "usage",
+          "summary": "SYNTHETIC usage DEXMED-PX-50 @ PHARM: 14 units over 14 recorded days (2026-10-10..2026-10-23)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "location_id": "PHARM",
+            "units": 14,
+            "days_covered": 14,
+            "avg_daily_usage": 1
+          }
+        },
+        {
+          "evidence_id": "EV-EXPOSURE-DEXMED-PX-50",
+          "kind": "exposure",
+          "summary": "exposure DEXMED-PX-50: ADEQUATE; 40 units on hand / 1 units per day = 40 days (usage window 2026-10-10..2026-10-23, 1 of 1 locations with complete data)",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "computed from inventory and usage",
+            "synthetic": true,
+            "retrieved_via": "computed"
+          },
+          "data": {
+            "item_id": "DEXMED-PX-50",
+            "as_of": "2026-10-24",
+            "window": {
+              "start": "2026-10-10",
+              "end": "2026-10-23",
+              "days": 14
+            },
+            "total_on_hand": 40,
+            "total_avg_daily_usage": 1,
+            "days_on_hand": 40,
+            "min_location_days_on_hand": 40,
+            "complete": true,
+            "status": "ADEQUATE",
+            "locations": [
+              {
+                "location_id": "PHARM",
+                "on_hand_units": 40,
+                "inventory_as_of": "2026-10-24",
+                "usage_days_covered": 14,
+                "usage_units_in_window": 14,
+                "avg_daily_usage": 1,
+                "days_on_hand": 40,
+                "status": "OK",
+                "notes": []
+              }
+            ],
+            "issues": [],
+            "calculation": "40 units on hand / 1 units per day = 40 days (usage window 2026-10-10..2026-10-23, 1 of 1 locations with complete data)"
+          }
+        },
+        {
+          "evidence_id": "EV-SHORTAGE-00409-1454-20-2026-10-21",
+          "kind": "shortage",
+          "summary": "openFDA shortage record for alternative DEXMED-PX-50: availability \"Available\"",
+          "synthetic": false,
+          "provenance": {
+            "dataset": "openFDA drug shortages",
+            "synthetic": false,
+            "retrieved_via": "zetaris",
+            "detail": "Zetaris table shortstop.shortages_v"
+          },
+          "data": {
+            "record_key": "00409-1454-20@2026-10-21",
+            "package_ndc_raw": "0409-1454-20",
+            "package_ndc": "00409-1454-20",
+            "product_ndc": "00409-1454",
+            "generic_name": "Dexmedetomidine Hydrochloride Injection",
+            "presentation": "Precedex, Injection, 200 mcg/50 mL (4 mcg/mL) (NDC 0409-1454-20)",
+            "company_name": "Pfizer Inc.",
+            "dosage_form": "Injection",
+            "status": "Current",
+            "availability_raw": "Available",
+            "availability": "AVAILABLE",
+            "shortage_reason": null,
+            "update_date": "2026-10-21",
+            "update_date_raw": "10/21/2026",
+            "initial_posting_date": "2020-04-10",
+            "rxcui": [
+              "1718900",
+              "1718902",
+              "1718906",
+              "1718907",
+              "1718909",
+              "1718910",
+              "2396891",
+              "2396892"
+            ],
+            "has_openfda_block": true,
+            "data_issues": []
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-DEX-001",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-DEX-001: ALTERNATE_SOURCING for DEXMED-4 when days-on-hand <= 7; active; Request allocation from the contracted secondary wholesaler.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "policy_id": "POL-DEX-001",
+            "action": "ALTERNATE_SOURCING",
+            "applies_to_item_id": "DEXMED-4",
+            "trigger_max_days_on_hand": 7,
+            "requirements": "Request allocation from the contracted secondary wholesaler.",
+            "approved_by": "Synthetic Supply Chain Committee",
+            "effective_date": "2025-06-01",
+            "status": "active",
+            "synthetic": true
+          }
+        },
+        {
+          "evidence_id": "EV-POLICY-POL-DEX-002",
+          "kind": "policy",
+          "summary": "SYNTHETIC policy POL-DEX-002: SWITCH_PRESENTATION for DEXMED-4 -> DEXMED-PX-50 when days-on-hand <= 7; active; Use premixed 200 mcg/50 mL bottles; smart-pump library entry required.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "hospital tables hospital_pg.formulary, hospital_pg.inventory, hospital_pg.usage, hospital_pg.policies",
+            "synthetic": true,
+            "retrieved_via": "zetaris",
+            "detail": "rows are flagged synthetic in the source tables"
+          },
+          "data": {
+            "policy_id": "POL-DEX-002",
+            "action": "SWITCH_PRESENTATION",
+            "applies_to_item_id": "DEXMED-4",
+            "trigger_max_days_on_hand": 7,
+            "requirements": "Use premixed 200 mcg/50 mL bottles; smart-pump library entry required.",
+            "approved_by": "Synthetic P&T Committee",
+            "effective_date": "2025-01-15",
+            "status": "active",
+            "synthetic": true,
+            "target_item_id": "DEXMED-PX-50"
+          }
+        },
+        {
+          "evidence_id": "EV-PRECEDENT-mem-6",
+          "kind": "precedent",
+          "summary": "SYNTHETIC precedent mem-6 (approved ALTERNATE_SOURCING, confidence 0.80): Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was approved under policy POL-DEX-001. Secondary wholesaler delivered in 2 days.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "h-mem precedents",
+            "synthetic": true,
+            "retrieved_via": "h-mem",
+            "detail": "seed:data/synthetic/precedents.json#P-006"
+          },
+          "data": {
+            "memory_id": "mem-6",
+            "content": "Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was approved under policy POL-DEX-001. Secondary wholesaler delivered in 2 days.",
+            "synthetic": true,
+            "outcome": "approved",
+            "action": "ALTERNATE_SOURCING",
+            "confidence": 0.8,
+            "source_ref": "seed:data/synthetic/precedents.json#P-006"
+          }
+        },
+        {
+          "evidence_id": "EV-PRECEDENT-mem-5",
+          "kind": "precedent",
+          "summary": "SYNTHETIC precedent mem-5 (rejected ALTERNATE_SOURCING, confidence 0.80): Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was rejected under policy POL-DEX-001. Secondary wholesaler lead time was 12 days, too slow to help.",
+          "synthetic": true,
+          "provenance": {
+            "dataset": "h-mem precedents",
+            "synthetic": true,
+            "retrieved_via": "h-mem",
+            "detail": "seed:data/synthetic/precedents.json#P-005"
+          },
+          "data": {
+            "memory_id": "mem-5",
+            "content": "Shortage precedent for Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi) DEXMED-4 (NDC 63323-671-00): ALTERNATE_SOURCING was rejected under policy POL-DEX-001. Secondary wholesaler lead time was 12 days, too slow to help.",
+            "synthetic": true,
+            "outcome": "rejected",
+            "action": "ALTERNATE_SOURCING",
+            "confidence": 0.8,
+            "source_ref": "seed:data/synthetic/precedents.json#P-005"
+          }
+        }
+      ],
+      "model_calls": [
+        {
+          "requested": "meterless/auto",
+          "reported": "nvidia/nemotron-3.5-bolt-e4b",
+          "meterless": {
+            "schema": "meterless.compute_receipt.v1",
+            "receipt_id": "rcpt_req_is2h5b37",
+            "decision_id": "req_is2h5b37",
+            "requested_model": "meterless/auto",
+            "provider_model": "meterless/auto",
+            "routed_model": "nvidia/nemotron-3.5-bolt-e4b",
+            "winning_route": {
+              "model": "nvidia/nemotron-3.5-bolt-e4b",
+              "label": "Nemotron 3.5 Bolt E4B",
+              "provider": "nvidia",
+              "kind": "cloud",
+              "tier": "A"
+            },
+            "requires_review": false,
+            "phases": [
+              {
+                "phase": "final_synthesis",
+                "model": "nvidia/nemotron-3.5-bolt-e4b",
+                "ms": 84500,
+                "tokensIn": 4105,
+                "tokensOut": 1036,
+                "outputTps": 12.2603550295858,
+                "coherence": 0.3793103448275862,
+                "tier": "B",
+                "reflex_decided_in_ms": 0
+              }
+            ],
+            "usage": {
+              "input_tokens": 4105,
+              "output_tokens": 1036,
+              "total_tokens": 5141,
+              "output_tps": 12.2603550295858,
+              "latency_ms": 84500
+            },
+            "cost": {
+              "actual_usd": 0,
+              "naive_usd": 0,
+              "baseline": {
+                "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                "label": "Nemotron 3.5 Lightning 30B A3B",
+                "source": "mode-default-frontier"
+              },
+              "verifier_usd": 0,
+              "race_overhead_usd": 0
+            },
+            "savings": {
+              "amount": 0,
+              "currency": "USD",
+              "vs": "Nemotron 3.5 Lightning 30B A3B",
+              "baseline_source": "mode-default-frontier"
+            },
+            "cache": {
+              "status": "miss",
+              "losers_reclaimed": 1,
+              "partials_reclaimed": 0
+            },
+            "privacy": {
+              "path": "cloud-ok",
+              "redaction": {
+                "applied": false,
+                "spans": 0
+              }
+            },
+            "from_cache": false,
+            "losers_reclaimed": 1,
+            "receipt": {
+              "schema": "meterless.compute_receipt.v1",
+              "receipt_id": "rcpt_req_is2h5b37",
+              "request_id": "req_is2h5b37",
+              "decision_id": "req_is2h5b37",
+              "created_at": 1792925090641,
+              "status": "ok",
+              "app": "shortstop",
+              "requested_mode": "meterless/auto",
+              "prompt_preview": "d\":\"exposure\",\"summary\":\"exposure DEXMED-4: UNKNOWN; 14 units on hand / 3 units per day = 4.67 days (usage window 2026-10-10..2026-10-23, 2 of 3 locations with complete data)\"},{\"e",
+              "winning_route": {
+                "model": "nvidia/nemotron-3.5-bolt-e4b",
+                "label": "Nemotron 3.5 Bolt E4B",
+                "provider": "nvidia",
+                "kind": "cloud",
+                "tier": "A"
+              },
+              "phases": [
+                {
+                  "phase": "final_synthesis",
+                  "model": "nvidia/nemotron-3.5-bolt-e4b",
+                  "ms": 84500,
+                  "tokensIn": 4105,
+                  "tokensOut": 1036,
+                  "outputTps": 12.2603550295858,
+                  "coherence": 0.3793103448275862,
+                  "tier": "B",
+                  "reflex_decided_in_ms": 0
+                }
+              ],
+              "usage": {
+                "input_tokens": 4105,
+                "output_tokens": 1036,
+                "total_tokens": 5141,
+                "output_tps": 12.2603550295858,
+                "latency_ms": 84500
+              },
+              "cost": {
+                "actual_usd": 0,
+                "naive_usd": 0,
+                "baseline": {
+                  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                  "label": "Nemotron 3.5 Lightning 30B A3B",
+                  "source": "mode-default-frontier"
+                },
+                "verifier_usd": 0,
+                "race_overhead_usd": 0
+              },
+              "savings": {
+                "amount": 0,
+                "currency": "USD",
+                "vs": "Nemotron 3.5 Lightning 30B A3B",
+                "baseline_source": "mode-default-frontier"
+              },
+              "cache": {
+                "status": "miss",
+                "losers_reclaimed": 1,
+                "partials_reclaimed": 0
+              },
+              "privacy": {
+                "path": "cloud-ok",
+                "redaction": {
+                  "applied": false,
+                  "spans": 0
+                }
+              },
+              "cross_check": {
+                "status": "passed",
+                "risk_level": "low",
+                "raw_risk": "low",
+                "verifier": "deterministic/schema+regex",
+                "reflex_ms": 0,
+                "verifier_ms": 0,
+                "verifier_ran": false,
+                "verifier_model": null,
+                "verifier_verdict": null,
+                "verifier_error": null,
+                "verifier_tokens": null,
+                "checks": [
+                  {
+                    "type": "destructive_action",
+                    "status": "passed",
+                    "message": "No destructive ops detected."
+                  },
+                  {
+                    "type": "pii_guard",
+                    "status": "passed",
+                    "message": "No PII/credential detected in response."
+                  },
+                  {
+                    "type": "schema_validity",
+                    "status": "skipped",
+                    "message": "Not a tool call."
+                  }
+                ],
+                "recommended_action": "allow",
+                "blocking": false,
+                "app": "shortstop",
+                "destructive": false,
+                "requires_review": false
+              },
+              "consensus": {
+                "level": "agreed",
+                "tone": "green",
+                "label": "models agreed",
+                "detail": "2 of 2 models agreed \u2014 safe to trust the cheap answer",
+                "raced": 2,
+                "agree": 2,
+                "coherence": 0.379,
+                "verified": null
+              },
+              "consensus_escalation": null,
+              "fusion": null,
+              "synthesis": {
+                "ran": false,
+                "reason": "empty",
+                "aggregator_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                "ms": 13591
+              },
+              "gen_verifier": {
+                "ran": true,
+                "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                "judge_local": false,
+                "judge_was_racer": false,
+                "ms": 4599,
+                "ranked": [
+                  {
+                    "model": "nvidia/nemotron-3.5-bolt-e4b",
+                    "score": null,
+                    "reason": "",
+                    "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b"
+                  },
+                  {
+                    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                    "score": null,
+                    "reason": "",
+                    "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b"
+                  }
+                ],
+                "best_index": null,
+                "best": null,
+                "best_score": null,
+                "parse_ok": false,
+                "reason": "unparseable",
+                "scale": 100,
+                "batches": 1,
+                "batches_timed_out": 0,
+                "scored_of": 2,
+                "shortlist_of": 2,
+                "abstained": 2,
+                "tokensIn": 1573,
+                "tokensOut": 440
+              },
+              "debate": {
+                "ran": true,
+                "rounds": 1,
+                "revised": [
+                  {
+                    "model": "nvidia/nemotron-3.5-bolt-e4b",
+                    "ms": 5636,
+                    "tokensIn": 3159,
+                    "tokensOut": 247,
+                    "local": false
+                  }
+                ],
+                "winner": {
+                  "model": "nvidia/nemotron-3.5-bolt-e4b"
+                },
+                "tokensIn": 3159,
+                "tokensOut": 247,
+                "cloudTokens": 3406,
+                "cloud_usd": 0,
+                "ms": 15305,
+                "verify": {
+                  "abstained": true
+                },
+                "adopted": false
+              },
+              "quality_race": {
+                "active": true,
+                "reason": "difficulty",
+                "vote": null
+              },
+              "reasoning_scaffold": {
+                "active": true,
+                "reason": "difficulty",
+                "intent": "chat",
+                "phase": "final_synthesis",
+                "variant": "full",
+                "difficulty": 0.8,
+                "marker_compliance": true,
+                "scratch_chars": 3059,
+                "stream_filtered": false
+              },
+              "app_policy": {
+                "app": "shortstop",
+                "has_rule": true,
+                "privacy": "cloud-ok",
+                "cross_check": "auto",
+                "race_width": 6,
+                "premium_budget": null,
+                "lanes": null,
+                "requested_mode": "auto",
+                "routed_mode": "auto",
+                "mode_coerced": false
+              },
+              "budget_degrade": null,
+              "refine": null,
+              "test_time_compute": null,
+              "hmem": {
+                "injected": 3,
+                "top_score": 0.42,
+                "ids": [
+                  "mem_mvnob07h_ceft",
+                  "mem_mvno9lmy_afos",
+                  "mem_mvnosqlb_5tsx"
+                ],
+                "reason": "retrieved 3 memories",
+                "strategy": "comprehensive"
+              },
+              "tool_degraded": null,
+              "mcp": null,
+              "job": null,
+              "method": null,
+              "deliberation": null,
+              "egress": {
+                "destination": "nvidia",
+                "coverage": "pattern_floor",
+                "sent": {
+                  "prompt_chars": 4000,
+                  "context_sources": [
+                    "messages",
+                    "hmem:3 records"
+                  ],
+                  "redacted": []
+                },
+                "withheld": [],
+                "never_eligible": []
+              },
+              "verification": null,
+              "verdict": null,
+              "bar": null,
+              "score": null,
+              "graded_weight": null,
+              "eligible": null,
+              "scorecard": null,
+              "unmet": null,
+              "optimistic": null,
+              "routing": {
+                "policy": "learned-router",
+                "width": 2,
+                "of": 6,
+                "confidence": 0.432,
+                "reason": "leaning",
+                "predicted": "nvidia/nemotron-3.5-bolt-e4b",
+                "escalated": null,
+                "winner": "nvidia/nemotron-3.5-bolt-e4b",
+                "escalated_on_divergence": false,
+                "hedge": null,
+                "hedges_skipped": 0
+              },
+              "host_pressure": {
+                "thermal": "nominal",
+                "battery": null,
+                "pressure": {
+                  "battery": {
+                    "score": 0,
+                    "soft": 0.3,
+                    "hard": 0.5,
+                    "label": "nominal",
+                    "sensor": "battery%, charging"
+                  },
+                  "thermal": {
+                    "score": 0.15,
+                    "soft": 0.55,
+                    "hard": 0.8,
+                    "label": "nominal",
+                    "sensor": "thermal API"
+                  },
+                  "memory": {
+                    "score": 0,
+                    "soft": 0.7,
+                    "hard": 0.85,
+                    "label": "nominal",
+                    "sensor": "committed/swap"
+                  },
+                  "cpu": {
+                    "score": 0,
+                    "soft": 0.7,
+                    "hard": 0.9,
+                    "label": "nominal",
+                    "sensor": "30s load avg"
+                  },
+                  "gpu": {
+                    "score": 0,
+                    "soft": 0.75,
+                    "hard": 0.92,
+                    "label": "nominal",
+                    "sensor": "GPU + VRAM"
+                  },
+                  "network": {
+                    "score": 0.1,
+                    "soft": 0.5,
+                    "hard": 0.85,
+                    "label": "nominal",
+                    "sensor": "RTT to providers"
+                  },
+                  "quota": {
+                    "score": 0,
+                    "soft": 0.8,
+                    "hard": 0.95,
+                    "label": "nominal",
+                    "sensor": "per-key window"
+                  }
+                }
+              },
+              "error": "",
+              "summary": "ok \u00b7 Nemotron 3.5 Bolt E4B \u00b7 miss \u00b7 $0.0000 saved"
+            },
+            "receipt_envelope": null,
+            "served": "in-tab",
+            "mcp": null,
+            "job": {
+              "id": "job_mvnnzd4501",
+              "kind": "app_stream",
+              "lane": "auto",
+              "turn": 17,
+              "cluster": 7
+            },
+            "egress": {
+              "destination": "nvidia",
+              "coverage": "pattern_floor",
+              "sent": {
+                "prompt_chars": 4000,
+                "context_sources": [
+                  "messages",
+                  "hmem:3 records"
+                ],
+                "redacted": []
+              },
+              "withheld": [],
+              "never_eligible": []
+            },
+            "consensus": {
+              "level": "agreed",
+              "raced": 2,
+              "agreed": null,
+              "coherence": 0.379,
+              "label": "models agreed",
+              "basis": "lexical"
+            },
+            "lineage": {
+              "families": [
+                "unknown"
+              ],
+              "distinct": 1,
+              "note": "all 2 panelists share the unknown family"
+            },
+            "app": "shortstop",
+            "mode": "auto",
+            "scope": "user"
+          },
+          "routing_headers": {},
+          "response_id": "chatcmpl-aeapg97dmvnp7gg4",
+          "attempts": 1,
+          "duration_ms": 167793,
+          "http_status": 200,
+          "agent": "NightshiftPlanner",
+          "revision": 0
+        },
+        {
+          "requested": "meterless/auto",
+          "reported": "nvidia/nemotron-3.5-bolt-e4b",
+          "meterless": {
+            "schema": "meterless.compute_receipt.v1",
+            "receipt_id": "rcpt_req_c3x41e20",
+            "decision_id": "req_c3x41e20",
+            "requested_model": "meterless/auto",
+            "provider_model": "meterless/auto",
+            "routed_model": "nvidia/nemotron-3.5-bolt-e4b",
+            "winning_route": {
+              "model": "nvidia/nemotron-3.5-bolt-e4b",
+              "label": "Nemotron 3.5 Bolt E4B",
+              "provider": "nvidia",
+              "kind": "cloud",
+              "tier": "A"
+            },
+            "requires_review": false,
+            "phases": [
+              {
+                "phase": "final_synthesis",
+                "model": "nvidia/nemotron-3.5-bolt-e4b",
+                "ms": 148006,
+                "tokensIn": 917,
+                "tokensOut": 53,
+                "outputTps": 0.35809359080037295,
+                "coherence": null,
+                "tier": "B",
+                "reflex_decided_in_ms": 0
+              }
+            ],
+            "usage": {
+              "input_tokens": 917,
+              "output_tokens": 53,
+              "total_tokens": 970,
+              "output_tps": 0.35809359080037295,
+              "latency_ms": 148006
+            },
+            "cost": {
+              "actual_usd": 0,
+              "naive_usd": 0,
+              "baseline": {
+                "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                "label": "Nemotron 3.5 Lightning 30B A3B",
+                "source": "mode-default-frontier"
+              },
+              "verifier_usd": 0,
+              "race_overhead_usd": 0
+            },
+            "savings": {
+              "amount": 0,
+              "currency": "USD",
+              "vs": "Nemotron 3.5 Lightning 30B A3B",
+              "baseline_source": "mode-default-frontier"
+            },
+            "cache": {
+              "status": "miss",
+              "losers_reclaimed": 0,
+              "partials_reclaimed": 0
+            },
+            "privacy": {
+              "path": "cloud-ok",
+              "redaction": {
+                "applied": false,
+                "spans": 0
+              }
+            },
+            "from_cache": false,
+            "losers_reclaimed": 0,
+            "receipt": {
+              "schema": "meterless.compute_receipt.v1",
+              "receipt_id": "rcpt_req_c3x41e20",
+              "request_id": "req_c3x41e20",
+              "decision_id": "req_c3x41e20",
+              "created_at": 1792925238699,
+              "status": "ok",
+              "app": "shortstop",
+              "requested_mode": "meterless/auto",
+              "prompt_preview": "{\"item\":{\"item_id\":\"DEXMED-4\",\"description\":\"Dexmedetomidine HCl injection 4 mcg/mL (Fresenius Kabi)\"},\"exposure\":{\"status\":\"UNKNOWN\",\"days_on_hand\":4.67,\"complete\":false,\"calculat",
+              "winning_route": {
+                "model": "nvidia/nemotron-3.5-bolt-e4b",
+                "label": "Nemotron 3.5 Bolt E4B",
+                "provider": "nvidia",
+                "kind": "cloud",
+                "tier": "A"
+              },
+              "phases": [
+                {
+                  "phase": "final_synthesis",
+                  "model": "nvidia/nemotron-3.5-bolt-e4b",
+                  "ms": 148006,
+                  "tokensIn": 917,
+                  "tokensOut": 53,
+                  "outputTps": 0.35809359080037295,
+                  "coherence": null,
+                  "tier": "B",
+                  "reflex_decided_in_ms": 0
+                }
+              ],
+              "usage": {
+                "input_tokens": 917,
+                "output_tokens": 53,
+                "total_tokens": 970,
+                "output_tps": 0.35809359080037295,
+                "latency_ms": 148006
+              },
+              "cost": {
+                "actual_usd": 0,
+                "naive_usd": 0,
+                "baseline": {
+                  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+                  "label": "Nemotron 3.5 Lightning 30B A3B",
+                  "source": "mode-default-frontier"
+                },
+                "verifier_usd": 0,
+                "race_overhead_usd": 0
+              },
+              "savings": {
+                "amount": 0,
+                "currency": "USD",
+                "vs": "Nemotron 3.5 Lightning 30B A3B",
+                "baseline_source": "mode-default-frontier"
+              },
+              "cache": {
+                "status": "miss",
+                "losers_reclaimed": 0,
+                "partials_reclaimed": 0
+              },
+              "privacy": {
+                "path": "cloud-ok",
+                "redaction": {
+                  "applied": false,
+                  "spans": 0
+                }
+              },
+              "cross_check": {
+                "status": "passed",
+                "risk_level": "low",
+                "raw_risk": "low",
+                "verifier": "deterministic/schema+regex",
+                "reflex_ms": 1,
+                "verifier_ms": 0,
+                "verifier_ran": false,
+                "verifier_model": null,
+                "verifier_verdict": null,
+                "verifier_error": null,
+                "verifier_tokens": null,
+                "checks": [
+                  {
+                    "type": "destructive_action",
+                    "status": "passed",
+                    "message": "No destructive ops detected."
+                  },
+                  {
+                    "type": "pii_guard",
+                    "status": "passed",
+                    "message": "No PII/credential detected in response."
+                  },
+                  {
+                    "type": "schema_validity",
+                    "status": "skipped",
+                    "message": "Not a tool call."
+                  }
+                ],
+                "recommended_action": "allow",
+                "blocking": false,
+                "app": "shortstop",
+                "destructive": false,
+                "requires_review": false
+              },
+              "consensus": {
+                "level": "solo",
+                "tone": "neutral",
+                "label": "single route",
+                "detail": "one model handled this \u2014 no cross-model agreement to check",
+                "raced": 1,
+                "agree": 1,
+                "coherence": null,
+                "verified": null
+              },
+              "consensus_escalation": null,
+              "fusion": null,
+              "synthesis": null,
+              "gen_verifier": null,
+              "debate": null,
+              "quality_race": {
+                "active": true,
+                "reason": "difficulty",
+                "vote": null
+              },
+              "reasoning_scaffold": {
+                "active": true,
+                "reason": "difficulty",
+                "intent": "chat",
+                "phase": "final_synthesis",
+                "variant": "full",
+                "difficulty": 0.8,
+                "marker_compliance": false,
+                "scratch_chars": 0,
+                "stream_filtered": false
+              },
+              "app_policy": {
+                "app": "shortstop",
+                "has_rule": true,
+                "privacy": "cloud-ok",
+                "cross_check": "auto",
+                "race_width": 6,
+                "premium_budget": null,
+                "lanes": null,
+                "requested_mode": "auto",
+                "routed_mode": "auto",
+                "mode_coerced": false
+              },
+              "budget_degrade": null,
+              "refine": null,
+              "test_time_compute": null,
+              "hmem": null,
+              "tool_degraded": null,
+              "mcp": null,
+              "job": null,
+              "method": null,
+              "deliberation": null,
+              "egress": {
+                "destination": "nvidia",
+                "coverage": "pattern_floor",
+                "sent": {
+                  "prompt_chars": 1551,
+                  "context_sources": [
+                    "messages"
+                  ],
+                  "redacted": []
+                },
+                "withheld": [],
+                "never_eligible": []
+              },
+              "verification": null,
+              "verdict": null,
+              "bar": null,
+              "score": null,
+              "graded_weight": null,
+              "eligible": null,
+              "scorecard": null,
+              "unmet": null,
+              "optimistic": null,
+              "routing": {
+                "policy": "learned-router",
+                "width": 2,
+                "of": 6,
+                "confidence": 0.419,
+                "reason": "leaning",
+                "predicted": "nvidia/nemotron-3.5-bolt-e4b",
+                "escalated": null,
+                "winner": "nvidia/nemotron-3.5-bolt-e4b",
+                "escalated_on_divergence": false,
+                "hedge": null,
+                "hedges_skipped": 0
+              },
+              "host_pressure": {
+                "thermal": "nominal",
+                "battery": null,
+                "pressure": {
+                  "battery": {
+                    "score": 0,
+                    "soft": 0.3,
+                    "hard": 0.5,
+                    "label": "nominal",
+                    "sensor": "battery%, charging"
+                  },
+                  "thermal": {
+                    "score": 0.15,
+                    "soft": 0.55,
+                    "hard": 0.8,
+                    "label": "nominal",
+                    "sensor": "thermal API"
+                  },
+                  "memory": {
+                    "score": 0,
+                    "soft": 0.7,
+                    "hard": 0.85,
+                    "label": "nominal",
+                    "sensor": "committed/swap"
+                  },
+                  "cpu": {
+                    "score": 0,
+                    "soft": 0.7,
+                    "hard": 0.9,
+                    "label": "nominal",
+                    "sensor": "30s load avg"
+                  },
+                  "gpu": {
+                    "score": 0,
+                    "soft": 0.75,
+                    "hard": 0.92,
+                    "label": "nominal",
+                    "sensor": "GPU + VRAM"
+                  },
+                  "network": {
+                    "score": 0.1,
+                    "soft": 0.5,
+                    "hard": 0.85,
+                    "label": "nominal",
+                    "sensor": "RTT to providers"
+                  },
+                  "quota": {
+                    "score": 0,
+                    "soft": 0.8,
+                    "hard": 0.95,
+                    "label": "nominal",
+                    "sensor": "per-key window"
+                  }
+                }
+              },
+              "error": "",
+              "summary": "ok \u00b7 Nemotron 3.5 Bolt E4B \u00b7 miss \u00b7 $0.0000 saved"
+            },
+            "receipt_envelope": null,
+            "served": "in-tab",
+            "mcp": null,
+            "job": {
+              "id": "job_mvnnzd4501",
+              "kind": "app_stream",
+              "lane": "auto",
+              "turn": 18,
+              "cluster": 8
+            },
+            "egress": {
+              "destination": "nvidia",
+              "coverage": "pattern_floor",
+              "sent": {
+                "prompt_chars": 1551,
+                "context_sources": [
+                  "messages"
+                ],
+                "redacted": []
+              },
+              "withheld": [],
+              "never_eligible": []
+            },
+            "consensus": {
+              "level": "solo",
+              "raced": 1,
+              "agreed": null,
+              "coherence": null,
+              "label": "single route",
+              "basis": "lexical"
+            },
+            "lineage": {
+              "families": [
+                "unknown"
+              ],
+              "distinct": 1,
+              "note": "1 distinct lineages across 1 panelists"
+            },
+            "app": "shortstop",
+            "mode": "auto",
+            "scope": "user"
+          },
+          "routing_headers": {},
+          "response_id": "chatcmpl-4zdr684tmvnpb1x8",
+          "attempts": 1,
+          "duration_ms": 148056,
+          "http_status": 200,
+          "agent": "PrecedentCritic+NightshiftCritic",
+          "revision": 0
+        }
+      ],
+      "limitations": [
+        "Hospital formulary, inventory, usage, policies and precedents are SYNTHETIC.",
+        "Days-on-hand assumes recent average usage continues; it is not a demand forecast.",
+        "The openFDA record has no openfda cross-reference block (no RxCUI); identity rests on the package NDC alone."
+      ]
+    }
+  ],
+  "related_matches": [],
+  "data_issues": [
+    "63323-0671-00@2026-10-15: openfda block missing: no RxCUI or NDC Directory cross-reference on this record"
+  ],
+  "finished_at": "2026-10-25T10:47:18.738Z",
+  "execution_time_seconds": 320.917
+}

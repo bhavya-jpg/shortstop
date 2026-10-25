@@ -1,0 +1,6 @@
+{
+  "scenario_id": "scenario-1-furosemide",
+  "description": "Furosemide 40 mg/4 mL vials (NDC 0409-6102-26) are reported Unavailable by openFDA. Synthetic stock is about 2.5 days. In-force synthetic policies permit a presentation switch, a restriction and alternate sourcing; H-MEM holds a superseded and a current precedent.",
+  "expected_outcome": "PENDING_APPROVAL with validated candidates",
+  "input": { "as_of": "2026-10-24", "trigger": { "package_ndc": "0409-6102-26" } }
+}

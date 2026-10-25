@@ -1,0 +1,17 @@
+{
+  "target": "register-hospital",
+  "started_at": "2026-10-25T10:11:37.836Z",
+  "steps": [
+    {
+      "name": "hospital-datasource",
+      "status": "PASS",
+      "detail": "HTTP 200; 0 rows; []"
+    },
+    {
+      "name": "hospital-tables",
+      "status": "PASS",
+      "detail": "HTTP 200; 0 rows; []"
+    }
+  ],
+  "ok": true
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "model_requested": "meterless/text",
+    "http": 200,
+    "ms": 949,
+    "reply": "ok",
+    "model_reported": "nvidia/nemotron-3.5-bolt-e4b",
+    "receipt_id": "rcpt_req_6xzmmka7",
+    "requested_model": "meterless/text",
+    "provider_model": "meterless/auto",
+    "routed_model": "nvidia/nemotron-3.5-bolt-e4b",
+    "winning_route": {
+      "model": "nvidia/nemotron-3.5-bolt-e4b",
+      "label": "Nemotron 3.5 Bolt E4B",
+      "provider": "nvidia",
+      "kind": "cloud",
+      "tier": "A"
+    },
+    "phases": [
+      {
+        "phase": "final_synthesis",
+        "model": "nvidia/nemotron-3.5-bolt-e4b",
+        "ms": 800
+      }
+    ]
+  },
+  {
+    "model_requested": "meterless/judge",
+    "http": 200,
+    "ms": 295,
+    "reply": "ok",
+    "model_reported": "nvidia/nemotron-3.5-bolt-e4b",
+    "receipt_id": "rcpt_req_l288v8a7",
+    "requested_model": "meterless/judge",
+    "provider_model": "meterless/auto",
+    "routed_model": "nvidia/nemotron-3.5-bolt-e4b",
+    "winning_route": {
+      "model": "nvidia/nemotron-3.5-bolt-e4b",
+      "label": "Nemotron 3.5 Bolt E4B",
+      "provider": "nvidia",
+      "kind": "cloud",
+      "tier": "A"
+    },
+    "phases": [
+      {
+        "phase": "final_synthesis",
+        "model": "nvidia/nemotron-3.5-bolt-e4b",
+        "ms": 249
+      }
+    ]
+  }
+]

@@ -1,0 +1,73 @@
+{
+  "target": "zetaris",
+  "started_at": "2026-10-25T10:49:27.285Z",
+  "steps": [
+    {
+      "name": "configuration (names only)",
+      "status": "PASS",
+      "detail": "set: [ZETARIS_REST_URL, ZETARIS_ORG_ID, ZETARIS_API_KEY] missing: [] placeholder: []"
+    },
+    {
+      "name": "REST API reachable (http://localhost:8888/api/v1.0)",
+      "status": "PASS",
+      "detail": "HTTP 405 (any HTTP answer proves the API is up; auth is checked next)"
+    },
+    {
+      "name": "GET /datasource/datasources",
+      "status": "PASS",
+      "detail": "HTTP 200, 1 datasources",
+      "evidence": {
+        "body_keys": [
+          "0"
+        ]
+      }
+    },
+    {
+      "name": "SELECT 1",
+      "status": "PASS",
+      "detail": "HTTP 200 in 437 ms; response keys [headers, data, total, timeUsed]",
+      "evidence": {
+        "response_keys": [
+          "headers",
+          "data",
+          "total",
+          "timeUsed"
+        ]
+      }
+    },
+    {
+      "name": "SHOW LIGHTNING DATABASES",
+      "status": "PASS",
+      "detail": "3 rows: [[\"NY_TAXI\",\"NY Taxi sample data\",\"6\"],[\"OPENFDA_REST\",\"openFDA drug shortages, public REST source\",\"805\"],[\"TPCDS_DB\",\"TPC-DS benchmark sample data\",\"307\"]]",
+      "evidence": {
+        "rows": [
+          [
+            "NY_TAXI",
+            "NY Taxi sample data",
+            "6"
+          ],
+          [
+            "OPENFDA_REST",
+            "openFDA drug shortages, public REST source",
+            "805"
+          ],
+          [
+            "TPCDS_DB",
+            "TPC-DS benchmark sample data",
+            "307"
+          ]
+        ],
+        "extra": {
+          "headers": [
+            "name",
+            "description",
+            "id"
+          ],
+          "total": 3,
+          "timeUsed": 588
+        }
+      }
+    }
+  ],
+  "ok": true
+}

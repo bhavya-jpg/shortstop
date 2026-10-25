@@ -1,0 +1,6 @@
+{
+  "scenario_id": "scenario-2-sodium-bicarbonate",
+  "description": "Sodium bicarbonate 8.4% 50 mL vials (NDC 0409-6625-35) are reported Unavailable by openFDA, but the synthetic hospital holds about 6 weeks of stock. No policy trigger is met.",
+  "expected_outcome": "MONITOR_PENDING_ACKNOWLEDGEMENT, no planning",
+  "input": { "as_of": "2026-10-24", "trigger": { "package_ndc": "0409-6625-35" } }
+}
