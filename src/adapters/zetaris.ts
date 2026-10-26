@@ -15,7 +15,7 @@ export class ZetarisError extends Error {
   override name = "ZetarisError";
   constructor(
     message: string,
-    readonly kind: "config" | "unreachable" | "timeout" | "unauthorized" | "bad_request" | "server" | "response_shape",
+    readonly kind: "config" | "unreachable" | "timeout" | "unauthorized" | "bad_request" | "server" | "upstream" | "response_shape",
     readonly httpStatus?: number,
     readonly retryable = false
   ) {
@@ -165,6 +165,14 @@ function httpError(status: number, body: string): ZetarisError {
   // Observed on the live service (2026-10-25): an invalid or revoked API key is
   // answered with HTTP 400 {"msg":"Not Allowed"}, not 401.
   const notAllowed = status === 400 && /"msg"\s*:\s*"Not Allowed"/i.test(body);
+  // Observed live (2026-10-26): when the source behind a REST table (openFDA)
+  // has a transient 5xx, Zetaris reports it as HTTP 400 "REST API call failed:
+  // Server returned HTTP response code: 500 for URL ...". That is retryable.
+  const upstream = /REST API call failed: Server returned HTTP response code: 5\d\d/i.exec(body);
+  if (upstream) {
+    const url = /for URL: (\S+)/.exec(body)?.[1]?.replace(/\\n.*$/, "") ?? "the REST source";
+    return new ZetarisError(`The source behind a Zetaris REST table failed transiently (${upstream[0].replace(/^.*code: /, "HTTP ")} from ${url.split("?")[0]})`, "upstream", status, true);
+  }
   if (status === 401 || status === 403 || notAllowed) {
     return new ZetarisError(`Zetaris rejected the API key (HTTP ${status}${notAllowed ? ' "Not Allowed"' : ""}). Create a new key under Management → API Tokens and update ZETARIS_API_KEY.`, "unauthorized", status);
   }

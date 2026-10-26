@@ -77,6 +77,19 @@ describe("ZetarisClient (unit, fake fetch)", () => {
     expect(f.calls).toHaveLength(1);
   });
 
+  it("retries when the REST source behind a Zetaris table has a transient 5xx", async () => {
+    // Exact body returned by the live instance when openFDA answered 500.
+    const body = JSON.stringify({ msg: "REST API call failed: Server returned HTTP response code: 500 for URL: https://api.fda.gov/drug/shortages.json?search=status:%22Current%22&limit=1000&skip=1000\n  URL: GET https://api.fda.gov/drug/shortages.json" });
+    const f = fakeFetch([new Response(body, { status: 400 }), json({ headers: ["one"], data: [["1"]] })]);
+    const r = await new ZetarisClient(zcfg, { fetch: f.fn, sleep: noSleep }).query("SELECT 1 AS one", ["one"] as const);
+    expect(r.attempts).toBe(2);
+    const g = fakeFetch([0, 1, 2].map(() => new Response(body, { status: 400 })));
+    const err = await new ZetarisClient(zcfg, { fetch: g.fn, sleep: noSleep }).query("SELECT 1", ["one"] as const).catch((e) => e);
+    expect(err.kind).toBe("upstream");
+    expect(err.message).toMatch(/api\.fda\.gov\/drug\/shortages\.json/);
+    expect(err.message).not.toMatch(/search=/);
+  });
+
   it("rejects unexpected response shapes instead of guessing", async () => {
     const z = (r: Response) => new ZetarisClient(zcfg, { fetch: fakeFetch([r]).fn, sleep: noSleep });
     await expect(z(json({ rows: [] })).query("SELECT 1", ["one"] as const)).rejects.toThrow(/no "data" field/);
