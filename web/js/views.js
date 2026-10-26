@@ -367,6 +367,39 @@ export async function systemView(ctx) {
     }
   };
   load();
+
+  // Cross-source query panel: one real SQL join through Zetaris (live only).
+  const qOut = h("div", { class: "q-out" }, h("p", { class: "muted" }, meta.mode === "live" ? "Runs one SQL statement through Zetaris and shows exactly what came back." : "Live mode only: sample mode makes no Zetaris call."));
+  const qBtn = h("button", { class: "btn btn-dark", type: "button", disabled: meta.mode !== "live" }, "Run cross-source query", h("span", { "aria-hidden": "true" }, "→"));
+  qBtn.addEventListener("click", async () => {
+    qBtn.disabled = true;
+    const t0 = performance.now();
+    qOut.replaceChildren(h("div", { class: "run-state" }, h("span", { class: "spinner" }), "Querying Zetaris…"));
+    try {
+      const r = await api.zetarisJoin();
+      qOut.replaceChildren(
+        h("pre", { class: "q-sql" }, r.sql),
+        h("div", { class: "dp-meta", style: { margin: "14px 0" } },
+          h("span", { class: "chip ok" }, `HTTP ${r.http_status}`), h("span", { class: "chip" }, `${r.row_count} rows`),
+          h("span", { class: "chip" }, `${fmtDuration(r.duration_ms)} in Zetaris`), h("span", { class: "chip info" }, `${r.attempts} attempt(s)`),
+          ...r.sources.map((src) => h("span", { class: "chip mem" }, src))),
+        h("table", { class: "q-table" },
+          h("thead", {}, h("tr", {}, ["item_id", "ndc", "openFDA availability", "openFDA updated", "manufacturer", "on hand (synthetic)"].map((c) => h("th", {}, c)))),
+          h("tbody", {}, r.rows.map((row, i) => h("tr", { class: "reveal", style: { "--i": i } },
+            h("td", {}, row.item_id), h("td", {}, row.ndc),
+            h("td", {}, h("span", { class: `chip ${/^unavail/i.test(row.availability) ? "unavail" : /^limited/i.test(row.availability) ? "warn" : "ok"}` }, row.availability)),
+            h("td", {}, row.update_date), h("td", {}, row.company_name), h("td", {}, String(Number(row.on_hand))))))));
+    } catch (err) {
+      qOut.replaceChildren(h("p", { class: "muted" }, `Query failed after ${fmtDuration(performance.now() - t0)}: ${err.message}`));
+    } finally {
+      qBtn.disabled = meta.mode !== "live";
+    }
+  });
+  const queryPanel = h("div", { class: "glass panel", style: { marginTop: "18px" } },
+    h("div", { class: "panel-head" }, h("h2", {}, "Cross-source query · Zetaris"), qBtn),
+    h("p", { class: "muted", style: { margin: "0 0 14px", fontSize: "13.5px" } }, "Public openFDA shortage records (Zetaris REST tables) joined to the synthetic hospital formulary and inventory (PostgreSQL datasource), in one SQL statement."),
+    qOut);
+
   return [
     h("section", { class: "hero" },
       h("div", {}, h("div", { class: "eyebrow" }, "System"), h("h1", {}, "How the pieces ", h("em", {}, "connect."))),
@@ -374,6 +407,7 @@ export async function systemView(ctx) {
         h("button", { class: "btn btn-ghost", type: "button", onclick: load }, "Re-check services"))),
     h("div", { class: "glass arch-wrap corner" }, architecture(meta.mode)),
     healthBox,
+    queryPanel,
     facts,
   ];
 }

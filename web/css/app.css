@@ -599,3 +599,10 @@ textarea.input { font-family: var(--f-ui); resize: vertical; min-height: 64px; }
   .inview { opacity: 1; transform: none; }
   .l-title .word { transform: none; }
 }
+
+/* cross-source query panel */
+.q-sql { margin: 0; white-space: pre-wrap; font: 12.5px/1.6 var(--f-mono); color: var(--forest); background: var(--paper-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.q-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.q-table th { text-align: left; font: 500 10.5px var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); padding: 10px 12px; border-bottom: 1px solid var(--line-2); }
+.q-table td { padding: 11px 12px; border-bottom: 1px solid var(--line); font-family: var(--f-mono); font-size: 12.5px; }
+.q-table tr:hover td { background: rgba(20, 32, 28, 0.03); }

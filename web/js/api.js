@@ -21,5 +21,6 @@ export const api = {
   review: (runId, decisionId, body) =>
     call("POST", `/api/runs/${encodeURIComponent(runId)}/decisions/${encodeURIComponent(decisionId)}/review`, body),
   precedents: (item) => call("GET", `/api/precedents${item ? `?item=${encodeURIComponent(item)}` : ""}`),
+  zetarisJoin: () => call("GET", "/api/zetaris/join"),
   events: (id) => new EventSource(`/api/runs/${encodeURIComponent(id)}/events`),
 };

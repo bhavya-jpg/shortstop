@@ -92,6 +92,12 @@ describe("web API (sample mode)", () => {
     expect(index.headers.get("content-type")).toMatch(/text\/html/);
   });
 
+  it("refuses the Zetaris cross-source query in sample mode", async () => {
+    const r = await fetch(`${base}/api/zetaris/join`);
+    expect(r.status).toBe(409);
+    expect((await json(r)).error).toMatch(/live mode/);
+  });
+
   it("serves precedents with their audit history", async () => {
     const list = await get("/api/precedents?item=FUR-INJ-40");
     expect(list.length).toBeGreaterThan(0);

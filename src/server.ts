@@ -311,6 +311,20 @@ export function createServer(opts: ServerOptions): http.Server {
       }
     }
 
+    // One real cross-source query through Zetaris: public openFDA shortages
+    // joined to the hospital formulary and inventory. Live mode only.
+    if (method === "GET" && parts[0] === "zetaris" && parts[1] === "join") {
+      if (cfg.mode !== "live" || !cfg.zetaris) throw new HttpError(409, "the cross-source query runs only in live mode; sample mode makes no Zetaris call");
+      const t = cfg.zetaris.tables;
+      const sql =
+        `SELECT f.item_id, f.ndc, s.availability, s.update_date, s.company_name, sum(i.on_hand_units) AS on_hand\n` +
+        `FROM ${t.formulary} f\n  JOIN ${t.shortages} s ON s.package_ndc = f.ndc\n  JOIN ${t.inventory} i ON i.item_id = f.item_id\n` +
+        `GROUP BY f.item_id, f.ndc, s.availability, s.update_date, s.company_name\nORDER BY f.item_id`;
+      const z = new ZetarisClient({ ...cfg.zetaris, timeoutMs: 90_000 });
+      const r = await z.query(sql, ["item_id", "ndc", "availability", "update_date", "company_name", "on_hand"] as const);
+      return sendJson(res, 200, { sql, rows: r.rows, row_count: r.rowCount, duration_ms: r.durationMs, http_status: r.httpStatus, attempts: r.attempts, sources: [t.shortages, t.formulary, t.inventory] });
+    }
+
     if (method === "GET" && parts[0] === "precedents") {
       const memory = openMemory(cfg);
       const item = url.searchParams.get("item");
