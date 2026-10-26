@@ -23,6 +23,7 @@ The table lists only what has actually been verified. Live evidence is in [`outp
 | Live scenario 2 (sodium bicarbonate) | **Verified live**: 45 days of stock, planning skipped, no chat call → `MONITOR_PENDING_ACKNOWLEDGEMENT` | `output_examples/live/scenario-2-*` |
 | Live scenario 3 (dexmedetomidine) | **Verified live**: ICU usage missing and conflicting precedents. Escalated by the validator's exposure rule, the deterministic precedent critic, the Nemotron critic and the planner → `ESCALATED` | `output_examples/live/scenario-3-*` |
 | Zetaris restart after Docker stops | **Verified**: `docker compose stop` makes live runs fail explicitly; after `docker compose start`, `verify.sh` passes 9/9 and the registrations survive | see [Restarting Zetaris](#restarting-zetaris) |
+| Web UI (`npm run ui:sample`, `npm run ui:live`) | Working in sample mode; API covered by `tests/server/` | see [Web UI](#web-ui) |
 | Live-mode failure handling | Working: explicit error, no fallback | `tests/adapters/failure-paths.test.ts` (real sockets) |
 | NVIDIA Nemotron via Nightshift | **Every observed live call was served by `nvidia/nemotron-3.5-bolt-e4b`** (NVIDIA cloud), per Nightshift's compute receipts. ShortStop sends `meterless/auto` and does **not** pin a model. The documented class routes `meterless/text` and `meterless/judge` also resolved through `meterless/auto`. See [AI and model usage](#ai-and-model-usage) | `output_examples/live/nemotron-class-route-test.json` |
 
@@ -43,6 +44,28 @@ SAMPLE_MODE=true npm run shortstop -- review --run <run_id> --decision <decision
   --outcome approved --reviewer "Pharmacist name" --note "why"
 SAMPLE_MODE=true npm run shortstop -- precedents --item FUR-INJ-40   # memory and audit history
 ```
+
+## Web UI
+
+```bash
+npm run ui:sample     # sample mode, http://127.0.0.1:8000 (no sponsor services needed)
+npm run ui:live       # live mode: Zetaris and Nightshift must be running and configured in .env
+```
+
+The UI is served by `src/server.ts` (Node's built-in `http`, no extra dependencies) and drives the same workflow, validator, H-MEM memory and review code as the CLI.
+
+| View | What it shows |
+|---|---|
+| **Overview** | Landing page. The hero card shows the most recent stored decision (a live run if one exists), labelled with its mode |
+| **Command** | Incoming shortage alerts (the three scenarios, or any package NDC). **Run analysis** streams the run's real trace events over Server-Sent Events into an animated agent pipeline and a trace feed, then renders the decision package |
+| **Decision package** | Days-on-hand with per-location stock bars against the 7- and 14-day thresholds; validated candidates with clickable evidence IDs (the drawer shows the underlying record and its provenance); H-MEM precedents, including superseded ones; escalation reasons; Nightshift compute receipts; and **approve / reject / acknowledge** |
+| **Decisions** | Every stored run, labelled **Live** or **Sample**, with its review state. Opening a run replays its recorded trace through the diagram, without re-running it |
+| **Memory** | H-MEM precedents per formulary item as an animated graph of supersessions and conflicts, with each record's trust-ledger history |
+| **System** | Animated architecture diagram plus live service health. Zetaris `SELECT 1` and Nightshift discovery only; no model call |
+
+The UI opens on a landing page (header, hero with the latest stored run, marquee, how it works, integrations, FAQ, footer); the console lives at `#/command`. Design: an editorial "apothecary" system. It has bone-paper backgrounds with a subtle grain, deep forest green for brand surfaces and brass for accents. Each decision state has one mineral colour: ochre = pending approval, clay = escalated, sage = monitor. Slate marks model calls and plum marks H-MEM memory. Type is Fraunces (display), Geist (UI) and Geist Mono (data). The drafting details (hairline grid, crosshair corners, mono labels) draw on the Awwwards Site of the Day Heron AI, and the calm editorial serif on Odyssée. Motion honours `prefers-reduced-motion`.
+
+The server binds to `127.0.0.1` and has **no authentication**; it is meant for a local demo. It never sends configuration values to the browser. One run at a time, because the H-MEM store is a local file.
 
 ### Scenarios
 
