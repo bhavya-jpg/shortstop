@@ -77,7 +77,7 @@ function heroCard(data) {
         h("div", { class: "l-card-title" }, d.item.description),
         h("div", { class: "l-card-cols" },
           h("div", {},
-            h("div", { class: "l-doh" }, doh, h("small", {}, "days on hand")),
+            h("div", { class: "l-doh" }, doh, h("small", {}, ex.days_on_hand === null ? "days on hand: not computable" : `days on hand${ex.complete ? "" : " (partial)"}`)),
             h("div", { class: "l-mini-bars" }, bars)),
           h("ul", { class: "l-steps" }, steps.map((st, i) => h("li", { class: st.cls ?? "", style: { "--i": i } }, h("i", {}, "✓"), st.t)))),
         h("div", { class: "l-card-foot" },
