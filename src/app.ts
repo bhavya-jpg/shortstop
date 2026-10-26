@@ -29,8 +29,12 @@ export function openMemory(cfg: AppConfig): PrecedentMemory {
   return new PrecedentMemory({ persistDir: path.join(stateDirFor(cfg), "hmem") });
 }
 
-export async function buildDeps(cfg: AppConfig, runId: string, opts: { echo?: boolean } = {}): Promise<AppDeps> {
-  const tracer = new Tracer({ runId, mode: cfg.mode, logDir: cfg.logDir, echo: opts.echo ?? true });
+export async function buildDeps(
+  cfg: AppConfig,
+  runId: string,
+  opts: { echo?: boolean; onEvent?: (event: Record<string, unknown>) => void } = {}
+): Promise<AppDeps> {
+  const tracer = new Tracer({ runId, mode: cfg.mode, logDir: cfg.logDir, echo: opts.echo ?? true, ...(opts.onEvent ? { onEvent: opts.onEvent } : {}) });
   const stateDir = stateDirFor(cfg);
   const memory = openMemory(cfg);
   const common = {

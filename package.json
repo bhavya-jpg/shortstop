@@ -18,7 +18,10 @@
     "data:synthetic": "tsx scripts/generate-synthetic.ts",
     "data:postgres-seed": "tsx scripts/generate-postgres-seed.ts",
     "examples": "tsx scripts/generate-examples.ts",
-    "test:live": "vitest run --config vitest.live.config.ts"
+    "test:live": "vitest run --config vitest.live.config.ts",
+    "ui": "tsx src/serve.ts",
+    "ui:sample": "SAMPLE_MODE=true tsx src/serve.ts",
+    "ui:live": "SAMPLE_MODE=false tsx src/serve.ts"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",

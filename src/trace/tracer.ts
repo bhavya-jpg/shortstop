@@ -46,6 +46,8 @@ export interface TracerOptions {
   logDir?: string; // omit to keep events in memory only (tests)
   echo?: boolean;
   clock?: () => Date;
+  // Receives every event after redaction, e.g. to stream a run to the web UI.
+  onEvent?: (event: Record<string, unknown>) => void;
 }
 
 export class Tracer {
@@ -56,12 +58,14 @@ export class Tracer {
   private readonly events: Record<string, unknown>[] = [];
   private readonly echo: boolean;
   private readonly clock: () => Date;
+  private readonly onEvent?: (event: Record<string, unknown>) => void;
 
   constructor(opts: TracerOptions) {
     this.runId = opts.runId;
     this.mode = opts.mode;
     this.echo = opts.echo ?? false;
     this.clock = opts.clock ?? (() => new Date());
+    if (opts.onEvent) this.onEvent = opts.onEvent;
     if (opts.logDir) {
       fs.mkdirSync(opts.logDir, { recursive: true });
       this.file = path.join(opts.logDir, `trace-${opts.runId}.jsonl`);
@@ -80,6 +84,7 @@ export class Tracer {
       ...e,
     }) as Record<string, unknown>;
     this.events.push(line);
+    this.onEvent?.(line);
     if (this.file) fs.appendFileSync(this.file, JSON.stringify(line) + "\n", "utf-8");
     if (this.echo) {
       const level = e.status === "failure" ? "ERROR" : e.status === "rejected" || e.status === "escalated" ? "WARN" : "INFO";
