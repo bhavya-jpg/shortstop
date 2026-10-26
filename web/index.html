@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShortStop · Drug-shortage response for hospital pharmacy</title>
+  <meta name="description" content="ShortStop turns a drug-shortage alert into an evidence-backed decision a pharmacist can approve. Demonstration system, not clinical decision support." />
+  <meta name="theme-color" content="#17332d" />
+  <link rel="icon" href="/assets/mark.svg" type="image/svg+xml" />
+  <!-- Fonts load from Google Fonts when online; system fallbacks keep the UI usable offline (sample mode). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <a class="skip" href="#view">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#/" aria-label="ShortStop home">
+        <img src="/assets/mark.svg" alt="" width="28" height="28" />
+        <span class="brand-name">ShortStop</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#/" data-route="home">Overview</a>
+        <a href="#/command" data-route="command">Console</a>
+        <a href="#/decisions" data-route="decisions">Decisions</a>
+        <a href="#/memory" data-route="memory">Memory</a>
+        <a href="#/system" data-route="system">System</a>
+      </nav>
+      <div class="header-right">
+        <span class="mode-pill" id="mode-pill">—</span>
+        <span class="svc-dots" aria-label="Service status">
+          <span class="svc" id="svc-zetaris" title="Zetaris"><i></i>Zetaris</span>
+          <span class="svc" id="svc-nightshift" title="Meterless Nightshift"><i></i>Nightshift</span>
+          <span class="svc" id="svc-hmem" title="H-MEM"><i></i>H-MEM</span>
+        </span>
+        <a class="btn btn-dark btn-sm header-cta" href="#/command">Open console <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="view" class="view" tabindex="-1"></main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-scrim" data-close></div>
+    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <button class="icon-btn drawer-close" data-close aria-label="Close">✕</button>
+      <div id="drawer-body"></div>
+    </aside>
+  </div>
+
+  <div class="toast-stack" id="toasts" aria-live="polite"></div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
