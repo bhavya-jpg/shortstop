@@ -1,0 +1,19 @@
+# Render Blueprint: the public demo runs in SAMPLE mode (bundled openFDA
+# snapshot, synthetic hospital data, rule-based agents, no sponsor calls).
+# Live mode needs a reachable Zetaris instance and Nightshift, and the server
+# refuses to bind publicly in live mode because the UI has no authentication.
+services:
+  - type: web
+    name: shortstop
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev
+    startCommand: npm run -s ui
+    healthCheckPath: /api/meta
+    envVars:
+      - key: SAMPLE_MODE
+        value: "true"
+      - key: HOST
+        value: 0.0.0.0
+      - key: NODE_VERSION
+        value: "24"

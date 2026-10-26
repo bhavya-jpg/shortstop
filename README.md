@@ -61,11 +61,17 @@ The UI is served by `src/server.ts` (Node's built-in `http`, no extra dependenci
 | **Decision package** | Days-on-hand with per-location stock bars against the 7- and 14-day thresholds; validated candidates with clickable evidence IDs (the drawer shows the underlying record and its provenance); H-MEM precedents, including superseded ones; escalation reasons; Nightshift compute receipts; and **approve / reject / acknowledge** |
 | **Decisions** | Every stored run, labelled **Live** or **Sample**, with its review state. Opening a run replays its recorded trace through the diagram, without re-running it |
 | **Memory** | H-MEM precedents per formulary item as an animated graph of supersessions and conflicts, with each record's trust-ledger history |
-| **System** | Animated architecture diagram plus live service health. Zetaris `SELECT 1` and Nightshift discovery only; no model call |
+| **System** | Animated architecture diagram plus live service health. Zetaris `SELECT 1` and Nightshift discovery only; no model call. In live mode, **Run cross-source query** runs one Zetaris SQL join of the openFDA REST tables with the hospital PostgreSQL tables and shows the rows |
 
 The UI opens on a landing page (header, hero with the latest stored run, marquee, how it works, integrations, FAQ, footer); the console lives at `#/command`. Design: an editorial "apothecary" system. It has bone-paper backgrounds with a subtle grain, deep forest green for brand surfaces and brass for accents. Each decision state has one mineral colour: ochre = pending approval, clay = escalated, sage = monitor. Slate marks model calls and plum marks H-MEM memory. Type is Fraunces (display), Geist (UI) and Geist Mono (data). The drafting details (hairline grid, crosshair corners, mono labels) draw on the Awwwards Site of the Day Heron AI, and the calm editorial serif on Odyssée. Motion honours `prefers-reduced-motion`.
 
-The server binds to `127.0.0.1` and has **no authentication**; it is meant for a local demo. It never sends configuration values to the browser. One run at a time, because the H-MEM store is a local file.
+The server binds to `127.0.0.1` and has **no authentication**; it is meant for a local demo. It never sends configuration values to the browser. One run at a time, because the H-MEM store is a local file. Setting `HOST` to a public address is allowed only in sample mode: in live mode the server refuses to start, so a public copy can never spend sponsor credentials.
+
+### Hosted demo (sample mode)
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/bhavya-jpg/shortstop)
+
+[`render.yaml`](render.yaml) deploys the web UI to Render's free tier in **sample mode**: bundled openFDA snapshot, synthetic hospital data and rule-based agents, with no Zetaris or Nightshift calls. Every page is labelled `SAMPLE MODE`. The free instance sleeps when idle, so the first request can take about 30 seconds. Runs and reviews are stored on the instance's temporary disk and reset on redeploy. The live integration (Zetaris + Nightshift) is shown in the demo video and runs locally as described in [Live setup](#live-setup-zetaris--nightshift).
 
 ### Scenarios
 
